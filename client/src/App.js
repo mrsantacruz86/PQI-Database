@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch as RouterSwitch, Link } from "react-router-dom";
 // import LoginForm from './components/LoginForm';
 import LandingPage from './pages/LandingPage';
 import Dashboard from './pages/Dashboard';
+import LoginForm from './components/LoginForm';
+import { Switch } from '@material-ui/core';
 // import './App.css';
 
 class App extends Component {
@@ -23,12 +25,17 @@ class App extends Component {
 
 
   render() {
+    const notFound = () => <h1>404: Te page is not found</h1>;
     return (
       <Router>
         <div className="App">
-          <Route exact path="/" component={LandingPage} />
-          <Route path="/dashboard" component={Dashboard} />
-          <Route exact path="/login" component={<h1>This page is not Ready yet</h1>} />
+          <RouterSwitch>
+            <Route exact path="/" component={LandingPage} />
+            <Route path="/dashboard" component={Dashboard} />
+            <Route path="/login" component={LoginForm} />
+            <Route path="/register" component={LoginForm} />
+            <Route component={notFound} />
+          </RouterSwitch>
         </div>
       </Router>
 
