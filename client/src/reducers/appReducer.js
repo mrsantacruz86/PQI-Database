@@ -7,13 +7,15 @@ import {
   OPEN_MENU,
   CLOSE_MENU
 } from '../actions/types';
+import {styles} from '../appStyles';
 
 const initialState = {
-  auth: {access:true},
+  classes: styles,
+  auth: {},
   loading: false,
   error: false,
   flashMessage: "",
-  drawerOpen:false,
+  drawerOpen:true,
   anchorEl:null
 };
 
@@ -47,7 +49,7 @@ export default (state = initialState, action) => {
         ...state,
         loading: false,
         error: false,
-        auth: {access:false}
+        auth: {}
       };
 
     case TOGGLE_DRAWER:

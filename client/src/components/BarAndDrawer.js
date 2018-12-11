@@ -17,32 +17,26 @@ import { toggleDrawer, openMenu, closeMenu } from '../actions/appActions';
 
 
 class BarAndDrawer extends Component {
-  // state={
-  //   auth:false,
-  //   drawerOpen:true
-  // }
 
   handleChange = event => {
     // this.setState({ auth: event.target.checked });
   };
 
-  handleMenu = event => {
-    this.props.openMenu(event.currentTarget);
+  handleMenu = target => {
+    this.props.app.openMenu(target);
   };
 
   handleClose = () => {
-    this.props.closeMenu();
+    this.props.app.closeMenu();
   };
 
   toggleDrawer = () => {
-    this.props.toggleDrawer();
+    this.props.app.toggleDrawer();
   };
 
 
   render() {
-    const { classes } = this.props;
-    // const { auth, drawerOpen } = this.props.app;
-    const { auth, drawerOpen, anchorEl } = this.props.app;
+    const { auth, drawerOpen, anchorEl, classes } = this.props.app;
     const openMenu = Boolean(anchorEl);
 
 
@@ -96,7 +90,7 @@ class BarAndDrawer extends Component {
                     vertical: 'top',
                     horizontal: 'right',
                   }}
-                  open={this.props.openMenu}
+                  open={openMenu}
                   onClose={this.handleClose}
                 >
                   <MenuItem onClick={this.handleClose}>Profile</MenuItem>
@@ -112,10 +106,10 @@ class BarAndDrawer extends Component {
           </Toolbar>
         </AppBar>
         {auth && (
-          <MainDrawer>
+          <MainDrawer
             open={drawerOpen}
             toggle={this.toggleDrawer}
-          </MainDrawer>
+          />
         )}
       </div>
     );
