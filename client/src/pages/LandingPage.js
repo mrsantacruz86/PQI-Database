@@ -1,19 +1,10 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
+import BarAndDrawer from '../components/BarAndDrawer';
 import Typography from '@material-ui/core/Typography';
-import IconButton from '@material-ui/core/IconButton';
-import Menu from '@material-ui/core/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
-import AccountCircle from '@material-ui/icons/AccountCircle';
-import MenuIcon from '@material-ui/icons/Menu';
-import MainDrawer from '../components/MainDrawer';
-import { FormGroup, FormControlLabel, Switch, Button } from '@material-ui/core';
+import { FormGroup, FormControlLabel, Switch } from '@material-ui/core';
 
 const drawerWidth = 240;
 
@@ -39,7 +30,7 @@ const styles = theme => ({
     }),
   },
   appBarShift: {
-    marginLeft: drawerWidth,
+    marginLeft: styles.drawerWidth,
     width: `calc(100% - ${drawerWidth}px)`,
     transition: theme.transitions.create(['width', 'margin'], {
       easing: theme.transitions.easing.sharp,
@@ -126,80 +117,13 @@ class LandingPage extends Component {
   render() {
     const { classes } = this.props;
     const { auth, anchorEl } = this.state;
-    const DrawerOpen = Boolean(anchorEl);
 
     return (
       <div className={classes.root}>
         <CssBaseline />
-        <AppBar
-          position="absolute"
-          className={classNames(classes.appBar, this.state.DrawerOpen && classes.appBarShift)}
-        >
-          <Toolbar disableGutters={!this.state.DrawerOpen} className={classes.toolbar}>
-            {auth && (
-              <IconButton
-                color="inherit"
-                aria-label="Open drawer"
-                onClick={this.toggleDrawer}
-                className={classNames(
-                  classes.menuButton,
-                  this.state.DrawerOpen && classes.menuButtonHidden,
-                )}
-              >
-                <MenuIcon />
-              </IconButton>
-            )}
-            <Typography
-              component="h1"
-              variant="h6"
-              color="inherit"
-              noWrap
-              className={this.state.DrawerOpen ? classes.title : classes.titleAlone}
-            >
-              Welcome Audit Tools
-            </Typography>
-            {auth ? (
-              <div>
-                <IconButton
-                  aria-owns={DrawerOpen ? 'menu-appbar' : undefined}
-                  aria-haspopup="true"
-                  onClick={this.handleMenu}
-                  color="inherit"
-                >
-                  <AccountCircle />
-                </IconButton>
-                <Menu
-                  id="menu-appbar"
-                  anchorEl={anchorEl}
-                  anchorOrigin={{
-                    vertical: 'top',
-                    horizontal: 'right',
-                  }}
-                  transformOrigin={{
-                    vertical: 'top',
-                    horizontal: 'right',
-                  }}
-                  open={DrawerOpen}
-                  onClose={this.handleClose}
-                >
-                  <MenuItem onClick={this.handleClose}>Profile</MenuItem>
-                  <MenuItem onClick={this.handleClose}>My account</MenuItem>
-                </Menu>
-              </div>)
-              :
-              (<Button color="inherit" component={Link} to="/login"
-              >
-                Login
-              </Button>)
-            }
-          </Toolbar>
-        </AppBar>
-        {auth && (
-          <MainDrawer
-            open={this.state.DrawerOpen}
-            toggle={this.toggleDrawer}
-          />
-        )}
+        <BarAndDrawer 
+          classes={classes}
+        />
 
         <main className={classes.content}>
           <div className={classes.appBarSpacer} />
