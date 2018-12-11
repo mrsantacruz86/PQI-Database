@@ -11,32 +11,39 @@ import MenuItem from '@material-ui/core/MenuItem';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import MenuIcon from '@material-ui/icons/Menu';
 import MainDrawer from './MainDrawer';
-import { Button } from '@material-ui/core';
-import {connect} from 'react-redux';
+import Button from '@material-ui/core/Button';
+import { connect } from 'react-redux';
+import { toggleDrawer, openMenu, closeMenu } from '../actions/appActions';
 
 
 class BarAndDrawer extends Component {
+  // state={
+  //   auth:false,
+  //   drawerOpen:true
+  // }
 
   handleChange = event => {
     // this.setState({ auth: event.target.checked });
   };
 
   handleMenu = event => {
-    // this.setState({ anchorEl: event.currentTarget });
+    this.props.openMenu(event.currentTarget);
   };
 
   handleClose = () => {
-    // this.setState({ anchorEl: null });
+    this.props.closeMenu();
   };
 
   toggleDrawer = () => {
-    // this.setState({ drawerOpen: !this.state.drawerOpen });
+    this.props.toggleDrawer();
   };
 
 
   render() {
     const { classes } = this.props;
-    const { auth, drawerOpen } = this.props.app;
+    // const { auth, drawerOpen } = this.props.app;
+    const { auth, drawerOpen, anchorEl } = this.props.app;
+    const openMenu = Boolean(anchorEl);
 
 
     return (
@@ -68,10 +75,10 @@ class BarAndDrawer extends Component {
             >
               Welcome Audit Tools
             </Typography>
-            {auth ? (
+            {auth.access ? (
               <div>
                 <IconButton
-                  aria-owns={drawerOpen ? 'menu-appbar' : undefined}
+                  aria-owns={openMenu ? 'menu-appbar' : undefined}
                   aria-haspopup="true"
                   onClick={this.handleMenu}
                   color="inherit"
@@ -80,7 +87,7 @@ class BarAndDrawer extends Component {
                 </IconButton>
                 <Menu
                   id="menu-appbar"
-                  anchorEl={drawerOpen}
+                  anchorEl={anchorEl}
                   anchorOrigin={{
                     vertical: 'top',
                     horizontal: 'right',
@@ -89,7 +96,7 @@ class BarAndDrawer extends Component {
                     vertical: 'top',
                     horizontal: 'right',
                   }}
-                  open={drawerOpen}
+                  open={this.props.openMenu}
                   onClose={this.handleClose}
                 >
                   <MenuItem onClick={this.handleClose}>Profile</MenuItem>
@@ -118,6 +125,10 @@ class BarAndDrawer extends Component {
 BarAndDrawer.propTypes = {
   classes: PropTypes.object.isRequired,
 };
-const mapStateToProps = state => ({...state});
+const mapStateToProps = state => ({ ...state });
 
-export default connect(mapStateToProps)(BarAndDrawer) ;
+export default connect(mapStateToProps, {
+  toggleDrawer,
+  openMenu,
+  closeMenu
+})(BarAndDrawer);

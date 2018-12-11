@@ -2,15 +2,19 @@ import {
   LOADING,
   GOT_ERROR,
   LOGIN,
-  LOGOUT
+  LOGOUT,
+  TOGGLE_DRAWER,
+  OPEN_MENU,
+  CLOSE_MENU
 } from '../actions/types';
 
 const initialState = {
-  auth: {},
+  auth: {access:true},
   loading: false,
   error: false,
   flashMessage: "",
-  drawerOpen:false
+  drawerOpen:false,
+  anchorEl:null
 };
 
 export default (state = initialState, action) => {
@@ -44,6 +48,24 @@ export default (state = initialState, action) => {
         loading: false,
         error: false,
         auth: {access:false}
+      };
+
+    case TOGGLE_DRAWER:
+      return {
+        ...state,
+        drawerOpen: !state.drawerOpen
+      };
+
+    case OPEN_MENU:
+      return {
+        ...state,
+        anchorEl: action.payload
+      };
+
+    case CLOSE_MENU:
+      return {
+        ...state,
+        anchorEl: null
       };
       
     default:

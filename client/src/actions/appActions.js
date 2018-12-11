@@ -2,7 +2,10 @@ import {
   LOADING,
   GOT_ERROR,
   LOGIN,
-  LOGOUT
+  LOGOUT,
+  TOGGLE_DRAWER,
+  OPEN_MENU,
+  CLOSE_MENU
 } from './types';
 
 //Loading
@@ -26,9 +29,31 @@ export const login = () => {
   };
 };
 
-// Login
+// Logout
 export const logout = () => {
   return {
     type: LOGOUT
+  };
+};
+
+// Toggle drawer
+export const toggleDrawer = () => {
+  return {
+    type: TOGGLE_DRAWER
+  };
+};
+
+// Open Menu
+export const openMenu = (target) => {
+  return {
+    type: OPEN_MENU,
+    payload: target
+  };
+};
+
+// Toggle drawer
+export const closeMenu = () => {
+  return {
+    type: CLOSE_MENU
   };
 };
