@@ -7,15 +7,13 @@ import {
   OPEN_MENU,
   CLOSE_MENU
 } from '../actions/types';
-import {styles} from '../appStyles';
 
 const initialState = {
-  classes: styles,
   auth: {},
   loading: false,
   error: false,
   flashMessage: "",
-  drawerOpen:true,
+  drawerOpen:false,
   anchorEl:null
 };
 
