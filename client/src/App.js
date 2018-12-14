@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { compose } from 'redux';
 import PropTypes from 'prop-types';
 import { BrowserRouter as Router, Route, Switch as RouterSwitch, Link } from "react-router-dom";
 import classNames from 'classnames';
@@ -21,6 +23,8 @@ import LandingPage from './pages/LandingPage';
 import Dashboard from './pages/Dashboard';
 import LoginForm from './components/LoginForm';
 import Button from '@material-ui/core/Button';
+
+import {toggleDrawer, login ,logout, openMenu, closeMenu} from './actions/appActions';
 
 const drawerWidth = 240;
 
@@ -63,7 +67,7 @@ const styles = theme => ({
   title: {
     flexGrow: 1,
   },
-  titleNoDrawer:{
+  titleNoDrawer: {
     flexGrow: 1,
     paddingLeft: 24
   },
@@ -106,35 +110,35 @@ const styles = theme => ({
 });
 
 class App extends Component {
-  state = {
-    open: false,
-    auth: true,
-    anchorEl: null
-  };
-
-  handleChange = event => {
-    this.setState({ auth: event.target.checked });
-  };
+  // state = {
+  //   open: false,
+  //   // auth: true,
+  //   anchorEl: null
+  // };
 
   handleMenu = event => {
-    this.setState({ anchorEl: event.currentTarget });
+    this.props.openMenu(event.currentTarget);
   };
 
   handleClose = () => {
-    this.setState({ anchorEl: null });
+    this.props.closeMenu();
+  };
+
+  handleToggleDrawer = () => {
+    this.props.toggleDrawer();
   };
 
   handleDrawerOpen = () => {
-    this.setState({ open: true });
+    this.props.toggleDrawer();
   };
-
+  
   handleDrawerClose = () => {
-    this.setState({ open: false });
+    this.props.toggleDrawer();
   };
 
   render() {
     const { classes } = this.props;
-    const { auth, anchorEl } = this.state;
+    const { auth, drawerOpen, anchorEl } = this.props.app;
     const open = Boolean(anchorEl);
 
     const notFound = () => <h1>404: Te page is not found</h1>;
@@ -144,9 +148,9 @@ class App extends Component {
         <CssBaseline />
         <AppBar
           position="absolute"
-          className={classNames(classes.appBar, this.state.open && classes.appBarShift)}
+          className={classNames(classes.appBar, drawerOpen && classes.appBarShift)}
         >
-          <Toolbar disableGutters={!this.state.open} className={classes.toolbar}>
+          <Toolbar disableGutters={!drawerOpen} className={classes.toolbar}>
             {auth && (
               <IconButton
                 color="inherit"
@@ -154,7 +158,7 @@ class App extends Component {
                 onClick={this.handleDrawerOpen}
                 className={classNames(
                   classes.menuButton,
-                  this.state.open && classes.menuButtonHidden,
+                  drawerOpen && classes.menuButtonHidden,
                 )}
               >
                 <MenuIcon />
@@ -165,7 +169,7 @@ class App extends Component {
               variant="h6"
               color="inherit"
               noWrap
-              className={ classNames(
+              className={classNames(
                 auth ? classes.title : classes.titleNoDrawer
               )}
             >
@@ -200,7 +204,7 @@ class App extends Component {
                 </Menu>
               </div>
             ) :
-            <Button>Login</Button>
+              <Button>Login</Button>
             }
           </Toolbar>
         </AppBar>
@@ -208,9 +212,9 @@ class App extends Component {
           <Drawer
             variant="permanent"
             classes={{
-              paper: classNames(classes.drawerPaper, !this.state.open && classes.drawerPaperClose),
+              paper: classNames(classes.drawerPaper, !drawerOpen && classes.drawerPaperClose),
             }}
-            open={this.state.open}
+            open={drawerOpen}
           >
             <div className={classes.toolbarIcon}>
               <IconButton onClick={this.handleDrawerClose}>
@@ -245,4 +249,17 @@ App.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(App);
+const mapStateToProps = state => ({...state});
+
+export default compose(
+  withStyles(styles, {
+    name: "App"
+  }),
+  connect(mapStateToProps, {
+    toggleDrawer,
+    login,
+    logout,
+    openMenu,
+    closeMenu
+  })
+)(App);

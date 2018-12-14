@@ -44,7 +44,7 @@ export const toggleDrawer = () => {
 };
 
 // Open Menu
-export const openMenu = (target) => {
+export const openMenu = target => {
   return {
     type: OPEN_MENU,
     payload: target

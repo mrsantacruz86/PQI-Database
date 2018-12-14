@@ -9,7 +9,7 @@ import {
 } from '../actions/types';
 
 const initialState = {
-  auth: {},
+  auth: true,
   loading: false,
   error: false,
   flashMessage: "",
