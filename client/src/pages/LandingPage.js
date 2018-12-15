@@ -25,9 +25,9 @@ class LandingPage extends Component {
 
   handleChange = () => {
     if (this.props.app.auth) {
-      this.props.app.logout();
+      this.props.logout();
     } else {
-      this.props.app.login();
+      this.props.login();
     }
   };
 

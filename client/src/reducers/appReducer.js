@@ -37,17 +37,13 @@ export default (state = initialState, action) => {
     case LOGIN:
       return {
         ...state,
-        loading: false,
-        error: false,
-        auth: {access:true}
+        auth: true
       };
 
     case LOGOUT:
       return {
         ...state,
-        loading: false,
-        error: false,
-        auth: {}
+        auth: false
       };
 
     case TOGGLE_DRAWER:
