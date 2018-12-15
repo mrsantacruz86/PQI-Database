@@ -11,16 +11,4 @@ router.use("/houses", houseRoutes);
 // User routes
 router.use("/users", userRoutes);
 
-// Autentication routes
-
-// Matches with "/api/login"
-router
-	.route("/login")
-	.post(authController.login);
-
-// Matches with "/api/logout"
-router
-	.route("/logout")
-	.post(authController.logout);
-
 module.exports = router;
