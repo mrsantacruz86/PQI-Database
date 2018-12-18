@@ -7,18 +7,7 @@ const {authController} = require('../controllers');
 const jwt = require('jsonwebtoken');
 
 // Protect the API
-router.use("/api", authController.verifyToken, (req, res) => {
-  jwt.verify(req.token, "mySecretKey", (err,authData)=> {
-    if(err){
-      res.sendStatus(403)
-    } else {
-      res.json({
-        message: "Valid Token",
-        authData
-      })
-    }
-  })
-});
+router.all("/api", authController.verifyToken);
 
 // API Routes
 router.use("/api", apiRoutes);

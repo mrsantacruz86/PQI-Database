@@ -2,21 +2,18 @@
 
 // const {User} = require("../models");
 const jwt = require('jsonwebtoken');
+const verifyJWToken = require('../libs/auth');
 
 module.exports = {
 
   login: (req, res) => {
-    // User
-    //   .create(req.body)
-    //   .then(data => res.json(data))
-    //   .catch(err => res.status(422).json(err));
 
     const user = {
       _id: 100,
       usename: "mrsantacruz86",
       email: "mrsantacruz86@comcast.net"
     }
-    jwt.sign({ user }, 'mySecretKey', { expiresIn: 300 }, (err, token) => {
+    jwt.sign({ user }, process.env.JWT_SECRET, { expiresIn: 300 }, (err, token) => {
       res.json({
         message: "login created",
         token
@@ -25,10 +22,6 @@ module.exports = {
   },
 
   logout: (req, res) => {
-    // User
-    //   .create(req.body)
-    //   .then(data => res.json(data))
-    //   .catch(err => res.status(422).json(err));
     res.json({
       message: "logout called"
     })
@@ -42,10 +35,19 @@ module.exports = {
     if (typeof bearerHeader != "undefined") {
       const bearer = bearerHeader.split(" ");
       const bearerToken = bearer[1];
-      req.token = bearerToken;
+      verifyJWToken(bearerToken)
+        .then(decodedtoken => {
+          req.user = decodedtoken;
+          res.send("the token is OK");
+          next()
+        })
+        .catch((err) => {
+          res.status(403)
+            .json({ message: "Invalid auth token provided." })
+        });
       next();
     } else {
-      res.sendStatus(403);
+      res.status(403);
     }
   }
 };
