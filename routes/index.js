@@ -16,11 +16,8 @@ router.use("/api", apiRoutes);
 router
   .route("/login")
   .post(authController.login);
-
-router
-  .route("/logout")
-  .post(authController.logout);
-
+  //logout action only takes place on the client by destroying the auth token.
+  
 router
   .route("/register")
   .post(authController.register);

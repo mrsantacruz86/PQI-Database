@@ -9,23 +9,33 @@ module.exports = {
 
   login: (req, res) => {
 
-    const user = {
-      _id: 100,
-      usename: "mrsantacruz86",
-      email: "mrsantacruz86@comcast.net"
-    }
-    jwt.sign({ user }, process.env.JWT_SECRET, { expiresIn: 300 }, (err, token) => {
-      res.json({
-        message: "login created",
-        token
-      });
-    });
-  },
-
-  logout: (req, res) => {
-    res.json({
-      message: "logout called"
+    User.findOne({
+      $or: [
+        { username: req.body.username },
+        { email: req.body.username }
+      ]
     })
+      .then(user => {
+        const passwordIsValid = bcrypt.compareSync(req.body.password, user.password);
+        if(passwordIsValid){
+          jwt.sign(
+            { _id: user._id },
+            process.env.JWT_SECRET,
+            { expiresIn: 60 * 30 },  //half an hour
+            (err, token) => {
+              if(err) console.log(err)
+              else{
+                res.json({
+                  message: "login created",
+                  token
+                });
+              }
+            });
+        } else {
+          res.status(401).json({message:"Wrong account crendentials!"});
+        }
+      })
+      .catch(err => res.status(401).json({message:"Wrong account crendentials!"}) );
   },
 
   // Format of Token
@@ -55,7 +65,7 @@ module.exports = {
   // User Registration
   register: (req, res) => {
     const hashedPassword = bcrypt.hashSync(req.body.password, 8);
-    const newUser = { ...req.body, password: hashedPassword};
+    const newUser = { ...req.body, password: hashedPassword };
     User.create(newUser)
       .then(data => res.status(200).json(data))
       .catch(err => {
