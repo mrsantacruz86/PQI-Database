@@ -17,25 +17,25 @@ module.exports = {
     })
       .then(user => {
         const passwordIsValid = bcrypt.compareSync(req.body.password, user.password);
-        if(passwordIsValid){
+        if (passwordIsValid) {
           jwt.sign(
             { _id: user._id },
             process.env.JWT_SECRET,
             { expiresIn: 60 * 30 },  //half an hour
             (err, token) => {
-              if(err) console.log(err)
-              else{
-                res.json({
+              if (err) console.log(err)
+              else {
+                res.status(200).json({
                   message: "login created",
                   token
                 });
               }
             });
         } else {
-          res.status(401).json({message:"Wrong account crendentials!"});
+          res.status(401).json({ message: "Wrong account crendentials!" });
         }
       })
-      .catch(err => res.status(401).json({message:"Wrong account crendentials!"}) );
+      .catch(err => res.status(401).json({ message: "Wrong account crendentials!" }));
   },
 
   // Format of Token
@@ -45,20 +45,18 @@ module.exports = {
     const bearerHeader = req.headers["authorization"];
     if (typeof bearerHeader != "undefined") {
       const bearer = bearerHeader.split(" ");
-      const token = bearer[1];
+      const token = bearer[1]; //the token is the second element of the splited array
       verifyJWToken(token)
         .then(decodedtoken => {
-          req.user = decodedtoken;
-          res.send("the token is OK");
-          next()
+          req.userId = decodedtoken._id;
+          // res.status(200).json({message:"Authorization Granted!"});
+          next();
         })
         .catch((err) => {
-          res.status(403)
-            .json({ message: "Invalid auth token provided." })
+          res.status(401).json({ message: "Failed to authenticate Token!" })
         });
-      next();
     } else {
-      res.status(403);
+      res.status(403).json({ message: "No authorization token was provided!" });
     }
   },
 

@@ -10,14 +10,15 @@ const jwt = require('jsonwebtoken');
 // router.all("/api", authController.verifyToken);
 
 // API Routes
-router.use("/api", apiRoutes);
+// verifyToken middleware is securing all API Routes /api/*
+router.use("/api", authController.verifyToken, apiRoutes);
 
 // Autentication routes
 router
   .route("/login")
   .post(authController.login);
   //logout action only takes place on the client by destroying the auth token.
-  
+
 router
   .route("/register")
   .post(authController.register);
