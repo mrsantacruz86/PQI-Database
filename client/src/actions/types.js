@@ -3,6 +3,7 @@ export const LOADING = 'LOADING';
 export const GOT_ERROR = 'GOT_ERROR';
 export const LOGIN = 'LOGIN';
 export const LOGOUT = 'LOGOUT';
+export const REGISTER = 'REGISTER';
 export const TOGGLE_DRAWER = 'TOGGLE_DRAWER';
 export const OPEN_MENU = 'OPEN_MENU';
 export const CLOSE_MENU = 'CLOSE_MENU';

@@ -1,8 +1,9 @@
 //AUTHENTICATION CONTROLLERS
 
-// const {User} = require("../models");
+const { User } = require("../models");
 const jwt = require('jsonwebtoken');
 const verifyJWToken = require('../libs/auth');
+const bcrypt = require('bcryptjs');
 
 module.exports = {
 
@@ -34,8 +35,8 @@ module.exports = {
     const bearerHeader = req.headers["authorization"];
     if (typeof bearerHeader != "undefined") {
       const bearer = bearerHeader.split(" ");
-      const bearerToken = bearer[1];
-      verifyJWToken(bearerToken)
+      const token = bearer[1];
+      verifyJWToken(token)
         .then(decodedtoken => {
           req.user = decodedtoken;
           res.send("the token is OK");
@@ -49,5 +50,16 @@ module.exports = {
     } else {
       res.status(403);
     }
+  },
+
+  // User Registration
+  register: (req, res) => {
+    const hashedPassword = bcrypt.hashSync(req.body.password, 8);
+    const newUser = { ...req.body, password: hashedPassword};
+    User.create(newUser)
+      .then(data => res.status(200).json(data))
+      .catch(err => {
+        return res.status(500).send(`There was a problem registering the user. \n ${err}`)
+      });
   }
 };

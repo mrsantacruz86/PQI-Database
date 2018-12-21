@@ -7,7 +7,7 @@ const {authController} = require('../controllers');
 const jwt = require('jsonwebtoken');
 
 // Protect the API
-router.all("/api", authController.verifyToken);
+// router.all("/api", authController.verifyToken);
 
 // API Routes
 router.use("/api", apiRoutes);
@@ -17,10 +17,13 @@ router
   .route("/login")
   .post(authController.login);
 
-// Matches with "/api/logout"
 router
   .route("/logout")
   .post(authController.logout);
+
+router
+  .route("/register")
+  .post(authController.register);
 
 // If no API routes are hit, send the React app
 router.use(function(req, res) {

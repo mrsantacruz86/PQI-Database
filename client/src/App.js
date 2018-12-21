@@ -25,6 +25,7 @@ import LoginForm from './components/LoginForm';
 import Button from '@material-ui/core/Button';
 
 import {toggleDrawer, login ,logout, openMenu, closeMenu} from './actions/appActions';
+import RegisterForm from './components/RegisterForm';
 
 const drawerWidth = 240;
 
@@ -234,7 +235,7 @@ class App extends Component {
                 <Route exact path="/" component={LandingPage} />
                 <Route path="/dashboard" component={Dashboard} />
                 <Route path="/login" component={LoginForm} />
-                <Route path="/register" component={LoginForm} />
+                <Route path="/register" component={RegisterForm} />
                 <Route component={notFound} />
               </RouterSwitch>
             </div>

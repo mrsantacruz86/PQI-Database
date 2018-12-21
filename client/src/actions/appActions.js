@@ -3,6 +3,7 @@ import {
   GOT_ERROR,
   LOGIN,
   LOGOUT,
+  REGISTER,
   TOGGLE_DRAWER,
   OPEN_MENU,
   CLOSE_MENU
@@ -26,6 +27,13 @@ export const gotError = () => {
 export const login = () => {
   return {
     type: LOGIN
+  };
+};
+
+// Register
+export const register = () => {
+  return {
+    type: REGISTER
   };
 };
 

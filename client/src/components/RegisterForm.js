@@ -49,10 +49,14 @@ const styles = theme => ({
   },
 });
 
+
 class RegisterForm extends Component {
   // constructor(props) {
   //   super(props);
   // }
+  handleSubmit = (e) => {
+    e.preventdefault();
+  }
 
   render() {
     const { classes } = this.props;
@@ -66,7 +70,19 @@ class RegisterForm extends Component {
           <Typography component="h1" variant="h5">
             Sign in
         </Typography>
-          <form className={classes.form}>
+          <form className={classes.form} onSubmit={this.handleSubmit} method="POST">
+            <FormControl margin="normal" required fullWidth>
+              <InputLabel htmlFor="email">First Name</InputLabel>
+              <Input id="email" name="firstName" autoComplete="firstName" autoFocus />
+            </FormControl>
+            <FormControl margin="normal" required fullWidth>
+              <InputLabel htmlFor="email">Last Name</InputLabel>
+              <Input id="email" name="lastName" autoComplete="lastName" autoFocus />
+            </FormControl>
+            <FormControl margin="normal" required fullWidth>
+              <InputLabel htmlFor="email">Username</InputLabel>
+              <Input id="email" name="username" autoComplete="username" autoFocus />
+            </FormControl>
             <FormControl margin="normal" required fullWidth>
               <InputLabel htmlFor="email">Email Address</InputLabel>
               <Input id="email" name="email" autoComplete="email" autoFocus />
