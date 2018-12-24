@@ -1,6 +1,6 @@
 //App actions
 export const LOADING = 'LOADING';
-export const GOT_ERROR = 'GOT_ERROR';
+export const ADD_FLASH_MESSAGE = 'ADD_FLASH_MESSAGE';
 export const LOGIN = 'LOGIN';
 export const LOGOUT = 'LOGOUT';
 export const REGISTER = 'REGISTER';

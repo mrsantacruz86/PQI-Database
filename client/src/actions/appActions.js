@@ -1,6 +1,6 @@
 import {
   LOADING,
-  GOT_ERROR,
+  ADD_FLASH_MESSAGE,
   LOGIN,
   LOGOUT,
   REGISTER,
@@ -10,6 +10,7 @@ import {
 } from './types';
 import axios from 'axios';
 
+
 //Loading
 export const loading = () => {
   return {
@@ -18,9 +19,13 @@ export const loading = () => {
 };
 
 //Got an error
-export const gotError = () => {
+export const addFlashMessage = (type, text) => {
   return {
-    type: GOT_ERROR
+    type: ADD_FLASH_MESSAGE,
+    message: {
+      type:type,
+      text: text
+    }
   };
 };
 
@@ -31,9 +36,7 @@ export const login = (user) => dispatch => {
     .post("/login", user)
     .then(res => {
       if (res.data.token) {
-        dispatch({
-          type: GOT_ERROR
-        })
+        dispatch(addFlashMessage("success", "Welcome, You signed in successfuly"));
       } else {
         dispatch({
           type: LOGIN,
@@ -52,7 +55,7 @@ export const register = (user) => dispatch => {
     .then(res => {
       if (!res.data.err) {
         dispatch({
-          type: GOT_ERROR,
+          type: ADD_FLASH_MESSAGE,
           payload: { message: res.data.message }
         })
       } else {

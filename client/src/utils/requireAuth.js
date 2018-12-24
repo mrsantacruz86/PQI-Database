@@ -10,7 +10,7 @@ const requireAuth = ComposedComponent => {
 			if (!this.props.auth) {
 				console.log(this.props);
 				console.log(this.context);
-				// this.context.router.history.push("/login");
+				this.context.router.history.push("/login");
 			}
 		}
 		render() {

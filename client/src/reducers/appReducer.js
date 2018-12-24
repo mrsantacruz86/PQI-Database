@@ -1,6 +1,6 @@
 import {
   LOADING,
-  GOT_ERROR,
+  ADD_FLASH_MESSAGE,
   LOGIN,
   LOGOUT,
   TOGGLE_DRAWER,
@@ -8,13 +8,14 @@ import {
   CLOSE_MENU,
   REGISTER
 } from '../actions/types';
+import shortid from 'shortid';
 
 const initialState = {
   auth: true,
   authToken: null,
   loading: false,
   error: false,
-  flashMessage: "",
+  flashMessages: {},
   drawerOpen: false,
   anchorEl: null
 };
@@ -29,12 +30,19 @@ export default (state = initialState, action) => {
         error: false,
       };
 
-    case GOT_ERROR:
+    case ADD_FLASH_MESSAGE:
       return {
         ...state,
         loading: false,
         error: true,
-        flashMessage: action.payload.message
+        flashMessage: [
+          ...state.flashMessages,
+          {
+            id: shortid.generate(),
+            type: action.message.type,
+            text: action.message.text
+          }
+        ]
       };
 
     case LOGIN:
