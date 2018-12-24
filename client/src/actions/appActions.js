@@ -36,8 +36,9 @@ export const login = (user) => dispatch => {
     .post("/login", user)
     .then(res => {
       if (res.data.token) {
-        dispatch(addFlashMessage("success", "Welcome, You signed in successfuly"));
+        dispatch(addFlashMessage("error", "The account credentials are not valid. Please try again"));
       } else {
+        dispatch(addFlashMessage("success", "Welcome, You signed in successfuly"));
         dispatch({
           type: LOGIN,
           payload: res.data

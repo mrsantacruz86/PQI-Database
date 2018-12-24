@@ -35,7 +35,7 @@ export default (state = initialState, action) => {
         ...state,
         loading: false,
         error: true,
-        flashMessage: [
+        flashMessages: [
           ...state.flashMessages,
           {
             id: shortid.generate(),
