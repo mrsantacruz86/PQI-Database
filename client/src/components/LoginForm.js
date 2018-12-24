@@ -5,17 +5,13 @@ import { compose } from 'redux';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import FormControl from '@material-ui/core/FormControl';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
-import Input from '@material-ui/core/Input';
-import InputLabel from '@material-ui/core/InputLabel';
+import TextField from '@material-ui/core/TextField';
 import LockIcon from '@material-ui/icons/LockOutlined';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import withStyles from '@material-ui/core/styles/withStyles';
 
-import { register } from '../actions/appActions';
+import { login } from '../actions/appActions';
 
 const styles = theme => ({
   main: {
@@ -49,10 +45,37 @@ const styles = theme => ({
   },
 });
 
-class RegisterForm extends Component {
-  // constructor(props) {
-  //   super(props);
-  // }
+class LoginForm extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      user: {
+        username: "",
+        password: ""
+      }
+    };
+  }
+  handleSubmit = (e) => {
+    console.log(this.state.user);
+    e.preventDefault();
+    this.props.login(this.state.user);
+    this.setState({
+      user: {
+        username: "",
+        password: ""
+      }
+    })
+  };
+
+  handleInputChange = (e) => {
+    e.preventDefault();
+    this.setState({
+      user: {
+        ...this.state.user,
+        [e.target.name]: e.target.value
+      }
+    });
+  };
 
   render() {
     const { classes } = this.props;
@@ -66,19 +89,30 @@ class RegisterForm extends Component {
           <Typography component="h1" variant="h5">
             Sign in
         </Typography>
-          <form className={classes.form}>
-            <FormControl margin="normal" required fullWidth>
-              <InputLabel htmlFor="email">Email Address</InputLabel>
-              <Input id="email" name="email" autoComplete="email" autoFocus />
-            </FormControl>
-            <FormControl margin="normal" required fullWidth>
-              <InputLabel htmlFor="password">Password</InputLabel>
-              <Input name="password" type="password" id="password" autoComplete="current-password" />
-            </FormControl>
-            <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
-              label="Remember me"
+          <form className={classes.form} onSubmit={this.handleSubmit}>
+            <TextField
+              id="username"
+              type="text"
+              required
+              name="username"
+              onChange={this.handleInputChange}
+              label="Last Name"
+              margin="normal"
+              value={this.state.user.username}
+              fullWidth
             />
+            <TextField
+              id="password"
+              type="password"
+              required
+              name="password"
+              onChange={this.handleInputChange}
+              label="Password"
+              margin="normal"
+              value={this.state.user.password}
+              fullWidth
+            />
+
             <Button
               type="submit"
               fullWidth
@@ -95,17 +129,18 @@ class RegisterForm extends Component {
   }
 }
 
-RegisterForm.propTypes = {
+LoginForm.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = state => ({ ...state });
 
 export default compose(
+  // @ts-ignore
   withStyles(styles, {
     name: "Reg"
   }),
   connect(mapStateToProps, {
-    register
+    login
   })
-)(RegisterForm);
+)(LoginForm);

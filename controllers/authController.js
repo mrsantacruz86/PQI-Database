@@ -64,10 +64,14 @@ module.exports = {
   register: (req, res) => {
     const hashedPassword = bcrypt.hashSync(req.body.password, 8);
     const newUser = { ...req.body, password: hashedPassword };
+    console.log(newUser);
     User.create(newUser)
       .then(data => res.status(200).json(data))
       .catch(err => {
-        return res.status(500).send(`There was a problem registering the user. \n ${err}`)
+        return res.status(500).json({
+          err,
+          message: "The account could not be created"
+        })
       });
   }
 };

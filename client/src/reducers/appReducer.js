@@ -5,16 +5,18 @@ import {
   LOGOUT,
   TOGGLE_DRAWER,
   OPEN_MENU,
-  CLOSE_MENU
+  CLOSE_MENU,
+  REGISTER
 } from '../actions/types';
 
 const initialState = {
   auth: true,
+  authToken: null,
   loading: false,
   error: false,
   flashMessage: "",
-  drawerOpen:false,
-  anchorEl:null
+  drawerOpen: false,
+  anchorEl: null
 };
 
 export default (state = initialState, action) => {
@@ -32,18 +34,29 @@ export default (state = initialState, action) => {
         ...state,
         loading: false,
         error: true,
+        flashMessage: action.payload.message
       };
 
     case LOGIN:
       return {
         ...state,
-        auth: true
+        auth: true,
+        authToken: action.payload.token
+      };
+
+    case REGISTER:
+      return {
+        ...state,
+        loading: false,
+        flashMessage: action.payload.message,
+        error: false
       };
 
     case LOGOUT:
       return {
         ...state,
-        auth: false
+        auth: false,
+        authToken: null
       };
 
     case TOGGLE_DRAWER:
@@ -63,7 +76,7 @@ export default (state = initialState, action) => {
         ...state,
         anchorEl: null
       };
-      
+
     default:
       return state;
   }

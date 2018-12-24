@@ -4,6 +4,8 @@ import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import SimpleLineChart from '../components/SimpleLineChart';
 import SimpleTable from '../components/SimpleTable';
+import { compose } from 'redux';
+import { connect } from 'react-redux';
 
 const drawerWidth = 240;
 
@@ -112,4 +114,10 @@ Dashboard.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(Dashboard);
+const mapStateToProps = state => ({ ...state });
+
+export default compose(
+  // @ts-ignore
+  withStyles(styles),
+  connect(mapStateToProps)
+)(Dashboard);

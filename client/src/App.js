@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import PropTypes from 'prop-types';
-import { BrowserRouter as Router, Route, Switch as RouterSwitch, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch as RouterSwitch } from "react-router-dom";
 import classNames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -24,8 +24,9 @@ import Dashboard from './pages/Dashboard';
 import LoginForm from './components/LoginForm';
 import Button from '@material-ui/core/Button';
 
-import {toggleDrawer, login ,logout, openMenu, closeMenu} from './actions/appActions';
+import { toggleDrawer, login, logout, openMenu, closeMenu } from './actions/appActions';
 import RegisterForm from './components/RegisterForm';
+import requireAuth from './utils/requireAuth';
 
 const drawerWidth = 240;
 
@@ -132,7 +133,7 @@ class App extends Component {
   handleDrawerOpen = () => {
     this.props.toggleDrawer();
   };
-  
+
   handleDrawerClose = () => {
     this.props.toggleDrawer();
   };
@@ -233,7 +234,7 @@ class App extends Component {
             <div>
               <RouterSwitch>
                 <Route exact path="/" component={LandingPage} />
-                <Route path="/dashboard" component={Dashboard} />
+                <Route path="/dashboard" component={requireAuth(Dashboard)} />
                 <Route path="/login" component={LoginForm} />
                 <Route path="/register" component={RegisterForm} />
                 <Route component={notFound} />
@@ -250,9 +251,10 @@ App.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-const mapStateToProps = state => ({...state});
+const mapStateToProps = state => ({ ...state });
 
 export default compose(
+  // @ts-ignore
   withStyles(styles, {
     name: "App"
   }),

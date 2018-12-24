@@ -8,6 +8,7 @@ import {
   OPEN_MENU,
   CLOSE_MENU
 } from './types';
+import axios from 'axios';
 
 //Loading
 export const loading = () => {
@@ -24,17 +25,44 @@ export const gotError = () => {
 };
 
 // Login
-export const login = () => {
-  return {
-    type: LOGIN
-  };
+export const login = (user) => dispatch => {
+  dispatch(loading());
+  axios
+    .post("/login", user)
+    .then(res => {
+      if (res.data.token) {
+        dispatch({
+          type: GOT_ERROR
+        })
+      } else {
+        dispatch({
+          type: LOGIN,
+          payload: res.data
+        });
+      }
+    })
+    .catch(err => console.log(err));
 };
 
 // Register
-export const register = () => {
-  return {
-    type: REGISTER
-  };
+export const register = (user) => dispatch => {
+  dispatch(loading());
+  axios
+    .post("/register", user)
+    .then(res => {
+      if (!res.data.err) {
+        dispatch({
+          type: GOT_ERROR,
+          payload: { message: res.data.message }
+        })
+      } else {
+        dispatch({
+          type: REGISTER,
+          payload: { message: "Account was successfully created!" }
+        });
+      }
+    })
+    .catch(err => console.log(err));
 };
 
 // Logout
