@@ -17,11 +17,17 @@ module.exports = {
     })
       .then(user => {
         const passwordIsValid = bcrypt.compareSync(req.body.password, user.password);
-        if (passwordIsValid) {
+        if (passwordIsValid && user.status === "active") {
           jwt.sign(
-            { _id: user._id },
+            {
+              email: "ndiaz@hhch.org",
+              firstName: "Nelson",
+              lastName: "Diaz",
+              username: "ndiaz",
+              _id: "5c2065491223ff3a58880237"
+            },
             process.env.JWT_SECRET,
-            { expiresIn: 60 * 30 },  //half an hour
+            //{ expiresIn: 60 * 30 },  //half an hour
             (err, token) => {
               if (err) console.log(err)
               else {
@@ -42,7 +48,7 @@ module.exports = {
   // Authorization: Bearer <access_token>
 
   verifyToken: (req, res, next) => {
-    const bearerHeader = req.headers["authorization"];
+    const bearerHeader = req.headers["Authorization"];
     if (typeof bearerHeader != "undefined") {
       const bearer = bearerHeader.split(" ");
       const token = bearer[1]; //the token is the second element of the splited array

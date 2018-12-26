@@ -56,7 +56,7 @@ class LoginForm extends Component {
     };
   }
   handleSubmit = (e) => {
-    console.log(this.state.user);
+    // console.log(this.state.user);
     e.preventDefault();
     this.props.login(this.state.user);
     this.setState({
@@ -65,6 +65,7 @@ class LoginForm extends Component {
         password: ""
       }
     })
+    // this.context.router.history.push("/");
   };
 
   handleInputChange = (e) => {
@@ -132,6 +133,9 @@ class LoginForm extends Component {
 LoginForm.propTypes = {
   classes: PropTypes.object.isRequired,
 };
+LoginForm.contextTypes = {
+  router: PropTypes.object.isRequired
+}
 
 const mapStateToProps = state => ({ ...state });
 

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import PropTypes from 'prop-types';
-import { BrowserRouter as Router, Route, Switch as RouterSwitch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch as RouterSwitch, Link } from "react-router-dom";
 import classNames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -138,6 +138,10 @@ class App extends Component {
     this.props.toggleDrawer();
   };
 
+  handleLoginClick = () => {
+    this.context.router.history.push("/login");
+  }
+
   render() {
     const { classes } = this.props;
     const { auth, drawerOpen, anchorEl } = this.props.app;
@@ -206,7 +210,7 @@ class App extends Component {
                 </Menu>
               </div>
             ) :
-              <Button>Login</Button>
+              <Button color="inherit" onClick={this.handleLoginClick}> Login</Button>
             }
           </Toolbar>
         </AppBar>
@@ -250,6 +254,9 @@ class App extends Component {
 App.propTypes = {
   classes: PropTypes.object.isRequired,
 };
+App.contextTypes = {
+  router: PropTypes.object.isRequired
+}
 
 const mapStateToProps = state => ({ ...state });
 

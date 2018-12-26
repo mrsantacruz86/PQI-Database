@@ -9,10 +9,11 @@ import {
   REGISTER
 } from '../actions/types';
 import shortid from 'shortid';
+import { loading } from '../actions/appActions';
 
 const initialState = {
-  auth: true,
-  authToken: null,
+  auth: false,
+  user: {},
   loading: false,
   error: false,
   flashMessages: {},
@@ -49,7 +50,8 @@ export default (state = initialState, action) => {
       return {
         ...state,
         auth: true,
-        authToken: action.payload.token
+        user: action.payload,
+        loading: false
       };
 
     case REGISTER:

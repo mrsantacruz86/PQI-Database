@@ -9,6 +9,8 @@ import {
   CLOSE_MENU
 } from './types';
 import axios from 'axios';
+import setAuthToken from "../utils/setAuthToken";
+import decodeJWT from "../utils/decodeJWT";
 
 
 //Loading
@@ -23,7 +25,7 @@ export const addFlashMessage = (type, text) => {
   return {
     type: ADD_FLASH_MESSAGE,
     message: {
-      type:type,
+      type: type,
       text: text
     }
   };
@@ -35,14 +37,20 @@ export const login = (user) => dispatch => {
   axios
     .post("/login", user)
     .then(res => {
-      if (res.data.token) {
-        dispatch(addFlashMessage("error", "The account credentials are not valid. Please try again"));
+      const token = res.data.token;
+      // console.log(res.data);
+      if (!token) {
+        // dispatch(addFlashMessage("error", "The account credentials are not valid. Please try again"));
       } else {
-        dispatch(addFlashMessage("success", "Welcome, You signed in successfuly"));
+        // dispatch(addFlashMessage("success", "Welcome, You signed in successfuly"));
         dispatch({
           type: LOGIN,
-          payload: res.data
+          payload: decodeJWT(token)
         });
+        localStorage.setItem("jwToken", token);
+        setAuthToken(token);
+        // console.log(decodeJWT(token));
+
       }
     })
     .catch(err => console.log(err));
