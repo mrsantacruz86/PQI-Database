@@ -5,8 +5,16 @@ import { Provider } from 'react-redux';
 import Store from './store';
 import * as serviceWorker from './serviceWorker';
 import setAuthToken from "./utils/setAuthToken";
+import { LOGIN } from './actions/types';
+import decodeJWT from './utils/decodeJWT';
 
-setAuthToken(localStorage.jwToken)
+if (localStorage.jwToken) {
+  setAuthToken(localStorage.jwToken)
+  Store.dispatch({
+    type: LOGIN,
+    payload: decodeJWT(localStorage.jwToken)
+  })
+}
 
 ReactDOM.render(
   <Provider store={Store}>
