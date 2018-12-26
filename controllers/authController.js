@@ -20,11 +20,11 @@ module.exports = {
         if (passwordIsValid && user.status === "active") {
           jwt.sign(
             {
-              email: "ndiaz@hhch.org",
-              firstName: "Nelson",
-              lastName: "Diaz",
-              username: "ndiaz",
-              _id: "5c2065491223ff3a58880237"
+              email: user.email,
+              firstName: user.firstName,
+              lastName: user.lastName,
+              username: user.username,
+              _id: user._id
             },
             process.env.JWT_SECRET,
             //{ expiresIn: 60 * 30 },  //half an hour

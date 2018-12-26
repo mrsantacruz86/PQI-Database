@@ -9,7 +9,6 @@ import {
   REGISTER
 } from '../actions/types';
 import shortid from 'shortid';
-import { loading } from '../actions/appActions';
 
 const initialState = {
   auth: false,
