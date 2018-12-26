@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { withStyles } from '@material-ui/core/styles';
-import CssBaseline from '@material-ui/core/CssBaseline';
 import Typography from '@material-ui/core/Typography';
 import { FormGroup, FormControlLabel, Switch } from '@material-ui/core';
 import { login, logout } from '../actions/appActions';
+import BarAndMenu from '../components/BarAndMenu';
 
 const styles = theme => ({
   root: {
@@ -37,20 +37,11 @@ class LandingPage extends Component {
 
     return (
       <div className={classes.root}>
-        <CssBaseline />
-        <div className={classes.appBarSpacer} />
+        <BarAndMenu>
         <Typography variant="h4" gutterBottom component="h2">
           This is where the content goes...
-
-            <FormGroup>
-            <FormControlLabel
-              control={
-                <Switch checked={auth} onChange={this.handleChange} aria-label="LoginSwitch" />
-              }
-              label={auth ? 'Logout' : 'Login'}
-            />
-          </FormGroup>
         </Typography>
+        </BarAndMenu>
       </div>
     );
   }
