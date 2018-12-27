@@ -10,7 +10,7 @@ import Dashboard from './pages/Dashboard';
 import LoginPage from './pages/LoginPage';
 
 import { toggleDrawer, login, logout, openMenu, closeMenu } from './actions/appActions';
-import RegisterForm from './components/RegisterForm';
+import SignUpPage from './pages/SignUpPage';
 import requireAuth from './utils/requireAuth';
 
 
@@ -52,7 +52,7 @@ class App extends Component {
 
   render() {
     const { classes } = this.props;
-    const notFound = () => <h1>404: Te page is not found</h1>;
+    const notFound = () => <h1 className={classes.h1}>404: Te page is not found</h1>;
 
     return (
       <Router>
@@ -63,7 +63,7 @@ class App extends Component {
                 <Route exact path="/" component={LandingPage} />
                 <Route path="/dashboard" component={requireAuth(Dashboard)} />
                 <Route path="/login" component={LoginPage} />
-                <Route path="/register" component={RegisterForm} />
+                <Route path="/register" component={SignUpPage} />
                 <Route component={notFound} />
               </RouterSwitch>
             </div>

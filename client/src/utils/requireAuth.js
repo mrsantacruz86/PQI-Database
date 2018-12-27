@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 const requireAuth = ComposedComponent => {
 	class Authenticate extends Component {
 		componentWillMount() {
-			if (!this.props.auth) {
+			if (!this.props.app.auth) {
 				// console.log(this.props);
 				// console.log(this.context);
 				this.context.router.history.push("/login");
@@ -27,7 +27,7 @@ const requireAuth = ComposedComponent => {
 		router: PropTypes.object.isRequired
 	}
 
-	const mapStateToProps = state => state.app.auth;
+	const mapStateToProps = state => ({...state});
 	return connect(mapStateToProps)(Authenticate);
 }
 

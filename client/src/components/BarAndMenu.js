@@ -128,6 +128,11 @@ class App extends Component {
     this.handleClose();
   };
 
+  goToSignUp = () => {
+    this.context.router.history.push("/register");
+    this.handleClose();
+  };
+
   render() {
     const { classes } = this.props;
     const { auth, drawerOpen, anchorEl } = this.props.app;
@@ -136,7 +141,7 @@ class App extends Component {
     return (
       <div >
         <AppBar
-          position="absolute"
+          position="fixed"
           className={classNames(classes.appBar, drawerOpen && classes.appBarShift)}
         >
           <Toolbar disableGutters={!drawerOpen} className={classes.toolbar}>
@@ -191,7 +196,10 @@ class App extends Component {
                 </Menu>
               </div>
               :
-              <Button color="inherit" onClick={this.goToLogin}>Login</Button>
+              <div>
+                <Button color="inherit" onClick={this.goToSignUp}>Sign Up</Button>
+                <Button color="inherit" onClick={this.goToLogin}>Login</Button>
+              </div>
             }
           </Toolbar>
         </AppBar>
@@ -224,9 +232,11 @@ class App extends Component {
 App.propTypes = {
   classes: PropTypes.object.isRequired,
   theme: PropTypes.object.isRequired,
-  // auth: PropTypes.Boolean.isRequired, 
-  // drawerOpen: PropTypes.Boolean.isRequired, 
-  // anchorEl: PropTypes.object
+  toggleDrawer: PropTypes.func.isRequired,
+  login: PropTypes.func.isRequired,
+  logout: PropTypes.func.isRequired,
+  openMenu: PropTypes.func.isRequired,
+  closeMenu: PropTypes.func.isRequired
 };
 App.contextTypes = {
   router: PropTypes.object.isRequired
