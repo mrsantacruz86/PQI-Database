@@ -12,10 +12,14 @@ const styles = theme => ({
   root: {
     display: 'flex',
   },
-  appBarSpacer: theme.mixins.toolbar,
-  chartContainer: {
-    marginLeft: -22,
+  content: {
+    flexGrow: 1,
+    padding: theme.spacing.unit * 3,
+    paddingLeft: theme.spacing.unit * 12,
+    height: '100vh',
+    overflow: 'auto',
   },
+  appBarSpacer: theme.mixins.toolbar,
   h5: {
     marginBottom: theme.spacing.unit * 2,
   },
@@ -32,16 +36,20 @@ class LandingPage extends Component {
   };
 
   render() {
-    const { auth } = this.props.app;
+    // const { auth } = this.props.app;
     const { classes } = this.props;
 
     return (
-      <div className={classes.root}>
-        <BarAndMenu>
-        <Typography variant="h4" gutterBottom component="h2">
-          This is where the content goes...
-        </Typography>
-        </BarAndMenu>
+      <div>
+        <BarAndMenu />
+        <main className={classes.content}>
+          <div className={classes.appBarSpacer} />
+
+          <Typography variant="h4" gutterBottom component="h2">
+            This is where the content goes..
+          </Typography>
+
+        </main>
       </div>
     );
   }

@@ -28,6 +28,16 @@ const styles = theme => ({
   root: {
     display: 'flex',
   },
+  toolbar: {
+    paddingRight: 24, // keep right padding when drawer closed
+  },
+  toolbarIcon: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'flex-end',
+    padding: '0 8px',
+    ...theme.mixins.toolbar,
+  },
   appBar: {
     zIndex: theme.zIndex.drawer + 1,
     transition: theme.transitions.create(['width', 'margin'], {
@@ -47,8 +57,11 @@ const styles = theme => ({
     marginLeft: 12,
     marginRight: 36,
   },
-  hide: {
+  menuButtonHidden: {
     display: 'none',
+  },
+  title: {
+    flexGrow: 1,
   },
   drawer: {
     width: drawerWidth,
@@ -73,23 +86,21 @@ const styles = theme => ({
       width: theme.spacing.unit * 9 + 1,
     },
   },
-  toolbar: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'flex-end',
-    padding: '0 8px',
-    paddingRight: 24, // keep right padding when drawer closed
-    ...theme.mixins.toolbar,
-  },
-  toolbarIcon: {
-    justifyContent: 'flex-end',
-  },
+  appBarSpacer: theme.mixins.toolbar,
   content: {
     flexGrow: 1,
     padding: theme.spacing.unit * 3,
+    height: '100vh',
+    overflow: 'auto',
   },
-  title: {
-    flexGrow: 1,
+  chartContainer: {
+    marginLeft: -22,
+  },
+  tableContainer: {
+    height: 320,
+  },
+  h5: {
+    marginBottom: theme.spacing.unit * 2,
   },
 });
 
@@ -135,7 +146,7 @@ class App extends Component {
                 aria-label="Open drawer"
                 onClick={this.handleDrawerOpen}
                 className={classNames(classes.menuButton, {
-                  [classes.hide]: drawerOpen,
+                  [classes.menuButtonHidden]: drawerOpen,
                 })}
               >
                 <MenuIcon />

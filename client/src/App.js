@@ -19,23 +19,12 @@ const styles = theme => ({
   root: {
     display: 'flex',
   },
-  content: {
-    flexGrow: 1,
-    padding: theme.spacing.unit * 3,
-    height: '100vh',
-    overflow: 'auto',
-  },
   h5: {
     marginBottom: theme.spacing.unit * 2,
   },
 });
 
 class App extends Component {
-  // state = {
-  //   open: false,
-  //   // auth: true,
-  //   anchorEl: null
-  // };
 
   handleMenu = event => {
     this.props.openMenu(event.currentTarget);
@@ -69,7 +58,6 @@ class App extends Component {
       <Router>
         <div className={classes.root}>
           <CssBaseline />
-          <main className={classes.content}>
             <div>
               <RouterSwitch>
                 <Route exact path="/" component={LandingPage} />
@@ -79,7 +67,6 @@ class App extends Component {
                 <Route component={notFound} />
               </RouterSwitch>
             </div>
-          </main>
         </div>
       </Router>
     );
