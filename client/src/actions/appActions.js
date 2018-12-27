@@ -1,5 +1,6 @@
 import {
   LOADING,
+  STOP_LOADING,
   ADD_FLASH_MESSAGE,
   LOGIN,
   LOGOUT,
@@ -17,6 +18,11 @@ import decodeJWT from "../utils/decodeJWT";
 export const loading = () => {
   return {
     type: LOADING
+  };
+};
+export const stopLoading = () => {
+  return {
+    type: STOP_LOADING
   };
 };
 
@@ -38,7 +44,6 @@ export const login = (user) => dispatch => {
     .post("/login", user)
     .then(res => {
       const token = res.data.token;
-      // console.log(res.data);
       if (!token) {
         // dispatch(addFlashMessage("error", "The account credentials are not valid. Please try again"));
       } else {
@@ -49,8 +54,6 @@ export const login = (user) => dispatch => {
         });
         localStorage.setItem("jwToken", token);
         setAuthToken(token);
-        // console.log(decodeJWT(token));
-
       }
     })
     .catch(err => console.log(err));

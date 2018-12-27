@@ -7,7 +7,7 @@ import { withStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import LandingPage from './pages/LandingPage';
 import Dashboard from './pages/Dashboard';
-import LoginForm from './components/LoginForm';
+import LoginPage from './pages/LoginPage';
 
 import { toggleDrawer, login, logout, openMenu, closeMenu } from './actions/appActions';
 import RegisterForm from './components/RegisterForm';
@@ -62,7 +62,7 @@ class App extends Component {
               <RouterSwitch>
                 <Route exact path="/" component={LandingPage} />
                 <Route path="/dashboard" component={requireAuth(Dashboard)} />
-                <Route path="/login" component={LoginForm} />
+                <Route path="/login" component={LoginPage} />
                 <Route path="/register" component={RegisterForm} />
                 <Route component={notFound} />
               </RouterSwitch>

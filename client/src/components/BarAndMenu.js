@@ -124,7 +124,8 @@ class App extends Component {
   };
 
   goToLogin = () => {
-    this.context.router.history.push("/");
+    this.context.router.history.push("/login");
+    this.handleClose();
   };
 
   render() {

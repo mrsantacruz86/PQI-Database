@@ -1,5 +1,6 @@
 import {
   LOADING,
+  STOP_LOADING,
   ADD_FLASH_MESSAGE,
   LOGIN,
   LOGOUT,
@@ -27,7 +28,12 @@ export default (state = initialState, action) => {
       return {
         ...state,
         loading: true,
-        error: false,
+      };
+      
+    case STOP_LOADING:
+      return {
+        ...state,
+        loading: false,
       };
 
     case ADD_FLASH_MESSAGE:

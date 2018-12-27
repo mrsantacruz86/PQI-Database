@@ -55,6 +55,7 @@ class LoginForm extends Component {
       }
     };
   }
+
   handleSubmit = (e) => {
     // console.log(this.state.user);
     e.preventDefault();
@@ -65,7 +66,6 @@ class LoginForm extends Component {
         password: ""
       }
     })
-    // this.context.router.history.push("/");
   };
 
   handleInputChange = (e) => {
@@ -80,6 +80,10 @@ class LoginForm extends Component {
 
   render() {
     const { classes } = this.props;
+    const { auth } = this.props.app;
+    if (auth) { //checks if the user is authenticated and redirects to home
+      this.context.router.history.push("/");
+    }
     return (
       <main className={classes.main}>
         <CssBaseline />
@@ -89,7 +93,7 @@ class LoginForm extends Component {
           </Avatar>
           <Typography component="h1" variant="h5">
             Sign in
-        </Typography>
+          </Typography>
           <form className={classes.form} onSubmit={this.handleSubmit}>
             <TextField
               id="username"

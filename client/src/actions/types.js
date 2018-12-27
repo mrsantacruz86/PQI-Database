@@ -1,5 +1,6 @@
 //App actions
 export const LOADING = 'LOADING';
+export const STOP_LOADING = 'STOP_LOADING';
 export const ADD_FLASH_MESSAGE = 'ADD_FLASH_MESSAGE';
 export const LOGIN = 'LOGIN';
 export const LOGOUT = 'LOGOUT';
