@@ -14,7 +14,6 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import { mainListItems, secondaryListItems } from '../components/listItems';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
@@ -63,27 +62,28 @@ const styles = theme => ({
   title: {
     flexGrow: 1,
   },
-  drawer: {
-    width: drawerWidth,
-    flexShrink: 0,
-    whiteSpace: 'nowrap',
+  noAuthTitle: {
+    flexGrow: 1,
+    paddingLeft: theme.spacing.unit * 3
   },
-  drawerOpen: {
+  drawerPaper: {
+    position: 'relative',
+    whiteSpace: 'nowrap',
     width: drawerWidth,
     transition: theme.transitions.create('width', {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.enteringScreen,
     }),
   },
-  drawerClose: {
+  drawerPaperClose: {
+    overflowX: 'hidden',
     transition: theme.transitions.create('width', {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
     }),
-    overflowX: 'hidden',
-    width: theme.spacing.unit * 7 + 1,
+    width: theme.spacing.unit * 7,
     [theme.breakpoints.up('sm')]: {
-      width: theme.spacing.unit * 9 + 1,
+      width: theme.spacing.unit * 9,
     },
   },
   appBarSpacer: theme.mixins.toolbar,
@@ -93,15 +93,12 @@ const styles = theme => ({
     height: '100vh',
     overflow: 'auto',
   },
-  chartContainer: {
-    marginLeft: -22,
-  },
-  tableContainer: {
-    height: 320,
-  },
   h5: {
     marginBottom: theme.spacing.unit * 2,
   },
+  grow: {
+    flexGrow: 1,
+  }
 });
 
 class App extends Component {
@@ -127,17 +124,15 @@ class App extends Component {
   };
 
   render() {
-    const { classes, theme } = this.props;
+    const { classes } = this.props;
     const { auth, drawerOpen, anchorEl } = this.props.app;
     const open = Boolean(anchorEl);
 
     return (
-      <div className={classes.root}>
+      <div >
         <AppBar
-          position="fixed"
-          className={classNames(classes.appBar, {
-            [classes.appBarShift]: drawerOpen,
-          })}
+          position="absolute"
+          className={classNames(classes.appBar, drawerOpen && classes.appBarShift)}
         >
           <Toolbar disableGutters={!drawerOpen} className={classes.toolbar}>
             {auth && (
@@ -145,17 +140,24 @@ class App extends Component {
                 color="inherit"
                 aria-label="Open drawer"
                 onClick={this.handleDrawerOpen}
-                className={classNames(classes.menuButton, {
-                  [classes.menuButtonHidden]: drawerOpen,
-                })}
+                className={classNames(
+                  classes.menuButton,
+                  drawerOpen && classes.menuButtonHidden,
+                )}
               >
                 <MenuIcon />
               </IconButton>
             )}
-            <Typography variant="h6" color="inherit" noWrap className={classes.title}>
+            <Typography
+              component="h1"
+              variant="h6"
+              color="inherit"
+              noWrap
+              className={auth ? classes.title : classes.noAuthTitle}
+            >
               Home
             </Typography>
-            {auth ? (
+            {auth ?
               <div>
                 <IconButton
                   aria-owns={open ? 'menu-appbar' : undefined}
@@ -183,37 +185,29 @@ class App extends Component {
                   <MenuItem onClick={this.handleClose}>My account</MenuItem>
                 </Menu>
               </div>
-            ) :
-              <Button color="inherit" > Login</Button>
+              :
+              <Button color="inherit">Login</Button>
             }
           </Toolbar>
         </AppBar>
-        {auth && (
-          <Drawer
-            variant="permanent"
-            className={classNames(classes.drawer, {
-              [classes.drawerOpen]: drawerOpen,
-              [classes.drawerClose]: !drawerOpen,
-            })}
-            classes={{
-              paper: classNames({
-                [classes.drawerOpen]: drawerOpen,
-                [classes.drawerClose]: !drawerOpen,
-              }),
-            }}
-            open={drawerOpen}
-          >
-            <div className={classes.toolbar}>
-              <IconButton onClick={this.handleDrawerClose}>
-                {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
-              </IconButton>
-            </div>
-            <Divider />
-            <List>{mainListItems}</List>
-            <Divider />
-            <List>{secondaryListItems}</List>
-          </Drawer>
-        )}
+        <Drawer
+          variant="permanent"
+          classes={{
+            paper: classNames(classes.drawerPaper, !drawerOpen && classes.drawerPaperClose),
+          }}
+          open={drawerOpen}
+        >
+          <div className={classes.toolbarIcon}>
+            <IconButton onClick={this.handleDrawerClose}>
+              <ChevronLeftIcon />
+            </IconButton>
+          </div>
+          <Divider />
+          <List>{mainListItems}</List>
+          <Divider />
+          <List>{secondaryListItems}</List>
+        </Drawer>
+
 
       </div>
     );
@@ -234,8 +228,8 @@ App.contextTypes = {
 const mapStateToProps = state => ({ ...state });
 
 export default compose(
-  // @ts-ignore
   withStyles(
+    // @ts-ignore
     styles,
     { withTheme: true }
   ),

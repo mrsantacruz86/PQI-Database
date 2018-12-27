@@ -4,22 +4,22 @@ import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
-import { FormGroup, FormControlLabel, Switch } from '@material-ui/core';
+// import { FormGroup, FormControlLabel, Switch } from '@material-ui/core';
 import { login, logout } from '../actions/appActions';
 import BarAndMenu from '../components/BarAndMenu';
+import { CssBaseline } from '@material-ui/core';
 
 const styles = theme => ({
   root: {
     display: 'flex',
   },
+  appBarSpacer: theme.mixins.toolbar,
   content: {
     flexGrow: 1,
     padding: theme.spacing.unit * 3,
-    paddingLeft: theme.spacing.unit * 12,
     height: '100vh',
     overflow: 'auto',
   },
-  appBarSpacer: theme.mixins.toolbar,
   h5: {
     marginBottom: theme.spacing.unit * 2,
   },
@@ -40,7 +40,8 @@ class LandingPage extends Component {
     const { classes } = this.props;
 
     return (
-      <div>
+      <div className={classes.root}>
+        <CssBaseline />
         <BarAndMenu />
         <main className={classes.content}>
           <div className={classes.appBarSpacer} />
