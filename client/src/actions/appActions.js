@@ -79,6 +79,7 @@ export const register = (user) => dispatch => {
 
 // Logout
 export const logout = () => {
+  localStorage.removeItem("jwToken");
   return {
     type: LOGOUT
   };

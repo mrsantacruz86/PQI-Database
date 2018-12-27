@@ -123,6 +123,10 @@ class App extends Component {
     this.props.toggleDrawer();
   };
 
+  goToLogin = () => {
+    this.context.router.history.push("/");
+  };
+
   render() {
     const { classes } = this.props;
     const { auth, drawerOpen, anchorEl } = this.props.app;
@@ -182,31 +186,33 @@ class App extends Component {
                   onClose={this.handleClose}
                 >
                   <MenuItem onClick={this.handleClose}>Profile</MenuItem>
-                  <MenuItem onClick={this.handleClose}>My account</MenuItem>
+                  <MenuItem onClick={this.props.logout}>Log Out</MenuItem>
                 </Menu>
               </div>
               :
-              <Button color="inherit">Login</Button>
+              <Button color="inherit" onClick={this.goToLogin}>Login</Button>
             }
           </Toolbar>
         </AppBar>
-        <Drawer
-          variant="permanent"
-          classes={{
-            paper: classNames(classes.drawerPaper, !drawerOpen && classes.drawerPaperClose),
-          }}
-          open={drawerOpen}
-        >
-          <div className={classes.toolbarIcon}>
-            <IconButton onClick={this.handleDrawerClose}>
-              <ChevronLeftIcon />
-            </IconButton>
-          </div>
-          <Divider />
-          <List>{mainListItems}</List>
-          <Divider />
-          <List>{secondaryListItems}</List>
-        </Drawer>
+        {auth && (
+          <Drawer
+            variant="permanent"
+            classes={{
+              paper: classNames(classes.drawerPaper, !drawerOpen && classes.drawerPaperClose),
+            }}
+            open={drawerOpen}
+          >
+            <div className={classes.toolbarIcon}>
+              <IconButton onClick={this.handleDrawerClose}>
+                <ChevronLeftIcon />
+              </IconButton>
+            </div>
+            <Divider />
+            <List>{mainListItems}</List>
+            <Divider />
+            <List>{secondaryListItems}</List>
+          </Drawer>
+        )}
 
 
       </div>

@@ -65,7 +65,7 @@ export default (state = initialState, action) => {
       return {
         ...state,
         auth: false,
-        authToken: null
+        user: {}
       };
 
     case TOGGLE_DRAWER:
