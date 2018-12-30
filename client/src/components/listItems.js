@@ -4,25 +4,28 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListSubheader from '@material-ui/core/ListSubheader';
 import DashboardIcon from '@material-ui/icons/Dashboard';
-import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
+import Business from '@material-ui/icons/Business';
 import PeopleIcon from '@material-ui/icons/People';
-import BarChartIcon from '@material-ui/icons/BarChart';
+import AirportShuttle from '@material-ui/icons/AirportShuttle';
 import LayersIcon from '@material-ui/icons/Layers';
 import AssignmentIcon from '@material-ui/icons/Assignment';
+import { Link } from 'react-router-dom';
 
 export const mainListItems = (
   <div>
-    <ListItem button>
+    {/* <Link to=""> */}
+    <ListItem button component={Link} to="/dashboard">
       <ListItemIcon>
         <DashboardIcon />
       </ListItemIcon>
       <ListItemText primary="Dashboard" />
     </ListItem>
+    {/* </Link> */}
     <ListItem button>
       <ListItemIcon>
-        <ShoppingCartIcon />
+        <Business />
       </ListItemIcon>
-      <ListItemText primary="Orders" />
+      <ListItemText primary="House Audits" />
     </ListItem>
     <ListItem button>
       <ListItemIcon>
@@ -32,9 +35,9 @@ export const mainListItems = (
     </ListItem>
     <ListItem button>
       <ListItemIcon>
-        <BarChartIcon />
+        <AirportShuttle />
       </ListItemIcon>
-      <ListItemText primary="Reports" />
+      <ListItemText primary="Vehicle Audits" />
     </ListItem>
     <ListItem button>
       <ListItemIcon>
