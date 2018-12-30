@@ -6,21 +6,10 @@ import SimpleLineChart from '../components/SimpleLineChart';
 import SimpleTable from '../components/SimpleTable';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
-import CssBaseline from '@material-ui/core/CssBaseline';
 import BarAndMenu from '../components/BarAndMenu';
 
 
 const styles = theme => ({
-  root: {
-    display: 'flex',
-  },
-  appBarSpacer: theme.mixins.toolbar,
-  content: {
-    flexGrow: 1,
-    padding: theme.spacing.unit * 3,
-    height: '100vh',
-    overflow: 'auto',
-  },
   chartContainer: {
     marginLeft: -22,
   },
@@ -37,25 +26,20 @@ class Dashboard extends Component {
   render() {
     const { classes } = this.props;
     return (
-      <div className={classes.root}>
-        <CssBaseline />
-        <BarAndMenu />
-        <main className={classes.content}>
-          <div className={classes.appBarSpacer} />
-          <Typography variant="h4" gutterBottom component="h2">
-            Orders
+      <BarAndMenu pageName="Dashboard">
+        <Typography variant="h4" gutterBottom component="h2">
+          Orders
           </Typography>
-          <Typography component="div" className={classes.chartContainer}>
-            <SimpleLineChart />
+        <Typography component="div" className={classes.chartContainer}>
+          <SimpleLineChart />
+        </Typography>
+        <Typography variant="h4" gutterBottom component="h2">
+          Products
           </Typography>
-          <Typography variant="h4" gutterBottom component="h2">
-            Products
-          </Typography>
-          <div className={classes.tableContainer}>
-            <SimpleTable />
-          </div>
-        </main>
-      </div>
+        <div className={classes.tableContainer}>
+          <SimpleTable />
+        </div>
+      </BarAndMenu>
     );
   }
 }

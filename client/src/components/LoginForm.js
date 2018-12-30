@@ -101,7 +101,7 @@ class LoginForm extends Component {
               required
               name="username"
               onChange={this.handleInputChange}
-              label="Last Name"
+              label="Username or email"
               margin="normal"
               value={this.state.user.username}
               fullWidth

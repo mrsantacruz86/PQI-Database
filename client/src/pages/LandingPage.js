@@ -4,10 +4,8 @@ import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
-// import { FormGroup, FormControlLabel, Switch } from '@material-ui/core';
 import { login, logout } from '../actions/appActions';
 import BarAndMenu from '../components/BarAndMenu';
-import { CssBaseline } from '@material-ui/core';
 
 const styles = theme => ({
   root: {
@@ -40,17 +38,12 @@ class LandingPage extends Component {
     const { classes } = this.props;
 
     return (
-      <div className={classes.root}>
-        <CssBaseline />
-        <BarAndMenu />
-        <main className={classes.content}>
-          <div className={classes.appBarSpacer} />
-
+      <div>
+        <BarAndMenu pageName="Landing Page">
           <Typography variant="h4" gutterBottom component="h2">
-            This is where the content goes..
+            This is where the content goes...
           </Typography>
-
-        </main>
+        </BarAndMenu>
       </div>
     );
   }

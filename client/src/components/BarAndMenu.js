@@ -4,6 +4,7 @@ import { compose } from 'redux';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
+import CssBaseline from '@material-ui/core/CssBaseline';
 import Drawer from '@material-ui/core/Drawer';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -26,6 +27,7 @@ const drawerWidth = 240;
 const styles = theme => ({
   root: {
     display: 'flex',
+    flexGrow: 1
   },
   toolbar: {
     paddingRight: 24, // keep right padding when drawer closed
@@ -93,6 +95,12 @@ const styles = theme => ({
     height: '100vh',
     overflow: 'auto',
   },
+  chartContainer: {
+    marginLeft: -22,
+  },
+  tableContainer: {
+    height: 320,
+  },
   h5: {
     marginBottom: theme.spacing.unit * 2,
   },
@@ -101,7 +109,7 @@ const styles = theme => ({
   }
 });
 
-class App extends Component {
+class WireFrame extends React.Component {
 
   handleMenu = event => {
     this.props.openMenu(event.currentTarget);
@@ -139,9 +147,10 @@ class App extends Component {
     const open = Boolean(anchorEl);
 
     return (
-      <div >
+      <div className={classes.root}>
+        <CssBaseline />
         <AppBar
-          position="fixed"
+          position="absolute"
           className={classNames(classes.appBar, drawerOpen && classes.appBarShift)}
         >
           <Toolbar disableGutters={!drawerOpen} className={classes.toolbar}>
@@ -165,7 +174,7 @@ class App extends Component {
               noWrap
               className={auth ? classes.title : classes.noAuthTitle}
             >
-              Home
+              {this.props.pageName || "Default"}
             </Typography>
             {auth ?
               <div>
@@ -222,23 +231,26 @@ class App extends Component {
             <List>{secondaryListItems}</List>
           </Drawer>
         )}
-
-
+        <main className={classes.content}>
+          <div className={classes.appBarSpacer} />
+          {this.props.children || (<div>The content goes here...</div>)}
+        </main>
       </div>
     );
   }
 }
 
-App.propTypes = {
+WireFrame.propTypes = {
   classes: PropTypes.object.isRequired,
   theme: PropTypes.object.isRequired,
   toggleDrawer: PropTypes.func.isRequired,
   login: PropTypes.func.isRequired,
   logout: PropTypes.func.isRequired,
   openMenu: PropTypes.func.isRequired,
-  closeMenu: PropTypes.func.isRequired
+  closeMenu: PropTypes.func.isRequired,
+  pageName: PropTypes.string.isRequired
 };
-App.contextTypes = {
+WireFrame.contextTypes = {
   router: PropTypes.object.isRequired
 }
 
@@ -257,4 +269,4 @@ export default compose(
     openMenu,
     closeMenu
   })
-)(App);
+)(WireFrame);

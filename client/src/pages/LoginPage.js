@@ -16,23 +16,19 @@ const styles = theme => ({
     height: '100vh',
     alignItems: 'center',
   },
-  
+
 });
 
 class Dashboard extends React.Component {
-  
+
   render() {
     const { classes } = this.props;
 
     return (
-      <div className={classes.root}>
-        <CssBaseline />
-        <BarAndMenu />
-        <main className={classes.content}>
-          <div className={classes.appBarSpacer} />
-          <LoginForm/>
-        </main>
-      </div>
+      <BarAndMenu pageName="Login">
+        <div className={classes.appBarSpacer} />
+        <LoginForm />
+      </BarAndMenu>
     );
   }
 }
