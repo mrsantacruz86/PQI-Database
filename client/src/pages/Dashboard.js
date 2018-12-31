@@ -1,21 +1,19 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
-import SimpleLineChart from '../components/SimpleLineChart';
-import SimpleTable from '../components/SimpleTable';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
+import { withStyles } from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography';
+import { login, logout } from '../actions/appActions';
 import BarAndMenu from '../components/BarAndMenu';
-
+import SimpleLineChart from '../components/SimpleLineChart';
+import SimpleTable from '../components/SimpleTable';
 
 const styles = theme => ({
-  chartContainer: {
-    marginLeft: -22,
+  root: {
+    display: 'flex',
   },
-  tableContainer: {
-    height: 320,
-  },
+  appBarSpacer: theme.mixins.toolbar,
   h5: {
     marginBottom: theme.spacing.unit * 2,
   },
@@ -23,35 +21,51 @@ const styles = theme => ({
 
 class Dashboard extends Component {
 
+  handleChange = () => {
+    if (this.props.app.auth) {
+      this.props.logout();
+    } else {
+      this.props.login();
+    }
+  };
+
   render() {
+    // const { auth } = this.props.app;
     const { classes } = this.props;
+
     return (
-      <BarAndMenu pageName="Dashboard">
-        <Typography variant="h4" gutterBottom component="h2">
-          Orders
+      <div>
+        <BarAndMenu pageName="Dashboard">
+          <Typography variant="h4" gutterBottom component="h2">
+            Orders
           </Typography>
-        <Typography component="div" className={classes.chartContainer}>
-          <SimpleLineChart />
-        </Typography>
-        <Typography variant="h4" gutterBottom component="h2">
-          Products
+          <Typography component="div" className={classes.chartContainer}>
+            <SimpleLineChart />
           </Typography>
-        <div className={classes.tableContainer}>
-          <SimpleTable />
-        </div>
-      </BarAndMenu>
+          <Typography variant="h4" gutterBottom component="h2">
+            Products
+          </Typography>
+          <div className={classes.tableContainer}>
+            <SimpleTable />
+          </div>
+        </BarAndMenu>
+      </div>
     );
   }
 }
 
 Dashboard.propTypes = {
-  classes: PropTypes.object.isRequired,
+  classes: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({ ...state });
 
 export default compose(
-  // @ts-ignore
-  withStyles(styles),
-  connect(mapStateToProps)
+  withStyles(styles, {
+    name: "App"
+  }),
+  connect(mapStateToProps, {
+    login,
+    logout,
+  })
 )(Dashboard);

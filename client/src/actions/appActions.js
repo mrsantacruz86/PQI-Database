@@ -97,6 +97,7 @@ export const toggleDrawer = () => {
 
 // Open Menu
 export const openMenu = target => {
+  console.log(target);
   return {
     type: OPEN_MENU,
     payload: target

@@ -6,18 +6,14 @@ import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import { login, logout } from '../actions/appActions';
 import BarAndMenu from '../components/BarAndMenu';
+import SimpleLineChart from '../components/SimpleLineChart';
+import SimpleTable from '../components/SimpleTable';
 
 const styles = theme => ({
   root: {
     display: 'flex',
   },
   appBarSpacer: theme.mixins.toolbar,
-  content: {
-    flexGrow: 1,
-    padding: theme.spacing.unit * 3,
-    height: '100vh',
-    overflow: 'auto',
-  },
   h5: {
     marginBottom: theme.spacing.unit * 2,
   },
@@ -42,7 +38,7 @@ class LandingPage extends Component {
         <BarAndMenu pageName="Landing Page">
           <Typography variant="h4" gutterBottom component="h2">
             This is where the content goes...
-          </Typography>
+          </Typography>          
         </BarAndMenu>
       </div>
     );

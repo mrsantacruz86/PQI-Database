@@ -5,9 +5,9 @@ import { connect } from 'react-redux';
 //This is a Higher Order Component that passes the pass the authentication info to the enclosed component
 
 const requireAuth = ComposedComponent => {
-	class Authenticate extends Component {
+	class Authorize extends Component {
 		componentWillMount() {
-			if (!this.props.app.auth) {
+			if (!this.props.auth) {
 				// console.log(this.props);
 				// console.log(this.context);
 				this.context.router.history.push("/login");
@@ -15,20 +15,21 @@ const requireAuth = ComposedComponent => {
 		}
 		render() {
 			return (
-				<ComposedComponent {...this.props} />
+				<ComposedComponent />
 			);
 		}
 	}
 
-	Authenticate.propTypes = {
+	Authorize.propTypes = {
 		auth: PropTypes.bool.isRequired
 	}
-	Authenticate.contextTypes = {
+	Authorize.contextTypes = {
 		router: PropTypes.object.isRequired
 	}
 
-	const mapStateToProps = state => ({...state});
-	return connect(mapStateToProps)(Authenticate);
+	const mapStateToProps = state => ({ ...state.app});
+
+	return connect(mapStateToProps)(Authorize);
 }
 
 export default requireAuth;

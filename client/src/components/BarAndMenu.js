@@ -90,9 +90,11 @@ const styles = theme => ({
   },
   appBarSpacer: theme.mixins.toolbar,
   content: {
+    // display: 'flex',
     flexGrow: 1,
     padding: theme.spacing.unit * 3,
     height: '100vh',
+    // width: '100%',
     overflow: 'auto',
   },
   chartContainer: {
