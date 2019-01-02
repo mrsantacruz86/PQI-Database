@@ -6,6 +6,8 @@ import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import { login, logout } from '../actions/appActions';
 import BarAndMenu from '../components/BarAndMenu';
+import SimpleLineChart from '../components/SimpleLineChart';
+import SimpleTable from '../components/SimpleTable';
 
 const styles = theme => ({
   root: {
@@ -17,7 +19,7 @@ const styles = theme => ({
   },
 });
 
-class LandingPage extends Component {
+class Dashboard extends Component {
 
   handleChange = () => {
     if (this.props.app.auth) {
@@ -29,19 +31,30 @@ class LandingPage extends Component {
 
   render() {
     // const { auth } = this.props.app;
+    const { classes } = this.props;
+
     return (
       <div>
-        <BarAndMenu pageName="Landing Page">
+        <BarAndMenu pageName="Dashboard">
           <Typography variant="h4" gutterBottom component="h2">
-            This is where the content goes...
-          </Typography>          
+            Orders
+          </Typography>
+          <Typography component="div" className={classes.chartContainer}>
+            <SimpleLineChart />
+          </Typography>
+          <Typography variant="h4" gutterBottom component="h2">
+            Products
+          </Typography>
+          <div className={classes.tableContainer}>
+            <SimpleTable />
+          </div>
         </BarAndMenu>
       </div>
     );
   }
 }
 
-LandingPage.propTypes = {
+Dashboard.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
@@ -55,4 +68,4 @@ export default compose(
     login,
     logout,
   })
-)(LandingPage);
+)(Dashboard);

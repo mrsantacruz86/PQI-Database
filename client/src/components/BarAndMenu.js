@@ -111,7 +111,7 @@ const styles = theme => ({
   }
 });
 
-class WireFrame extends React.Component {
+class WireFrame extends Component {
 
   handleMenu = event => {
     this.props.openMenu(event.currentTarget);

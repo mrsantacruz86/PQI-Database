@@ -10,7 +10,7 @@ import AccountCircleSharp from '@material-ui/icons/AccountCircleSharp';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import withStyles from '@material-ui/core/styles/withStyles';
-import { Field, reduxForm } from 'redux-form';
+// import { Field, reduxForm } from 'redux-form';
 import { register } from '../actions/appActions';
 
 const styles = theme => ({
@@ -46,28 +46,28 @@ const styles = theme => ({
 });
 
 //Validation
-const validate = values => {
-  const errors = {}
-  const requiredFields = [
-    "firstName",
-    "lastName",
-    "username",
-    "email",
-    "password"
-  ]
-  requiredFields.forEach(field => {
-    if (!values[field]) {
-      errors[field] = 'Required'
-    }
-  })
-  if (
-    values.email &&
-    !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)
-  ) {
-    errors.email = 'Invalid email address'
-  }
-  return errors
-};
+// const validate = values => {
+//   const errors = {}
+//   const requiredFields = [
+//     "firstName",
+//     "lastName",
+//     "username",
+//     "email",
+//     "password"
+//   ]
+//   requiredFields.forEach(field => {
+//     if (!values[field]) {
+//       errors[field] = 'Required'
+//     }
+//   })
+//   if (
+//     values.email &&
+//     !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)
+//   ) {
+//     errors.email = 'Invalid email address'
+//   }
+//   return errors
+// };
 
 
 class RegisterForm extends Component {
