@@ -29,7 +29,7 @@ export default (state = initialState, action) => {
         ...state,
         loading: true,
       };
-      
+
     case STOP_LOADING:
       return {
         ...state,
@@ -71,6 +71,7 @@ export default (state = initialState, action) => {
       return {
         ...state,
         auth: false,
+        drawerOpen: false,
         user: {}
       };
 

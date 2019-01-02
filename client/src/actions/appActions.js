@@ -52,7 +52,7 @@ export const login = (user) => dispatch => {
           type: LOGIN,
           payload: decodeJWT(token)
         });
-        localStorage.setItem("jwToken", token);
+        sessionStorage.setItem("jwToken", token);
         setAuthToken(token);
       }
     })
@@ -82,7 +82,7 @@ export const register = (user) => dispatch => {
 
 // Logout
 export const logout = () => {
-  localStorage.removeItem("jwToken");
+  sessionStorage.removeItem("jwToken");
   return {
     type: LOGOUT
   };

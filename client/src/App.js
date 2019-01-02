@@ -12,8 +12,7 @@ import requireAuth from './utils/requireAuth';
 class App extends Component {
 
   render() {
-    const { classes } = this.props;
-    const notFound = () => <h1 className={classes.h1}>404: Te page is not found</h1>;
+    const notFound = () => <h1>404: Te page is not found</h1>;
 
     return (
       <Router>

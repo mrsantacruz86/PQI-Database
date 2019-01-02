@@ -8,11 +8,11 @@ import setAuthToken from "./utils/setAuthToken";
 import { LOGIN } from './actions/types';
 import decodeJWT from './utils/decodeJWT';
 
-if (localStorage.jwToken) {
-  setAuthToken(localStorage.jwToken)
+if (sessionStorage.jwToken) {
+  setAuthToken(sessionStorage.jwToken)
   Store.dispatch({
     type: LOGIN,
-    payload: decodeJWT(localStorage.jwToken)
+    payload: decodeJWT(sessionStorage.jwToken)
   })
 }
 
