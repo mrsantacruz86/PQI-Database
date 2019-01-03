@@ -27,7 +27,7 @@ const requireAuth = ComposedComponent => {
 		router: PropTypes.object.isRequired
 	}
 
-	const mapStateToProps = state => ({ ...state.app});
+	const mapStateToProps = state => ({ auth: state.app.auth});
 
 	return connect(mapStateToProps)(Authorize);
 }

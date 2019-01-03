@@ -13,15 +13,13 @@ import { Link } from 'react-router-dom';
 
 export const mainListItems = (
   <div>
-    {/* <Link to=""> */}
     <ListItem button component={Link} to="/dashboard">
       <ListItemIcon>
         <DashboardIcon />
       </ListItemIcon>
       <ListItemText primary="Dashboard" />
     </ListItem>
-    {/* </Link> */}
-    <ListItem button>
+    <ListItem button component={Link} to="/house-audits">
       <ListItemIcon>
         <Business />
       </ListItemIcon>

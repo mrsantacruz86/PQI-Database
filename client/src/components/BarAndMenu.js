@@ -133,16 +133,6 @@ class WireFrame extends Component {
     this.props.toggleDrawer();
   };
 
-  goToLogin = () => {
-    this.context.router.history.push("/login");
-    this.handleClose();
-  };
-
-  goToSignUp = () => {
-    this.context.router.history.push("/register");
-    this.handleClose();
-  };
-
   render() {
     const { classes } = this.props;
     const { auth, drawerOpen, anchorEl } = this.props.app;
@@ -208,8 +198,8 @@ class WireFrame extends Component {
               </div>
               :
               <div>
-                <Button color="inherit" onClick={this.goToSignUp}>Sign Up</Button>
-                <Button color="inherit" onClick={this.goToLogin}>Login</Button>
+                <Button color="inherit" href="/register" >Sign Up</Button>
+                <Button color="inherit" href="/login" >Login</Button>
               </div>
             }
           </Toolbar>

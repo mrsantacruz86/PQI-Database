@@ -4,9 +4,9 @@ import { BrowserRouter as Router, Route, Switch as RouterSwitch } from "react-ro
 import LandingPage from './pages/LandingPage';
 import Dashboard from './pages/Dashboard';
 import LoginPage from './pages/LoginPage';
-
 import SignUpPage from './pages/SignUpPage';
 import requireAuth from './utils/requireAuth';
+import HouseAudits from './pages/HouseAudits';
 
 
 class App extends Component {
@@ -22,6 +22,7 @@ class App extends Component {
             <Route path="/dashboard" component={requireAuth(Dashboard)} />
             <Route path="/login" component={LoginPage} />
             <Route path="/register" component={SignUpPage} />
+            <Route path="/house-audits" component={HouseAudits} />
             <Route component={notFound} />
           </RouterSwitch>
         </div>
