@@ -15,6 +15,7 @@ import BarAndMenu from '../components/BarAndMenu';
 import items from '../utils/AuditItems';
 import moment from 'moment';
 import shortid from 'shortid';
+import {percentage} from '../utils/numbers';
 
 const styles = theme => ({
   button: {
@@ -28,6 +29,11 @@ const styles = theme => ({
   table: {
     minWidth: 700,
   },
+  row: {
+    '&:nth-of-type(odd)': {
+      backgroundColor: theme.palette.background.default,
+    },
+  }
 });
 
 class HouseAudits extends Component {
@@ -59,22 +65,19 @@ class HouseAudits extends Component {
               </TableHead>
               <TableBody>
                 {items.map(item => {
-                  const hTotal = "85%";
-                  // () => {
-                  //   item.houseAudit.reduce((total,value)=>{
-
-                  //   });
-                  // };
-                  const mTotal = "93%";
+                  const hPass = item.houseAudit.filter(auditItem=>auditItem.value);
+                  const hTotal = hPass.length / item.houseAudit.length;
+                  const mPass = item.facilitiesAudit.filter(auditItem=>auditItem.value);
+                  const mTotal = mPass.length / item.facilitiesAudit.length;
                   const id = shortid.generate();
                   return (
-                    <TableRow key={id}>
+                    <TableRow hover className={classes.row} key={id}>
                       <TableCell scope="row">Icon</TableCell>
                       <TableCell align="right">{id}</TableCell>
                       <TableCell align="right">{moment(item.date).format("MM/DD/YYYY")}</TableCell>
                       <TableCell align="right">{item.cottage}</TableCell>
-                      <TableCell align="right">{hTotal}</TableCell>
-                      <TableCell align="right">{mTotal}</TableCell>
+                      <TableCell align="right">{`${percentage(hTotal)}%`}</TableCell>
+                      <TableCell align="right">{`${percentage(mTotal)}%`}</TableCell>
                     </TableRow>
                   );
                 })}
