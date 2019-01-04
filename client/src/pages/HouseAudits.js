@@ -12,6 +12,9 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import BarAndMenu from '../components/BarAndMenu';
+import items from '../utils/AuditItems';
+import moment from 'moment';
+import shortid from 'shortid';
 
 const styles = theme => ({
   button: {
@@ -36,7 +39,6 @@ class HouseAudits extends Component {
   // }
 
   render() {
-    // const { auth } = this.props.app;
     const { classes } = this.props;
 
     return (
@@ -56,18 +58,26 @@ class HouseAudits extends Component {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {/* {rows.map(row => {
-                  return ( */}
-                <TableRow key={1123321321}>
-                  <TableCell scope="row">Icon</TableCell>
-                  <TableCell align="right">251032362044569</TableCell>
-                  <TableCell align="right">02/22/1986</TableCell>
-                  <TableCell align="right">35</TableCell>
-                  <TableCell align="right">98%</TableCell>
-                  <TableCell align="right">93%</TableCell>
-                </TableRow>
-                {/* );
-                })} */}
+                {items.map(item => {
+                  const hTotal = "85%";
+                  // () => {
+                  //   item.houseAudit.reduce((total,value)=>{
+
+                  //   });
+                  // };
+                  const mTotal = "93%";
+                  const id = shortid.generate();
+                  return (
+                    <TableRow key={id}>
+                      <TableCell scope="row">Icon</TableCell>
+                      <TableCell align="right">{id}</TableCell>
+                      <TableCell align="right">{moment(item.date).format("MM/DD/YYYY")}</TableCell>
+                      <TableCell align="right">{item.cottage}</TableCell>
+                      <TableCell align="right">{hTotal}</TableCell>
+                      <TableCell align="right">{mTotal}</TableCell>
+                    </TableRow>
+                  );
+                })}
               </TableBody>
             </Table>
           </Paper>
