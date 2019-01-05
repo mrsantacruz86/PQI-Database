@@ -1,6 +1,6 @@
 const Items = [
   {
-    cottage: 35,
+    house: 35,
     auditor: {
       name: "Nelson Diaz",
       id: "5c20faa3d0f8051e08922fb0"
@@ -54,7 +54,7 @@ const Items = [
     ]
   },
   {
-    cottage: 30,
+    house: 30,
     auditor: {
       name: "Nelson Diaz",
       id: "5c20faa3d0f8051e08922fb0"
@@ -108,7 +108,7 @@ const Items = [
     ]
   },
   {
-    cottage: 29,
+    house: 29,
     auditor: {
       name: "Nelson Diaz",
       id: "5c20faa3d0f8051e08922fb0"

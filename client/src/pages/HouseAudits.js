@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { withStyles } from '@material-ui/core/styles';
@@ -12,7 +12,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import BarAndMenu from '../components/BarAndMenu';
-import items from '../utils/AuditItems';
+import audits from '../utils/AuditItems';
 import moment from 'moment';
 import shortid from 'shortid';
 import {percentage} from '../utils/numbers';
@@ -51,7 +51,7 @@ class HouseAudits extends Component {
       <div>
         <BarAndMenu pageName="House Audit">
           <Paper className={classes.root}>
-            <Button variant="contained" color="secondary" className={classes.button}>New Audit</Button>
+            <Button variant="contained" color="secondary" className={classes.button} href="/house-audits/new">New Audit</Button>
             <Table /* className={classes.table} */>
               <TableHead>
                 <TableRow>
@@ -64,18 +64,18 @@ class HouseAudits extends Component {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {items.map(item => {
-                  const hPass = item.houseAudit.filter(auditItem=>auditItem.value);
-                  const hTotal = hPass.length / item.houseAudit.length;
-                  const mPass = item.facilitiesAudit.filter(auditItem=>auditItem.value);
-                  const mTotal = mPass.length / item.facilitiesAudit.length;
+                {audits.map(audit => {
+                  const hPass = audit.houseAudit.filter(auditItem=>auditItem.value);
+                  const hTotal = hPass.length / audit.houseAudit.length;
+                  const mPass = audit.facilitiesAudit.filter(auditItem=>auditItem.value);
+                  const mTotal = mPass.length / audit.facilitiesAudit.length;
                   const id = shortid.generate();
                   return (
                     <TableRow hover className={classes.row} key={id}>
                       <TableCell scope="row">Icon</TableCell>
                       <TableCell align="right">{id}</TableCell>
-                      <TableCell align="right">{moment(item.date).format("MM/DD/YYYY")}</TableCell>
-                      <TableCell align="right">{item.cottage}</TableCell>
+                      <TableCell align="right">{moment(audit.date).format("MM/DD/YYYY")}</TableCell>
+                      <TableCell align="right">{audit.cottage}</TableCell>
                       <TableCell align="right">{`${percentage(hTotal)}%`}</TableCell>
                       <TableCell align="right">{`${percentage(mTotal)}%`}</TableCell>
                     </TableRow>
@@ -90,9 +90,9 @@ class HouseAudits extends Component {
   }
 }
 
-// HouseAudits.propTypes = {
-//   classes: PropTypes.object.isRequired
-// };
+HouseAudits.propTypes = {
+  classes: PropTypes.object.isRequired
+};
 
 const mapStateToProps = state => ({ ...state });
 

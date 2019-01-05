@@ -7,6 +7,7 @@ import LoginPage from './pages/LoginPage';
 import SignUpPage from './pages/SignUpPage';
 import requireAuth from './utils/requireAuth';
 import HouseAudits from './pages/HouseAudits';
+import NewHouseAudit from './pages/NewHouseAudit';
 
 
 class App extends Component {
@@ -22,7 +23,8 @@ class App extends Component {
             <Route path="/dashboard" component={requireAuth(Dashboard)} />
             <Route path="/login" component={LoginPage} />
             <Route path="/register" component={SignUpPage} />
-            <Route path="/house-audits" component={requireAuth(HouseAudits)} />
+            <Route exact path="/house-audits" component={requireAuth(HouseAudits)} />
+            <Route path="/house-audits/new" component={requireAuth(NewHouseAudit)} />
             <Route component={notFound} />
           </RouterSwitch>
         </div>
