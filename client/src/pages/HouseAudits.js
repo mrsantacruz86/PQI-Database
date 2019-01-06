@@ -15,7 +15,7 @@ import BarAndMenu from '../components/BarAndMenu';
 import audits from '../utils/AuditItems';
 import moment from 'moment';
 import shortid from 'shortid';
-import {percentage} from '../utils/numbers';
+import { percentage } from '../utils/numbers';
 
 const styles = theme => ({
   button: {
@@ -65,9 +65,9 @@ class HouseAudits extends Component {
               </TableHead>
               <TableBody>
                 {audits.map(audit => {
-                  const hPass = audit.houseAudit.filter(auditItem=>auditItem.value);
+                  const hPass = audit.houseAudit.filter(auditItem => auditItem.value);
                   const hTotal = hPass.length / audit.houseAudit.length;
-                  const mPass = audit.facilitiesAudit.filter(auditItem=>auditItem.value);
+                  const mPass = audit.facilitiesAudit.filter(auditItem => auditItem.value);
                   const mTotal = mPass.length / audit.facilitiesAudit.length;
                   const id = shortid.generate();
                   return (
@@ -75,7 +75,7 @@ class HouseAudits extends Component {
                       <TableCell scope="row">Icon</TableCell>
                       <TableCell align="right">{id}</TableCell>
                       <TableCell align="right">{moment(audit.date).format("MM/DD/YYYY")}</TableCell>
-                      <TableCell align="right">{audit.cottage}</TableCell>
+                      <TableCell align="right">{audit.house}</TableCell>
                       <TableCell align="right">{`${percentage(hTotal)}%`}</TableCell>
                       <TableCell align="right">{`${percentage(mTotal)}%`}</TableCell>
                     </TableRow>
@@ -97,6 +97,7 @@ HouseAudits.propTypes = {
 const mapStateToProps = state => ({ ...state });
 
 export default compose(
+  // @ts-ignore
   withStyles(styles, {
     name: "h-audits"
   }), connect(mapStateToProps)

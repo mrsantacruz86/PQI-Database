@@ -1,12 +1,13 @@
+//HOUSES ROUTES
 const router = require("express").Router();
-const {houseController} = require("../../controllers");
+const { houseController } = require("../../controllers");
 
-// Matches with "/api/books"
+// Matches with "/api/houses"
 router.route("/")
   .get(houseController.getAll)
   .post(houseController.create);
 
-// Matches with "/api/books/:id"
+// Matches with "/api/houses/:id"
 router
   .route("/:id")
   .get(houseController.findById)

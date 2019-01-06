@@ -10,12 +10,14 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import MenuItem from '@material-ui/core/MenuItem';
-
 import moment from 'moment';
+import { getHouses } from '../actions/houseAuditActions'
 
 const styles = theme => ({
   button: {
-    margin: theme.spacing.unit * 3
+    margin: theme.spacing.unit,
+    marginTop: theme.spacing.unit * 3
+
   },
   container: {
     display: 'flex',
@@ -26,6 +28,9 @@ const styles = theme => ({
     marginLeft: theme.spacing.unit,
     marginRight: theme.spacing.unit,
     width: 200
+  },
+  subtitle: {
+    marginTop: theme.spacing.unit * 3
   },
   root: {
     // width: '100%',
@@ -47,19 +52,22 @@ class NewHouseAudit extends Component {
 
     };
   }
+  componentDidMount() {
+    getHouses();
+  };
 
   handleSubmit = () => {
     return null;
-  }
+  };
 
   handleChange = (e) => {
     e.preventDefault();
     this.setState({ [e.target.name]: e.target.value });
-  }
+  };
 
   render() {
     const { classes } = this.props;
-    const {houseList} = this.props.houseAudit;
+    const { houseList } = this.props.houseAudit;
 
     return (
       <div>
@@ -101,11 +109,11 @@ class NewHouseAudit extends Component {
                 },
               }}
             >
-            {houseList.map( option =>(
-              <MenuItem key={option.number} value={option.number}>
-                {option.number}
-              </MenuItem>
-            ))}
+              {houseList.map(option => (
+                <MenuItem key={option.number} value={option.number}>
+                  {option.number}
+                </MenuItem>
+              ))}
             </TextField>
 
             {/* <TextField
@@ -118,6 +126,14 @@ class NewHouseAudit extends Component {
               margin="normal"
               onChange={this.handleChange}
             /> */}
+            <Typography variant="h6" className={classes.subtitle}>
+              Household Audit
+            </Typography>
+            <hr />
+            <Typography variant="h6" className={classes.subtitle} >
+              Maintenance Audit
+            </Typography>
+            <hr />
             <Grid
               container
               spacing={24}
@@ -155,6 +171,7 @@ NewHouseAudit.propTypes = {
 const mapStateToProps = state => ({ ...state });
 
 export default compose(
+  // @ts-ignore
   withStyles(styles, {
     name: "h-audits"
   }), connect(mapStateToProps)

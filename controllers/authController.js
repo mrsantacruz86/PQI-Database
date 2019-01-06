@@ -18,12 +18,16 @@ module.exports = {
       .then(user => {
         const passwordIsValid = bcrypt.compareSync(req.body.password, user.password);
         if (passwordIsValid && user.status === "active") {
+          const payload = {
+            email: user.email,
+            firstName: user.firstName,
+            lastName: user.lastName,
+            username: user.username,
+            _id: user._id
+          };
+
           jwt.sign(
             {
-              email: user.email,
-              firstName: user.firstName,
-              lastName: user.lastName,
-              username: user.username,
               _id: user._id
             },
             process.env.JWT_SECRET,
@@ -32,7 +36,8 @@ module.exports = {
               if (err) console.log(err)
               else {
                 res.status(200).json({
-                  message: "login created",
+                  message: "You were successfully authenticated!",
+                  user: payload,
                   token
                 });
               }
@@ -52,6 +57,7 @@ module.exports = {
     if (typeof bearerHeader != "undefined") {
       const bearer = bearerHeader.split(" ");
       const token = bearer[1]; //the token is the second element of the splited array
+      console.log(token);
       verifyJWToken(token)
         .then(decodedtoken => {
           req.userId = decodedtoken._id;
