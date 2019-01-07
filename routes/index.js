@@ -6,9 +6,6 @@ const apiRoutes = require("./api");
 const { authController } = require('../controllers');
 const jwt = require('jsonwebtoken');
 
-// Protect the API
-// router.all("/api", authController.verifyToken);
-
 // API Routes
 // verifyToken middleware is securing all API Routes /api/*
 router.use("/api", authController.verifyToken, apiRoutes);

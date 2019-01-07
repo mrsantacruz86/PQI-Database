@@ -52,7 +52,7 @@ class NewHouseAudit extends Component {
 
     };
   }
-  componentDidMount() {
+  componentDidMount = () => {
     console.log("Mounted")
     this.props.getHouses();
   };

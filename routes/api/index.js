@@ -3,7 +3,6 @@
 const router = require("express").Router();
 const houseRoutes = require("./houses");
 const userRoutes = require("./users");
-const { authController } = require("../../controllers");
 
 // House routes
 router.use("/houses", houseRoutes);
