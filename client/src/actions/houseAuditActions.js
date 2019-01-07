@@ -12,7 +12,7 @@ import { loading } from "./appActions";
 export const getHouses = () => dispatch => {
   dispatch(loading());
   axios
-    .get("api/houses")
+    .get("/api/houses")
     .then(res => {
       const houseList = res.data;
       console.log("Lista de casas", houseList);

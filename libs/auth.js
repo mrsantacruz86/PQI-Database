@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken');
 
- const verifyJWToken = token => {
+const verifyJWToken = token => {
 	return new Promise((resolve, reject) => {
 		jwt.verify(token, process.env.JWT_SECRET, (err, decodedToken) => {
 			if (err || !decodedToken) {

@@ -53,7 +53,8 @@ class NewHouseAudit extends Component {
     };
   }
   componentDidMount() {
-    getHouses();
+    console.log("Mounted")
+    this.props.getHouses();
   };
 
   handleSubmit = () => {
@@ -174,5 +175,8 @@ export default compose(
   // @ts-ignore
   withStyles(styles, {
     name: "h-audits"
-  }), connect(mapStateToProps)
+  }),
+  connect(mapStateToProps, {
+    getHouses
+  })
 )(NewHouseAudit);
