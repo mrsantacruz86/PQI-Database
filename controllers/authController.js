@@ -58,7 +58,7 @@ module.exports = {
     if (typeof bearerHeader != "undefined") {
       const bearer = bearerHeader.split(" ");
       const token = bearer[1]; //the token is the second element of the splited array
-      console.log("Verifiying token: ",token);
+      // console.log("Verifiying token: ", token);
       verifyJWToken(token)
         .then(decodedtoken => {
           req.userId = decodedtoken._id;
