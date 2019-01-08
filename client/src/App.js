@@ -24,7 +24,7 @@ class App extends Component {
             <Route path="/login" component={LoginPage} />
             <Route path="/register" component={SignUpPage} />
             <Route exact path="/house-audits" component={requireAuth(HouseAudits)} />
-            <Route path="/house-audits/new" component={requireAuth(NewHouseAudit)} />
+            <Route path="/house-audits/new" component={NewHouseAudit} />
             <Route component={notFound} />
           </RouterSwitch>
         </div>

@@ -53,7 +53,8 @@ module.exports = {
   // Authorization: Bearer <access_token>
 
   verifyToken: (req, res, next) => {
-    const bearerHeader = req.headers["Authorization"];
+    const bearerHeader = req.headers["authorization"];
+    // console.log(bearerHeader);
     if (typeof bearerHeader != "undefined") {
       const bearer = bearerHeader.split(" ");
       const token = bearer[1]; //the token is the second element of the splited array

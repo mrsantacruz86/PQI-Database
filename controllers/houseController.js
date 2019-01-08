@@ -1,11 +1,11 @@
-const {House} = require("../models");
+const { House } = require("../models");
 
 // Defining methods for the booksController
 module.exports = {
   getAll: (req, res) => {
     House
       .find(req.query)
-      .sort({ number: -1 })
+      .sort({ number: 1 })
       .then(data => res.json(data))
       .catch(err => res.status(422).json(err));
   },
