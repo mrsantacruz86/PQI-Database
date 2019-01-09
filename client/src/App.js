@@ -8,12 +8,12 @@ import SignUpPage from './pages/SignUpPage';
 import requireAuth from './utils/requireAuth';
 import HouseAudits from './pages/HouseAudits';
 import NewHouseAudit from './pages/NewHouseAudit';
+import PageNotFound from './pages/PageNotFound';
 
 
 class App extends Component {
 
   render() {
-    const notFound = () => <h1>404: Te page is not found</h1>;
 
     return (
       <Router>
@@ -25,7 +25,7 @@ class App extends Component {
             <Route path="/register" component={SignUpPage} />
             <Route exact path="/house-audits" component={HouseAudits} />
             <Route path="/house-audits/new" component={NewHouseAudit} />
-            <Route component={notFound} />
+            <Route component={PageNotFound} />
           </RouterSwitch>
         </div>
       </Router>

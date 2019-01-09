@@ -16,7 +16,7 @@ import FormLabel from '@material-ui/core/FormLabel';
 import FormControl from '@material-ui/core/FormControl';
 import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
-import FormHelperText from '@material-ui/core/FormHelperText';
+// import FormHelperText from '@material-ui/core/FormHelperText';
 import Checkbox from '@material-ui/core/Checkbox';
 
 import { getHouses } from '../actions/houseAuditActions'
@@ -47,7 +47,7 @@ const styles = theme => ({
     // overflowX: 'auto',
   },
   formControl: {
-    margin: theme.spacing.unit,
+    // margin: theme.spacing.unit,
   }
 });
 
@@ -140,16 +140,16 @@ class NewHouseAudit extends Component {
               margin="normal"
               onChange={this.handleChange}
             /> */}
-            <Typography variant="h6" className={classes.subtitle}>
+            {/* <Typography variant="h6" className={classes.subtitle}>
               Household Audit
-            </Typography>
-            <hr />
+            </Typography> */}
+            <FormLabel component="legend">Household Audit</FormLabel>
+            {/* <hr /> */}
             <Grid container>
               {items.map(item => (
                 <Grid item xs={12} sm={6} md={4} lg={3}>
-                  <FormControl fullWidth component="fieldset" className={classes.formControl} key={item.number}>
-                    {/* <FormLabel component="legend">Assign responsibility</FormLabel> */}
-                    <FormGroup fullWidth>
+                  <FormControl fullWidth /* component="fieldset" */ className={classes.formControl} key={item.number}>
+                    <FormGroup>
                       <FormControlLabel
                         control={
                           <Checkbox checked={false} value={item.name} onChange={this.handleChange} />
