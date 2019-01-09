@@ -1,13 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import AppBar from '@material-ui/core/AppBar';
 import Button from '@material-ui/core/Button';
-import CameraIcon from '@material-ui/icons/PhotoCamera';
-import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Grid from '@material-ui/core/Grid';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -41,7 +35,7 @@ const styles = theme => ({
 
 class PageNotFound extends Component {
 
-  handleClick = (e) => {
+  handleClick = () => {
     this.context.router.history.push("/");
   }
 
@@ -59,8 +53,8 @@ class PageNotFound extends Component {
           {/* Hero unit */}
           <div className={classes.heroUnit}>
             <div className={classes.heroContent}>
-              <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
-                404: Pagre Not Found :(
+              <Typography component="h1" variant="h3" align="center" color="textPrimary" gutterBottom>
+                404: Page not Found :(
             </Typography>
               <Typography variant="h6" align="center" color="textSecondary" paragraph>
                 The page that you are looking for appeard to have been moved, deleted or does not exist. You can enter a valir URL or return Home.

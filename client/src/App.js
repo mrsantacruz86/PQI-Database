@@ -5,7 +5,7 @@ import LandingPage from './pages/LandingPage';
 import Dashboard from './pages/Dashboard';
 import LoginPage from './pages/LoginPage';
 import SignUpPage from './pages/SignUpPage';
-import requireAuth from './utils/requireAuth';
+// import requireAuth from './utils/requireAuth';
 import HouseAudits from './pages/HouseAudits';
 import NewHouseAudit from './pages/NewHouseAudit';
 import PageNotFound from './pages/PageNotFound';
@@ -20,7 +20,7 @@ class App extends Component {
         <div>
           <RouterSwitch>
             <Route exact path="/" component={LandingPage} />
-            <Route path="/dashboard" component={requireAuth(Dashboard)} />
+            <Route path="/dashboard" component={Dashboard} />
             <Route path="/login" component={LoginPage} />
             <Route path="/register" component={SignUpPage} />
             <Route exact path="/house-audits" component={HouseAudits} />
