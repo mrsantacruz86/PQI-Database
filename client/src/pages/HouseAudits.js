@@ -12,7 +12,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import BarAndMenu from '../components/BarAndMenu';
-import audits from '../utils/AuditItems';
+import audits from '../utils/Audit';
 import moment from 'moment';
 import shortid from 'shortid';
 import { percentage } from '../utils/numbers';

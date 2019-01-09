@@ -11,7 +11,16 @@ import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import MenuItem from '@material-ui/core/MenuItem';
 import moment from 'moment';
+
+import FormLabel from '@material-ui/core/FormLabel';
+import FormControl from '@material-ui/core/FormControl';
+import FormGroup from '@material-ui/core/FormGroup';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import FormHelperText from '@material-ui/core/FormHelperText';
+import Checkbox from '@material-ui/core/Checkbox';
+
 import { getHouses } from '../actions/houseAuditActions'
+import items from '../utils/Items'
 
 const styles = theme => ({
   button: {
@@ -36,6 +45,9 @@ const styles = theme => ({
     // width: '100%',
     padding: theme.spacing.unit * 3,
     // overflowX: 'auto',
+  },
+  formControl: {
+    margin: theme.spacing.unit,
   }
 });
 
@@ -49,6 +61,7 @@ class NewHouseAudit extends Component {
       },
       date: moment().format('YYYY-MM-DD'),
       house: undefined,
+      houseAudit: []
 
     };
   }
@@ -131,6 +144,27 @@ class NewHouseAudit extends Component {
               Household Audit
             </Typography>
             <hr />
+            <Grid container>
+              {items.map(item => (
+                <Grid item xs={12} sm={6} md={4} lg={3}>
+                  <FormControl fullWidth component="fieldset" className={classes.formControl} key={item.number}>
+                    {/* <FormLabel component="legend">Assign responsibility</FormLabel> */}
+                    <FormGroup fullWidth>
+                      <FormControlLabel
+                        control={
+                          <Checkbox checked={false} value={item.name} onChange={this.handleChange} />
+                        }
+                        label={item.label}
+                      />
+                    </FormGroup>
+                    {/* <FormHelperText>Be careful</FormHelperText>  */}
+                  </FormControl>
+                </Grid>
+
+              ))}
+            </Grid>
+
+
             <Typography variant="h6" className={classes.subtitle} >
               Maintenance Audit
             </Typography>
