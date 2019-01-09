@@ -4,12 +4,17 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const AuditItemSchema = new Schema({
-  id: {
+  itemId: {
     type: Number,
     required: true,
     unique: true
   },
   name: {
+    type: String,
+    required: true,
+    unique: true
+  },
+  label: {
     type: String,
     required: true,
     unique: true

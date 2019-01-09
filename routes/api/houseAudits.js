@@ -1,4 +1,4 @@
-//HOUSES ROUTES
+//HOUSE AUDITS ROUTES
 const router = require("express").Router();
 const { houseAuditsController } = require("../../controllers");
 

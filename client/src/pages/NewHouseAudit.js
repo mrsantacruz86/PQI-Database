@@ -12,14 +12,15 @@ import Grid from '@material-ui/core/Grid';
 import MenuItem from '@material-ui/core/MenuItem';
 import moment from 'moment';
 
-import FormLabel from '@material-ui/core/FormLabel';
+// import FormLabel from '@material-ui/core/FormLabel';
 import FormControl from '@material-ui/core/FormControl';
 import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 // import FormHelperText from '@material-ui/core/FormHelperText';
 import Checkbox from '@material-ui/core/Checkbox';
 
-import { getHouses } from '../actions/houseAuditActions'
+import { getHouses } from '../actions/houseAuditActions';
+import { createAudit } from '../actions/houseAuditActions';
 import items from '../utils/Items'
 
 const styles = theme => ({
@@ -61,27 +62,41 @@ class NewHouseAudit extends Component {
       },
       date: moment().format('YYYY-MM-DD'),
       house: undefined,
-      houseAudit: []
-
+      houseAudit: {}
     };
   }
   componentDidMount = () => {
-    console.log("Mounted")
+    items.map(item =>{
+
+    });
+    const houseAuditTemplate = {
+      itemId:{}
+    }
+    // console.log("Mounted")
     this.props.getHouses();
   };
 
   handleSubmit = () => {
-    return null;
+    const hAudit = {
+
+    }
+    this.props.createAudit();
   };
 
   handleChange = (e) => {
     e.preventDefault();
     this.setState({ [e.target.name]: e.target.value });
   };
+  handleSelect = (e) => {
+    const audit = {...this.state.houseAudit};
+    audit[e.target.value]=e.target.checked;
+    this.setState({houseAudit:audit });
+  }
 
   render() {
     const { classes } = this.props;
     const { houseList } = this.props.houseAudit;
+    const { user } = this.props.app;  
 
     return (
       <div>
@@ -90,7 +105,7 @@ class NewHouseAudit extends Component {
             New House Audit
           </Typography>
           <Typography>
-            {`Auditor: ${this.props.app.user.firstName} ${this.props.app.user.lastName}`}
+            {`Auditor: ${user._id} ${user.lastName}`}
           </Typography>
           <form onSubmit={this.handleSubmit} >
             <TextField
@@ -129,30 +144,19 @@ class NewHouseAudit extends Component {
                 </MenuItem>
               ))}
             </TextField>
-
-            {/* <TextField
-              required
-              name="house"
-              id="house"
-              label="House Number"
-              value={this.state.house}
-              className={classes.textField}
-              margin="normal"
-              onChange={this.handleChange}
-            /> */}
-            {/* <Typography variant="h6" className={classes.subtitle}>
+            <Typography variant="h6" className={classes.subtitle}>
               Household Audit
-            </Typography> */}
-            <FormLabel component="legend">Household Audit</FormLabel>
-            {/* <hr /> */}
+            </Typography>
+            {/* <FormLabel component="legend">Household Audit</FormLabel> */}
+            <hr />
             <Grid container>
               {items.map(item => (
-                <Grid item xs={12} sm={6} md={4} lg={3}>
-                  <FormControl fullWidth /* component="fieldset" */ className={classes.formControl} key={item.number}>
+                <Grid item xs={12} sm={6} md={4} lg={3} key={item.itemId}>
+                  <FormControl fullWidth /* component="fieldset" */ className={classes.formControl} >
                     <FormGroup>
                       <FormControlLabel
                         control={
-                          <Checkbox checked={false} value={item.name} onChange={this.handleChange} />
+                          <Checkbox checked={this.state.houseAudit[item.name]} value={item.name} onChange={this.handleSelect} />
                         }
                         label={item.label}
                       />
@@ -200,7 +204,9 @@ class NewHouseAudit extends Component {
 }
 
 NewHouseAudit.propTypes = {
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
+  getHouses: PropTypes.func.isRequired,
+  createAudit: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({ ...state });
@@ -211,6 +217,7 @@ export default compose(
     name: "h-audits"
   }),
   connect(mapStateToProps, {
-    getHouses
+    getHouses,
+    createAudit
   })
 )(NewHouseAudit);

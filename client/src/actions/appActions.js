@@ -47,10 +47,11 @@ export const login = (user) => dispatch => {
         // dispatch(addFlashMessage("error", "The account credentials are not valid. Please try again"));
       } else {
         // dispatch(addFlashMessage("success", "Welcome, You signed in successfuly"));
+        const payload = {...res.data.user}
         console.log("Este es el usuario", res.data.user);
         dispatch({
           type: LOGIN,
-          payload: res.data.user
+          payload
         });
         sessionStorage.setItem("jwToken", token);
         setAuthToken(token);
@@ -97,7 +98,7 @@ export const toggleDrawer = () => {
 
 // Open Menu
 export const openMenu = target => {
-  console.log(target);
+  // console.log(target);
   return {
     type: OPEN_MENU,
     payload: target

@@ -8,32 +8,7 @@ import {
 // import shortid from 'shortid';
 
 const initialState = {
-  houseList: [
-    {
-      "_id": "5c0837d16589034d24644199",
-      "active": true,
-      "number": 41,
-      "program": "Res",
-    },
-    {
-      "_id": "5c0837d16589034d2464419d",
-      "active": true,
-      "number": 33,
-      "program": "UAC",
-    },
-    {
-      "_id": "5c0837d16589034d246441a1",
-      "active": true,
-      "number": 29,
-      "program": "UAC",
-    },
-    {
-      "_id": "5c0837d16589034d246441a5",
-      "active": true,
-      "number": 23,
-      "program": "Res",
-    }
-  ],
+  houseList: [],
   currentAudit: {},
 };
 

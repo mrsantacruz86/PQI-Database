@@ -1,459 +1,459 @@
 const Items = [
   {
-    number: 1,
+    itemId: 1,
     name: "visitorLog",
     label: "Visitor Log",
     cat: "D",
-    auditType: "house",
-    description: ""
+    value:"",
+    findings:""
   },
   {
-    number: 2,
+    itemId: 2,
     name: "frontDoor",
     label: "Front door locked",
     cat: "S",
-    auditType: "house",
-    description: ""
+    value:"",
+    findings:""
   },
   {
-    number: 3,
+    itemId: 3,
     name: "filterLog",
     label: "Water Filter log",
     cat: "H",
-    auditType: "house",
-    description: ""
+    value:"",
+    findings:""
   },
   {
-    number: 4,
+    itemId: 4,
     name: "fireExt",
     label: "Fire Extinguisher",
     cat: "H",
-    auditType: "house",
-    description: ""
+    value:"",
+    findings:""
   },
   {
-    number: 5,
+    itemId: 5,
     name: "appliances",
     label: "Appliances",
     cat: "H",
-    auditType: "house",
-    description: ""
+    value:"",
+    findings:""
   },
   {
-    number: 6,
+    itemId: 6,
     name: "menu",
     label: "Menu Posted",
     cat: "H",
-    auditType: "house",
-    description: ""
+    value:"",
+    findings:""
   },
   {
-    number: 7,
+    itemId: 7,
     name: "dishware",
     label: "Dishware/Utensils",
     cat: "H",
-    auditType: "house",
-    description: ""
+    value:"",
+    findings:""
   },
   {
-    number: 8,
+    itemId: 8,
     name: "cabinets",
     label: "Cabinets",
     cat: "H",
-    auditType: "house",
-    description: ""
+    value:"",
+    findings:""
   },
   {
-    number: 9,
+    itemId: 9,
     name: "counters",
     label: "Counters",
     cat: "H",
-    auditType: "house",
-    description: ""
+    value:"",
+    findings:""
   },
   {
-    number: 10,
+    itemId: 10,
     name: "kitchenClean",
     label: "Kitchen Cleanliness",
     cat: "H",
-    auditType: "house",
-    description: ""
+    value:"",
+    findings:""
   },
   {
-    number: 11,
+    itemId: 11,
     name: "thermostats",
     label: "Thermostats",
     cat: "H",
-    auditType: "house",
-    description: ""
+    value:"",
+    findings:""
   },
   {
-    number: 12,
+    itemId: 12,
     name: "closets",
     label: "Closets",
     cat: "H",
-    auditType: "house",
-    description: ""
+    value:"",
+    findings:""
   },
   {
-    number: 13,
+    itemId: 13,
     name: "drawers",
     label: "Drawers",
     cat: "H",
-    auditType: "house",
-    description: ""
+    value:"",
+    findings:""
   },
   {
-    number: 14,
+    itemId: 14,
     name: "beds",
     label: "Beds",
     cat: "H",
-    auditType: "house",
-    description: ""
+    value:"",
+    findings:""
   },
   {
-    number: 15,
+    itemId: 15,
     name: "childPersItems",
     label: "Children's pers-items",
     cat: "H",
-    auditType: "house",
-    description: ""
+    value:"",
+    findings:""
   },
   {
-    number: 16,
+    itemId: 16,
     name: "waterTemp",
     label: "Water Temperature",
     cat: "S",
-    auditType: "house",
-    description: ""
+    value:"",
+    findings:""
   },
   {
-    number: 17,
+    itemId: 17,
     name: "shower",
     label: "Shower/Tub",
     cat: "H",
-    auditType: "house",
-    description: ""
+    value:"",
+    findings:""
   },
   {
-    number: 18,
+    itemId: 18,
     name: "sink",
     label: "Sink",
     cat: "H",
-    auditType: "house",
-    description: ""
+    value:"",
+    findings:""
   },
   {
-    number: 19,
+    itemId: 19,
     name: "adaBathroom",
     label: "ADA Compiant Bathroom",
     cat: "S",
-    auditType: "house",
-    description: ""
+    value:"",
+    findings:""
   },
   {
-    number: 20,
+    itemId: 20,
     name: "toilet",
     label: "Toilet",
     cat: "H",
-    auditType: "house",
-    description: ""
+    value:"",
+    findings:""
   },
   {
-    number: 21,
+    itemId: 21,
     name: "towel",
     label: "Towels",
     cat: "H",
-    auditType: "house",
-    description: ""
+    value:"",
+    findings:""
   },
   {
-    number: 22,
+    itemId: 22,
     name: "toiletry",
     label: "Toiletry",
     cat: "H",
-    auditType: "house",
-    description: ""
+    value:"",
+    findings:""
   },
   {
-    number: 23,
+    itemId: 23,
     name: "hampers",
     label: "Hampers",
     cat: "H",
-    auditType: "house",
-    description: ""
+    value:"",
+    findings:""
   },
   {
-    number: 24,
+    itemId: 24,
     name: "perBoxes",
     label: "Personal Item Boxes",
     cat: "H",
-    auditType: "house",
-    description: ""
+    value:"",
+    findings:""
   },
   {
-    number: 25,
+    itemId: 25,
     name: "journal",
     label: "Journal",
     cat: "D",
-    auditType: "house",
-    description: ""
+    value:"",
+    findings:""
   },
   {
-    number: 26,
+    itemId: 26,
     name: "medDocs",
     label: "Medication Documents",
     cat: "D",
-    auditType: "house",
-    description: ""
+    value:"",
+    findings:""
   },
   {
-    number: 27,
+    itemId: 27,
     name: "preaPhone",
     label: "PREA Phone",
     cat: "S",
-    auditType: "house",
-    description: ""
+    value:"",
+    findings:""
   },
   {
-    number: 28,
+    itemId: 28,
     name: "expiredFood",
     label: "Expired Food",
     cat: "S",
-    auditType: "house",
-    description: ""
+    value:"",
+    findings:""
   },
   {
-    number: 29,
+    itemId: 29,
     name: "nebulizer",
     label: "Working Nebulizers",
     cat: "S",
-    auditType: "house",
-    description: ""
+    value:"",
+    findings:""
   },
   {
-    number: 30,
+    itemId: 30,
     name: "firstAid",
     label: "First Aid Kit",
     cat: "S",
-    auditType: "house",
-    description: ""
+    value:"",
+    findings:""
   },
   {
-    number: 31,
+    itemId: 31,
     name: "medStorage",
     label: "Medication Storage",
     cat: "S",
-    auditType: "house",
-    description: ""
+    value:"",
+    findings:""
   },
   {
-    number: 32,
+    itemId: 32,
     name: "knives",
     label: "Knives stored",
     cat: "S",
-    auditType: "house",
-    description: ""
+    value:"",
+    findings:""
   },
   {
-    number: 33,
+    itemId: 33,
     name: "gloves",
     label: "Gloves",
     cat: "S",
-    auditType: "house",
-    description: ""
+    value:"",
+    findings:""
   },
   {
-    number: 34,
+    itemId: 34,
     name: "expiredMed",
     label: "Expired Medication",
     cat: "S",
-    auditType: "house",
-    description: ""
+    value:"",
+    findings:""
   },
   {
-    number: 35,
+    itemId: 35,
     name: "csLocked",
     label: "Center Station locked",
     cat: "S",
-    auditType: "house",
-    description: ""
+    value:"",
+    findings:""
   },
   {
-    number: 36,
+    itemId: 36,
     name: "furniture",
     label: "Furniture",
     cat: "H",
-    auditType: "house",
-    description: ""
+    value:"",
+    findings:""
   },
   {
-    number: 37,
+    itemId: 37,
     name: "electronics",
     label: "Electronic Equipment",
     cat: "H",
-    auditType: "house",
-    description: ""
+    value:"",
+    findings:""
   },
   {
-    number: 38,
+    itemId: 38,
     name: "bulletin",
     label: "Bulleting Board",
     cat: "D",
-    auditType: "house",
-    description: ""
+    value:"",
+    findings:""
   },
   {
-    number: 39,
+    itemId: 39,
     name: "evacRoutes",
     label: "Evacuation Routes",
     cat: "S",
-    auditType: "house",
-    description: ""
+    value:"",
+    findings:""
   },
   {
-    number: 40,
+    itemId: 40,
     name: "exitSigns",
     label: "Exit Signs",
     cat: "S",
-    auditType: "house",
-    description: ""
+    value:"",
+    findings:""
   },
   {
-    number: 41,
+    itemId: 41,
     name: "requiredPosters",
     label: "Required Posters",
     cat: "D",
-    auditType: "house",
-    description: ""
+    value:"",
+    findings:""
   },
   {
-    number: 42,
+    itemId: 42,
     name: "calendar",
     label: "Calendar",
     cat: "D",
-    auditType: "house",
-    description: ""
+    value:"",
+    findings:""
   },
   {
-    number: 43,
+    itemId: 43,
     name: "outlets",
     label: "Electrical outlets",
     cat: "S",
-    auditType: "house",
-    description: ""
+    value:"",
+    findings:""
   },
   {
-    number: 44,
+    itemId: 44,
     name: "table",
     label: "Table",
     cat: "H",
-    auditType: "house",
-    description: ""
+    value:"",
+    findings:""
   },
   {
-    number: 45,
+    itemId: 45,
     name: "chairs",
     label: "Chairs",
     cat: "H",
-    auditType: "house",
-    description: ""
+    value:"",
+    findings:""
   },
   {
-    number: 46,
+    itemId: 46,
     name: "chemicals",
     label: "Chemical's Storage",
     cat: "S",
-    auditType: "house",
-    description: ""
+    value:"",
+    findings:""
   },
   {
-    number: 47,
+    itemId: 47,
     name: "washDry",
     label: "Washer/Dryer",
     cat: "H",
-    auditType: "house",
-    description: ""
+    value:"",
+    findings:""
   },
   {
-    number: 48,
+    itemId: 48,
     name: "storage",
     label: "Storage",
     cat: "H",
-    auditType: "house",
-    description: ""
+    value:"",
+    findings:""
   },
   {
-    number: 49,
+    itemId: 49,
     name: "laundryDoor",
     label: "Laundry Door Locked",
     cat: "S",
-    auditType: "house",
-    description: ""
+    value:"",
+    findings:""
   },
   {
-    number: 50,
+    itemId: 50,
     name: "doorsWalls",
     label: "Doors/Walls",
     cat: "H",
-    auditType: "house",
-    description: ""
+    value:"",
+    findings:""
   },
   {
-    number: 51,
+    itemId: 51,
     name: "alarms",
     label: "Alarms",
     cat: "S",
-    auditType: "house",
-    description: ""
+    value:"",
+    findings:""
   },
   {
-    number: 52,
+    itemId: 52,
     name: "floort",
     label: "Floors",
     cat: "H",
-    auditType: "house",
-    description: ""
+    value:"",
+    findings:""
   },
   {
-    number: 53,
+    itemId: 53,
     name: "airFilters",
     label: "Air Filters/Vents",
     cat: "H",
-    auditType: "house",
-    description: ""
+    value:"",
+    findings:""
   },
   {
-    number: 54,
+    itemId: 54,
     name: "garbageBin",
     label: "Garbage Containers",
     cat: "H",
-    auditType: "house",
-    description: ""
+    value:"",
+    findings:""
   },
   {
-    number: 55,
+    itemId: 55,
     name: "windows",
     label: "Window/Screens",
     cat: "H",
-    auditType: "house",
-    description: ""
+    value:"",
+    findings:""
   },
   {
-    number: 56,
+    itemId: 56,
     name: "lights",
     label: "Lamps/Light bulbs",
     cat: "H",
-    auditType: "house",
-    description: ""
+    value:"",
+    findings:""
   },
   {
-    number: 57,
+    itemId: 57,
     name: "yard",
     label: "Yard's Safety",
     cat: "H",
-    auditType: "house",
-    description: ""
+    value:"",
+    findings:""
   }
  ]
 
