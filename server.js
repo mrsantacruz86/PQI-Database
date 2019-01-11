@@ -20,12 +20,15 @@ app.use(routes);
 
 // Connect to the Mongo DB
 const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/pqi-database";
+
 mongoose
   .connect(MONGODB_URI, { useNewUrlParser: true, autoIndex: false })
   .then(() => console.log("MongoDB connected successfuly"))
   .catch(err => console.log(err));
 
 // Start the API server
-app.listen(PORT, function() {
+console.log("NODE_ENV: ", process.env.NODE_ENV);
+console.log("MONGODB_URI: ", MONGODB_URI);
+app.listen(PORT, function () {
   console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);
 });
