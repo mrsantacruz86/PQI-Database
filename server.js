@@ -27,9 +27,6 @@ mongoose
   .catch(err => console.log(err));
 
 // Start the API server
-console.log("NODE_ENV: ", process.env.NODE_ENV);
-console.log("MONGODB_URI: ", MONGODB_URI);
-console.log("JWT_SECRET: ", process.env.JWT_SECRET);
 app.listen(PORT, function () {
   console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);
 });

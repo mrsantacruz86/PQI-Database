@@ -1,6 +1,7 @@
 import {
   GET_HOUSE_LIST,
   // GET_HOUSE_AUDIT,
+  GET_HOUSE_AUDIT_TEMPLATE,
   SAVE_HOUSE_AUDIT,
   // DELETE_HOUSE_AUDIT,
   // UPDATE_HOUSE_AUDIT
@@ -33,6 +34,30 @@ export const createAudit = (audit) => dispatch => {
     .then(res => {
       dispatch({
         type: SAVE_HOUSE_AUDIT
+      });
+
+    })
+    .catch(err => console.log(err));
+};
+
+// Create House Audit
+export const getHouseAuditTemplate = () => dispatch => {
+  dispatch(loading());
+  axios
+    .get("/api/house-audits-items")
+    .then(res => {
+      dispatch({
+        type: GET_HOUSE_AUDIT_TEMPLATE,
+        payload: {
+          cottage: {},
+          auditor: {
+            name: {},
+            id: {}
+          },
+          date: {},
+          houseAudit: res.data,
+          facilitiesAudit: {}
+        }
       });
 
     })

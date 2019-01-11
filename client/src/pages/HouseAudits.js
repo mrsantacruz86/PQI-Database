@@ -16,6 +16,7 @@ import audits from '../utils/Audit';
 import moment from 'moment';
 import shortid from 'shortid';
 import { percentage } from '../utils/numbers';
+import shallowCompare from 'react-addons-shallow-compare';
 
 const styles = theme => ({
   button: {
@@ -42,6 +43,10 @@ class HouseAudits extends Component {
   //   this.state = {
 
   //   };
+  // }
+  
+  // shouldComponentUpdate = function(nextProps, nextState) {
+  //   return shallowCompare(this, nextProps, nextState);
   // }
 
   render() {

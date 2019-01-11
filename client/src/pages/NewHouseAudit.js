@@ -19,8 +19,11 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 // import FormHelperText from '@material-ui/core/FormHelperText';
 import Checkbox from '@material-ui/core/Checkbox';
 
-import { getHouses } from '../actions/houseAuditActions';
-import { createAudit } from '../actions/houseAuditActions';
+import {
+  getHouses,
+  createAudit,
+  getHouseAuditTemplate
+} from '../actions/houseAuditActions';
 import items from '../utils/Items'
 
 const styles = theme => ({
@@ -66,17 +69,13 @@ class NewHouseAudit extends Component {
     };
   }
   componentDidMount = () => {
-    items.map(item =>{
-
-    });
-    const houseAuditTemplate = {
-      itemId:{}
-    }
-    // console.log("Mounted")
+    this.props.getHouseAuditTemplate();
     this.props.getHouses();
+    // console.log("Mounted")
   };
 
-  handleSubmit = () => {
+  handleSubmit = (e) => {
+    e.preventDefault();
     const hAudit = {
 
     }
@@ -88,15 +87,15 @@ class NewHouseAudit extends Component {
     this.setState({ [e.target.name]: e.target.value });
   };
   handleSelect = (e) => {
-    const audit = {...this.state.houseAudit};
-    audit[e.target.value]=e.target.checked;
-    this.setState({houseAudit:audit });
+    const audit = { ...this.state.houseAudit };
+    audit[e.target.value] = e.target.checked;
+    this.setState({ houseAudit: audit });
   }
 
   render() {
     const { classes } = this.props;
-    const { houseList } = this.props.houseAudit;
-    const { user } = this.props.app;  
+    const { houseList, currentAudit } = this.props.houseAudit;
+    const { user } = this.props.app;
 
     return (
       <div>
@@ -150,7 +149,7 @@ class NewHouseAudit extends Component {
             {/* <FormLabel component="legend">Household Audit</FormLabel> */}
             <hr />
             <Grid container>
-              {items.map(item => (
+              {currentAudit.items.map(item => (
                 <Grid item xs={12} sm={6} md={4} lg={3} key={item.itemId}>
                   <FormControl fullWidth /* component="fieldset" */ className={classes.formControl} >
                     <FormGroup>
@@ -206,6 +205,7 @@ class NewHouseAudit extends Component {
 NewHouseAudit.propTypes = {
   classes: PropTypes.object.isRequired,
   getHouses: PropTypes.func.isRequired,
+  getHouseAuditTemplate: PropTypes.func.isRequired,
   createAudit: PropTypes.func.isRequired
 };
 
@@ -218,6 +218,7 @@ export default compose(
   }),
   connect(mapStateToProps, {
     getHouses,
-    createAudit
+    createAudit,
+    getHouseAuditTemplate
   })
 )(NewHouseAudit);

@@ -48,10 +48,11 @@ const HouseAuditSchema = new Schema({
     required: true,
     default: Date.now()
   },
-  houseAudit: [AuditItemSchema],
-  facilitiesAudit: [AuditItemSchema]
+  houseAudit: {AuditItemSchema},
+  facilitiesAudit: {AuditItemSchema}
 });
 
 const HouseAudit = mongoose.model("HouseAudit", HouseAuditSchema);
+const HouseAuditItem = mongoose.model("HouseAuditItem", AuditItemSchema);
 
-module.exports = HouseAudit;
+module.exports = { HouseAudit, HouseAuditItem};

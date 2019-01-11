@@ -1,9 +1,8 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import BarAndMenu from '../components/BarAndMenu';
 import LoginForm from '../components/LoginForm';
 
-class Dashboard extends React.Component {
+class LoginPage extends React.Component {
 
   render() {
     return (
@@ -14,8 +13,4 @@ class Dashboard extends React.Component {
   }
 }
 
-Dashboard.propTypes = {
-  classes: PropTypes.object.isRequired,
-};
-
-export default (Dashboard);
+export default (LoginPage);

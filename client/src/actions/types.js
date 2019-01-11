@@ -16,6 +16,9 @@ export const SAVE_HOUSE_AUDIT = 'SAVE_HOUSE_AUDIT';
 export const DELETE_HOUSE_AUDIT = 'DELETE_HOUSE_AUDIT';
 export const UPDATE_HOUSE_AUDIT = 'UPDATE_HOUSE_AUDIT';
 
+// House Audit Template
+export const GET_HOUSE_AUDIT_TEMPLATE = 'GET_HOUSE_AUDIT_TEMPLATE';
+
 
 //Other actions
 export const ANOTHER_ACTION = 'ANOTHER_ACTION';

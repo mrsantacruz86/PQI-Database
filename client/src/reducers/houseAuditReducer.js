@@ -2,6 +2,7 @@ import {
   GET_HOUSE_LIST,
   GET_HOUSE_AUDIT,
   SAVE_HOUSE_AUDIT,
+  GET_HOUSE_AUDIT_TEMPLATE
   // UPDATE_HOUSE_AUDIT,
   // DELETE_HOUSE_AUDIT
 } from '../actions/types';
@@ -25,6 +26,13 @@ export default (state = initialState, action) => {
       return {
         ...state,
         currentAudit: action.payload
+      };
+
+    case GET_HOUSE_AUDIT_TEMPLATE:
+      return {
+        ...state,
+        currentAudit: action.payload,
+        loading: false
       };
 
     case SAVE_HOUSE_AUDIT:
