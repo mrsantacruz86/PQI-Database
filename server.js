@@ -29,6 +29,7 @@ mongoose
 // Start the API server
 console.log("NODE_ENV: ", process.env.NODE_ENV);
 console.log("MONGODB_URI: ", MONGODB_URI);
+console.log("JWT_SECRET: ", JWT_SECRET);
 app.listen(PORT, function () {
   console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);
 });
