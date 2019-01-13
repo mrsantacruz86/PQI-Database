@@ -21,7 +21,8 @@ const AuditItemSchema = new Schema({
   },
   value: {
     type: Boolean,
-    required: true, default: false
+    required: true,
+    default: false
   },
   finding: {
     type: String
@@ -48,11 +49,10 @@ const HouseAuditSchema = new Schema({
     required: true,
     default: Date.now()
   },
-  houseAudit: {AuditItemSchema},
-  facilitiesAudit: {AuditItemSchema}
+  houseAudit: { AuditItemSchema },
+  facilitiesAudit: { AuditItemSchema }
 });
 
 const HouseAudit = mongoose.model("HouseAudit", HouseAuditSchema);
-const HouseAuditItem = mongoose.model("HouseAuditItem", AuditItemSchema);
 
-module.exports = { HouseAudit, HouseAuditItem};
+module.exports = HouseAudit;
