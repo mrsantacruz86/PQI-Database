@@ -10,7 +10,7 @@ import {
 
 const initialState = {
   houseList: [],
-  currentAudit: {},
+  houseAuditTemplate: {},
 };
 
 export default (state = initialState, action) => {
@@ -31,14 +31,12 @@ export default (state = initialState, action) => {
     case GET_HOUSE_AUDIT_TEMPLATE:
       return {
         ...state,
-        currentAudit: action.payload,
-        loading: false
+        houseAuditTemplate: action.payload,
       };
 
     case SAVE_HOUSE_AUDIT:
       return {
         ...state,
-        loading: false,
       };
 
     default:

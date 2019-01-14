@@ -1,4 +1,4 @@
-const { HouseAuditItemsItems } = require("../models");
+const { HouseAuditItems } = require("../models");
 
 // Defining methods for the booksController
 module.exports = {

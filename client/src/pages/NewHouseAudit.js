@@ -67,18 +67,16 @@ class NewHouseAudit extends Component {
       house: undefined,
       houseAudit: {}
     };
-  }
-  componentDidMount = () => {
+  };
+
+  componentWillMount = () => {
     this.props.getHouseAuditTemplate();
     this.props.getHouses();
-    // console.log("Mounted")
-  };
+  }
 
   handleSubmit = (e) => {
     e.preventDefault();
-    const hAudit = {
-
-    }
+    const hAudit = null;
     this.props.createAudit();
   };
 
@@ -94,8 +92,9 @@ class NewHouseAudit extends Component {
 
   render() {
     const { classes } = this.props;
-    const { houseList, currentAudit } = this.props.houseAudit;
+    const { houseList, houseAuditTemplate } = this.props.houseAudit;
     const { user } = this.props.app;
+    // console.log(hItems);
 
     return (
       <div>
@@ -149,13 +148,18 @@ class NewHouseAudit extends Component {
             {/* <FormLabel component="legend">Household Audit</FormLabel> */}
             <hr />
             <Grid container>
-              {currentAudit.items.map(item => (
+              {console.log(houseAuditTemplate)}
+              {houseAuditTemplate.map(item => (
                 <Grid item xs={12} sm={6} md={4} lg={3} key={item.itemId}>
                   <FormControl fullWidth /* component="fieldset" */ className={classes.formControl} >
                     <FormGroup>
                       <FormControlLabel
                         control={
-                          <Checkbox checked={this.state.houseAudit[item.name]} value={item.name} onChange={this.handleSelect} />
+                          <Checkbox
+                            checked={this.state.houseAudit[item.name]}
+                            value={item.name}
+                            onChange={this.handleSelect}
+                          />
                         }
                         label={item.label}
                       />

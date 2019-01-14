@@ -40,7 +40,7 @@ export const createAudit = (audit) => dispatch => {
     .catch(err => console.log(err));
 };
 
-// Create House Audit
+// Get House Audit Template
 export const getHouseAuditTemplate = () => dispatch => {
   dispatch(loading());
   axios
@@ -48,16 +48,7 @@ export const getHouseAuditTemplate = () => dispatch => {
     .then(res => {
       dispatch({
         type: GET_HOUSE_AUDIT_TEMPLATE,
-        payload: {
-          cottage: {},
-          auditor: {
-            name: {},
-            id: {}
-          },
-          date: {},
-          houseAudit: res.data,
-          facilitiesAudit: {}
-        }
+        payload: res.data
       });
 
     })
