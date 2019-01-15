@@ -4,18 +4,10 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
-// import Typography from '@material-ui/core/Typography';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import BarAndMenu from '../components/BarAndMenu';
+import HouseAuditsTable from '../components/HouseAuditsTable';
 import audits from '../utils/Audit';
-import moment from 'moment';
-import shortid from 'shortid';
-import { percentage } from '../utils/numbers';
 // import shallowCompare from 'react-addons-shallow-compare';
 
 const styles = theme => ({
@@ -57,37 +49,7 @@ class HouseAudits extends Component {
         <BarAndMenu pageName="House Audit">
           <Paper className={classes.root}>
             <Button variant="contained" color="secondary" className={classes.button} href="/house-audits/new">New Audit</Button>
-            <Table /* className={classes.table} */>
-              <TableHead>
-                <TableRow>
-                  <TableCell component="th">Icon</TableCell>
-                  <TableCell component="th">ID</TableCell>
-                  <TableCell component="th">Date</TableCell>
-                  <TableCell component="th">House</TableCell>
-                  <TableCell component="th">Residential</TableCell>
-                  <TableCell component="th">Maintenance</TableCell>
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                {audits.map(audit => {
-                  const hPass = audit.houseAudit.filter(auditItem => auditItem.value);
-                  const hTotal = hPass.length / audit.houseAudit.length;
-                  const mPass = audit.facilitiesAudit.filter(auditItem => auditItem.value);
-                  const mTotal = mPass.length / audit.facilitiesAudit.length;
-                  const id = shortid.generate();
-                  return (
-                    <TableRow hover className={classes.row} key={id}>
-                      <TableCell scope="row">Icon</TableCell>
-                      <TableCell align="right">{id}</TableCell>
-                      <TableCell align="right">{moment(audit.date).format("MM/DD/YYYY")}</TableCell>
-                      <TableCell align="right">{audit.house}</TableCell>
-                      <TableCell align="right">{`${percentage(hTotal)}%`}</TableCell>
-                      <TableCell align="right">{`${percentage(mTotal)}%`}</TableCell>
-                    </TableRow>
-                  );
-                })}
-              </TableBody>
-            </Table>
+            <HouseAuditsTable data={audits}/>
           </Paper>
         </BarAndMenu>
       </div>
