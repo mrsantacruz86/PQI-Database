@@ -37,7 +37,7 @@ export const addFlashMessage = (type, text) => {
 };
 
 // Login
-export const login = (user) => dispatch => {
+export const login = user => dispatch => {
   dispatch(loading());
   axios
     .post("/login", user)

@@ -27,7 +27,7 @@ export const getHouses = () => dispatch => {
 };
 
 // Create House Audit
-export const createAudit = (audit) => dispatch => {
+export const saveHouseAudit = (audit) => dispatch => {
   dispatch(loading());
   axios
     .post("/api/house-audits", audit)
