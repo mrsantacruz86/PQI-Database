@@ -51,7 +51,6 @@ class NewHouseAudit extends Component {
   render() {
     const { classes } = this.props;
     const { user } = this.props.app;
-    const { houseList, houseAuditTemplate } = this.props.houseAudit;
     // console.log(hItems);
 
     return (
@@ -63,10 +62,7 @@ class NewHouseAudit extends Component {
           <Typography>
             {`Auditor: ${user._id} ${user.lastName}`}
           </Typography>
-          <HouseAuditForm
-            houseList={houseList}
-            houseAuditTemplate={houseAuditTemplate}
-          />
+          <HouseAuditForm />
         </Paper>
       </div>
     );

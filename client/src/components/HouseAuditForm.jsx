@@ -13,8 +13,9 @@ import FormControl from '@material-ui/core/FormControl';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import moment from 'moment';
-import CircularProgress from '@material-ui/core/CircularProgress';
-
+import LinearProgress from '@material-ui/core/LinearProgress';
+import IconButton from '@material-ui/core/IconButton';
+import CommentIcon from '@material-ui/icons/Comment';
 import {
   saveHouseAudit,
 } from '../actions/houseAuditActions';
@@ -40,7 +41,7 @@ const styles = theme => ({
   }
 });
 
-class NewHouseAudit extends Component {
+class HouseAuditForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -53,11 +54,14 @@ class NewHouseAudit extends Component {
       houseAudit: {}
     };
   };
+  handleSelectAll = () => {
+
+  };
 
   handleSubmit = (e) => {
     e.preventDefault();
-    const hAudit = null;
-    this.props.createAudit();
+    const hAudit = { ...this.state };
+    this.props.saveHouseAudit(hAudit);
   };
 
   handleChange = (e) => {
@@ -65,6 +69,7 @@ class NewHouseAudit extends Component {
     this.setState({ [e.target.name]: e.target.value });
   };
   handleSelect = (e) => {
+    e.preventDefault();
     const audit = { ...this.state.houseAudit };
     audit[e.target.value] = e.target.checked;
     this.setState({ houseAudit: audit });
@@ -72,7 +77,7 @@ class NewHouseAudit extends Component {
 
   render() {
     const { classes } = this.props;
-    const { houseList, houseAuditTemplate } = this.props;
+    const { houseList, houseAuditTemplate } = this.props.houseAudit;
     // console.log(hItems);
 
     return (
@@ -108,32 +113,42 @@ class NewHouseAudit extends Component {
               },
             }}
           >
-            {houseList.map(option => (
-              <MenuItem key={option.number} value={option.number}>
-                {option.number}
+            {houseList.map((house, index) => (
+              <MenuItem key={index} value={house.number}>
+                {house.number}
               </MenuItem>
             ))}
           </TextField>
           <Typography variant="h6" className={classes.subtitle}>
             Household Audit
-            </Typography>
+          </Typography>
+          <Checkbox
+            value={"ssdfsdf"}
+            checked={false}
+            onChange={this.handleSelectAll}
+          />
           {/* <FormLabel component="legend">Household Audit</FormLabel> */}
           <hr />
           <Grid container>
             {/* {console.log(houseAuditTemplate)} */}
             {!(houseAuditTemplate.length > 0) ?
-              <CircularProgress />
+              <LinearProgress color="secondary" />
               :
               houseAuditTemplate.map(item => (
                 <Grid item xs={12} sm={6} md={4} lg={3} key={item.itemId}>
                   <FormControl fullWidth /* component="fieldset" */ className={classes.formControl} >
                     <FormControlLabel
                       control={
-                        <Checkbox
-                          checked={this.state.houseAudit[item.name]}
-                          value={item.name}
-                          onChange={this.handleSelect}
-                        />
+                        <div>
+                          <Checkbox
+                            checked={this.state.houseAudit[item.name]}
+                            value={item.name}
+                            onChange={this.handleSelect}
+                          />
+                          <IconButton aria-label="Comments">
+                            <CommentIcon />
+                          </IconButton>
+                        </div>
                       }
                       label={item.label}
                     />
@@ -177,7 +192,7 @@ class NewHouseAudit extends Component {
   }
 }
 
-NewHouseAudit.propTypes = {
+HouseAuditForm.propTypes = {
   classes: PropTypes.object.isRequired,
   houseList: PropTypes.array.isRequired,
   houseAuditTemplate: PropTypes.array.isRequired,
@@ -194,4 +209,4 @@ export default compose(
   connect(mapStateToProps, {
     saveHouseAudit
   })
-)(NewHouseAudit);
+)(HouseAuditForm);
