@@ -5,7 +5,6 @@ import { compose } from 'redux';
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
-import moment from 'moment';
 
 import HouseAuditForm from '../components/HouseAuditForm';
 import {
@@ -30,18 +29,6 @@ const styles = theme => ({
 });
 
 class NewHouseAudit extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      auditor: {
-        name: `${this.props.app.user.firstName} ${this.props.app.user.lastName}`,
-        id: this.props.app.user.id
-      },
-      date: moment().format('YYYY-MM-DD'),
-      house: undefined,
-      houseAudit: {}
-    };
-  };
 
   componentWillMount = () => {
     this.props.getHouseAuditTemplate();

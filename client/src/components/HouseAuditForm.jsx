@@ -46,12 +46,13 @@ class HouseAuditForm extends Component {
     super(props);
     this.state = {
       auditor: {
-        name: `${this.props.app.user.firstName} ${this.props.app.user.lastName}`,
+        // name: `${this.props.app.user.firstName} ${this.props.app.user.lastName}`,
+        name: "Nelson Diaz (TEST)",
         id: this.props.app.user.id
       },
       date: moment().format('YYYY-MM-DD'),
-      house: undefined,
-      houseAudit: {}
+      cottage: undefined,
+      houseAudit: {...this.props.houseAudit.houseAuditTemplate}
     };
   };
   handleSelectAll = () => {
