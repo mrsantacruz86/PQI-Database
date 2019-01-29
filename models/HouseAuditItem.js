@@ -4,29 +4,28 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const ItemSchema = new Schema({
-  itemId: {
-    type: Number,
-    required: true,
-    unique: true
-  },
   name: {
     type: String,
-    required: true,
-    unique: true
+    required: true
   },
   label: {
     type: String,
     required: true,
-    unique: true
+  },
+  value: {
+    type: Boolean,
+    required: true,
+    default: false
   },
   cat: {
     type: String,
-    enum: ["Household", "Documents", "Safety"],
+    enum: ["Household", "Documents", "Safety", "Maintenance"],
     required: true
   },
-  description: String
+  finding: {
+    type:String,
+    default: ""
+  }
 });
 
-const HouseAuditItem = mongoose.model("HouseAuditItem", ItemSchema);
-
-module.exports = HouseAuditItem;
+module.exports = ItemSchema;

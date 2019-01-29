@@ -1,8 +1,10 @@
 //MODELS INDEX
+const HouseItemSchema = require('../models/HouseAuditItem');
+const AuditItemsModel = mongoose.model("HouseItems", HouseItemSchema);
 
 module.exports = {
   House: require("./House"),
   HouseAudit: require("./HouseAudit"),
-  HouseAuditItems: require("./HouseAuditItem"),
+  HouseAuditItems: AuditItemsModel,
   User: require("./User")
 };

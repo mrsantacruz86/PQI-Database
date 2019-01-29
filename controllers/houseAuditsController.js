@@ -5,7 +5,7 @@ module.exports = {
   getAll: (req, res) => {
     HouseAudit
       .find(req.query)
-      .sort({ number: -1 })
+      .sort({ _id: -1 })
       .then(data => res.json(data))
       .catch(err => res.status(422).json(err));
   },

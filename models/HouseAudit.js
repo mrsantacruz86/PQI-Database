@@ -2,32 +2,7 @@
 
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-
-const AuditItemSchema = new Schema({
-  itemId: {
-    type: Number,
-    required: true,
-    unique: true
-  },
-  name: {
-    type: String,
-    required: true,
-    unique: true
-  },
-  label: {
-    type: String,
-    required: true,
-    unique: true
-  },
-  value: {
-    type: Boolean,
-    required: true,
-    default: false
-  },
-  finding: {
-    type: String
-  }
-});
+const HouseAuditItem = require('./HouseAuditItem')
 
 const HouseAuditSchema = new Schema({
   cottage: {
@@ -49,8 +24,7 @@ const HouseAuditSchema = new Schema({
     required: true,
     default: Date.now()
   },
-  houseAudit: { AuditItemSchema },
-  facilitiesAudit: { AuditItemSchema }
+  auditItems: { HouseAuditItem }
 });
 
 const HouseAudit = mongoose.model("HouseAudit", HouseAuditSchema);
