@@ -1,13 +1,14 @@
 import {
   GET_HOUSE_LIST,
-  // GET_HOUSE_AUDIT,
-  GET_HOUSE_AUDIT_TEMPLATE,
+  GET_HOUSE_AUDIT,
+  // GET_HOUSE_AUDIT_TEMPLATE,
   SAVE_HOUSE_AUDIT,
   // DELETE_HOUSE_AUDIT,
   // UPDATE_HOUSE_AUDIT
 } from './types';
 import axios from 'axios';
-import { loading } from "./appActions";
+import { loading, stopLoading } from "./appActions";
+import moment from 'moment';
 
 // Get House List
 export const getHouses = () => dispatch => {
@@ -21,7 +22,7 @@ export const getHouses = () => dispatch => {
         type: GET_HOUSE_LIST,
         payload: houseList
       });
-
+      dispatch(stopLoading());
     })
     .catch(err => console.log(err));
 };
@@ -35,22 +36,30 @@ export const saveHouseAudit = (audit) => dispatch => {
       dispatch({
         type: SAVE_HOUSE_AUDIT
       });
-
+      dispatch(stopLoading());
     })
     .catch(err => console.log(err));
 };
 
 // Get House Audit Template
-export const getHouseAuditTemplate = () => dispatch => {
+export const getHouseAudit = (id) => dispatch => {
   dispatch(loading());
-  axios
-    .get("/api/house-audits-items")
-    .then(res => {
-      dispatch({
-        type: GET_HOUSE_AUDIT_TEMPLATE,
-        payload: res.data
-      });
+  if (!id) {
+    axios.get("/api/house-audits-items")
+      .then(res => {
+        const cottageAudit = {
+          cottage: undefined,
+          auditor: "",
+          date: moment().format('YYYY-MM-DD'),
+          auditItems: { ...res.data }
+        };
 
-    })
-    .catch(err => console.log(err));
+        dispatch({
+          type: GET_HOUSE_AUDIT,
+          payload: cottageAudit
+        });
+        dispatch(stopLoading());
+      })
+      .catch(err => console.log(`Got issues loading audit items\n error: ${err}`));
+  }
 };

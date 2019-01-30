@@ -2,15 +2,21 @@ import {
   GET_HOUSE_LIST,
   GET_HOUSE_AUDIT,
   SAVE_HOUSE_AUDIT,
-  GET_HOUSE_AUDIT_TEMPLATE
+  // GET_HOUSE_AUDIT_TEMPLATE
   // UPDATE_HOUSE_AUDIT,
   // DELETE_HOUSE_AUDIT
 } from '../actions/types';
+import { empty } from 'rxjs';
 // import shortid from 'shortid';
 
 const initialState = {
   houseList: [],
-  houseAuditTemplate: {},
+  cottageAudit: {
+    cottage: undefined,
+    auditor: undefined,
+    date: "",
+    auditItems: {},
+  }
 };
 
 export default (state = initialState, action) => {
@@ -25,13 +31,9 @@ export default (state = initialState, action) => {
     case GET_HOUSE_AUDIT:
       return {
         ...state,
-        currentAudit: action.payload
-      };
-
-    case GET_HOUSE_AUDIT_TEMPLATE:
-      return {
-        ...state,
-        houseAuditTemplate: action.payload,
+        cottageAudit: {
+          ...action.payload
+        },
       };
 
     case SAVE_HOUSE_AUDIT:

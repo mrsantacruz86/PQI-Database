@@ -9,7 +9,7 @@ import Paper from '@material-ui/core/Paper';
 import HouseAuditForm from '../components/HouseAuditForm';
 import {
   getHouses,
-  getHouseAuditTemplate
+  getHouseAudit
 } from '../actions/houseAuditActions';
 
 const styles = theme => ({
@@ -31,7 +31,7 @@ const styles = theme => ({
 class NewHouseAudit extends Component {
 
   componentWillMount = () => {
-    this.props.getHouseAuditTemplate();
+    this.props.getHouseAudit();
     this.props.getHouses();
   }
 
@@ -59,7 +59,7 @@ class NewHouseAudit extends Component {
 NewHouseAudit.propTypes = {
   classes: PropTypes.object.isRequired,
   getHouses: PropTypes.func.isRequired,
-  getHouseAuditTemplate: PropTypes.func.isRequired,
+  getHouseAudit: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({ ...state });
@@ -70,6 +70,6 @@ export default compose(
   }),
   connect(mapStateToProps, {
     getHouses,
-    getHouseAuditTemplate
+    getHouseAudit
   })
 )(NewHouseAudit);

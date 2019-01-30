@@ -1,4 +1,5 @@
 //MODELS INDEX
+const mongoose = require('mongoose');
 const HouseItemSchema = require('../models/HouseAuditItem');
 const AuditItemsModel = mongoose.model("HouseItems", HouseItemSchema);
 

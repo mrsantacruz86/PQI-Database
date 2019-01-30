@@ -52,7 +52,7 @@ class HouseAuditForm extends Component {
       },
       date: moment().format('YYYY-MM-DD'),
       cottage: undefined,
-      houseAudit: {...this.props.houseAudit.houseAuditTemplate}
+      houseAudit: { ...this.props.houseAudit.houseAuditTemplate }
     };
   };
   handleSelectAll = () => {
@@ -78,7 +78,9 @@ class HouseAuditForm extends Component {
 
   render() {
     const { classes } = this.props;
-    const { houseList, houseAuditTemplate } = this.props.houseAudit;
+    const { houseList, cottageAudit } = this.props.houseAudit;
+
+    const houseItems = cottageAudit.filter(item => (item.cat !== "Maintenance"))
     // console.log(hItems);
 
     return (
@@ -132,10 +134,10 @@ class HouseAuditForm extends Component {
           <hr />
           <Grid container>
             {/* {console.log(houseAuditTemplate)} */}
-            {!(houseAuditTemplate.length > 0) ?
+            {!(houseItems > 0) ?
               <LinearProgress color="secondary" />
               :
-              houseAuditTemplate.map(item => (
+              houseItems.map(item => (
                 <Grid item xs={12} sm={6} md={4} lg={3} key={item.itemId}>
                   <FormControl fullWidth /* component="fieldset" */ className={classes.formControl} >
                     <FormControlLabel
