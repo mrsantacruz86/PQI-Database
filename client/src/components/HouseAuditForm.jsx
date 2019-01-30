@@ -52,9 +52,13 @@ class HouseAuditForm extends Component {
       },
       date: moment().format('YYYY-MM-DD'),
       cottage: undefined,
-      houseAudit: { ...this.props.houseAudit.houseAuditTemplate }
+      houseAudit: { ...this.props.houseAudit.cottageAudit.auditItems }
     };
   };
+  componentDidMount = () => {
+    this.setState(this.props.houseAudit.cottageAudit);
+  }
+
   handleSelectAll = () => {
 
   };
@@ -80,8 +84,8 @@ class HouseAuditForm extends Component {
     const { classes } = this.props;
     const { houseList, cottageAudit } = this.props.houseAudit;
 
-    const houseItems = cottageAudit.filter(item => (item.cat !== "Maintenance"))
-    // console.log(hItems);
+    // console.log(cottageAudit);
+
 
     return (
       <div>
@@ -101,7 +105,7 @@ class HouseAuditForm extends Component {
           <TextField
             required
             select
-            name="house"
+            name="cottage"
             id="house"
             label="House Number"
             value={this.state.house}
@@ -134,10 +138,11 @@ class HouseAuditForm extends Component {
           <hr />
           <Grid container>
             {/* {console.log(houseAuditTemplate)} */}
-            {!(houseItems > 0) ?
-              <LinearProgress color="secondary" />
+            {!(this.state.houseItems > 0) ?
+              // <LinearProgress color="secondary" />
+              (() => (<h2>Loading...</h2>))
               :
-              houseItems.map(item => (
+              this.state.houseItems.map(item => (
                 <Grid item xs={12} sm={6} md={4} lg={3} key={item.itemId}>
                   <FormControl fullWidth /* component="fieldset" */ className={classes.formControl} >
                     <FormControlLabel

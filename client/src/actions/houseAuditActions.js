@@ -48,10 +48,10 @@ export const getHouseAudit = (id) => dispatch => {
     axios.get("/api/house-audits-items")
       .then(res => {
         const cottageAudit = {
-          cottage: undefined,
+          cottage: "",
           auditor: "",
           date: moment().format('YYYY-MM-DD'),
-          auditItems: { ...res.data }
+          auditItems: res.data
         };
 
         dispatch({
