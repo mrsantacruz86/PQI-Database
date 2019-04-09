@@ -47,7 +47,8 @@ class NewHouseAudit extends Component {
             New House Audit
           </Typography>
           <Typography>
-            {`Auditor: ${user._id} ${user.lastName}`}
+            {/* {`Auditor: ${user._id} ${user.lastName}`} */}
+            {`Auditor: Nelson Diaz`}
           </Typography>
           <HouseAuditForm />
         </Paper>

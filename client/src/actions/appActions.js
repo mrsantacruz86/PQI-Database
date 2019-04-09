@@ -45,10 +45,11 @@ export const login = user => dispatch => {
       const token = res.data.token;
       if (!token) {
         // dispatch(addFlashMessage("error", "The account credentials are not valid. Please try again"));
+        console.log("The account credentials are not valid. Please try again");
       } else {
         // dispatch(addFlashMessage("success", "Welcome, You signed in successfuly"));
-        const payload = {...res.data.user}
-        console.log("Este es el usuario", res.data.user);
+        const payload = { ...res.data.user }
+        console.log("Este es el usuario", payload);
         dispatch({
           type: LOGIN,
           payload

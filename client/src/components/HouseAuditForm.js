@@ -19,6 +19,7 @@ import CommentIcon from '@material-ui/icons/Comment';
 import {
   saveHouseAudit,
 } from '../actions/houseAuditActions';
+import houseAuditItems from "../utils/HouseAuditItems";
 
 const styles = theme => ({
   button: {
