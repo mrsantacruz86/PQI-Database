@@ -1,14 +1,14 @@
 import React from 'react';
-import BarAndMenu from '../components/BarAndMenu';
+import MainFrame from '../components/MainFrame';
 import LoginForm from '../components/LoginForm';
 
 class LoginPage extends React.Component {
 
   render() {
     return (
-      <BarAndMenu pageName="Login">
+      <MainFrame pageName="Login">
         <LoginForm />
-      </BarAndMenu>
+      </MainFrame>
     );
   }
 }

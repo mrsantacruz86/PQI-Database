@@ -2,20 +2,9 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
-import { withStyles } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
 import { login, logout } from '../actions/appActions';
-import BarAndMenu from '../components/BarAndMenu';
+import MainFrame from '../components/MainFrame';
 
-const styles = theme => ({
-  root: {
-    display: 'flex',
-  },
-  appBarSpacer: theme.mixins.toolbar,
-  h5: {
-    marginBottom: theme.spacing.unit * 2,
-  },
-});
 
 class LandingPage extends Component {
 
@@ -31,28 +20,23 @@ class LandingPage extends Component {
     // const { auth } = this.props.app;
     return (
       <div>
-        <BarAndMenu pageName="Landing Page">
-          <Typography variant="h4" gutterBottom component="h2">
+        <MainFrame pageName="Landing Page">
+          <h1>
             This is where the content goes...
-          </Typography>          
-        </BarAndMenu>
+          </h1>
+        </MainFrame>
       </div>
     );
   }
 }
 
-LandingPage.propTypes = {
-  classes: PropTypes.object.isRequired
-};
+// LandingPage.propTypes = {
+// };
 
 const mapStateToProps = state => ({ ...state });
 
-export default compose(
-  withStyles(styles, {
-    name: "App"
-  }),
-  connect(mapStateToProps, {
+export default connect(
+  mapStateToProps, {
     login,
     logout,
-  })
-)(LandingPage);
+  })(LandingPage);
