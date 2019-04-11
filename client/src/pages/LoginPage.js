@@ -1,14 +1,13 @@
 import React from 'react';
-import MainFrame from '../components/MainFrame';
 import LoginForm from '../components/LoginForm';
 
 class LoginPage extends React.Component {
 
   render() {
     return (
-      <MainFrame pageName="Login">
+      <React.Fragment pageName="Login">
         <LoginForm />
-      </MainFrame>
+      </React.Fragment>
     );
   }
 }

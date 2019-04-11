@@ -42,13 +42,13 @@ class LoginForm extends Component {
     }
     return (
       <React.Fragment >
-        <div>
+        <div className="login-form">
           <div>
             <i className="fas fa-user-circle"></i>
           </div>
-          <h2>Sign in</h2>
+          <h3>Sign in</h3>
 
-          <form onSubmit={this.handleSubmit}>
+          <form className="form-signin" onSubmit={this.handleSubmit}>
             <div className="form-group">
               <label for="username">Username or email</label>
               <input type="text"
