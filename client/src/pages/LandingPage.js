@@ -20,10 +20,8 @@ class LandingPage extends Component {
     // const { auth } = this.props.app;
     return (
       <div>
+        <h1>This is the landing page...</h1>
         <MainFrame pageName="Landing Page">
-          <h1>
-            This is where the content goes...
-          </h1>
         </MainFrame>
       </div>
     );
