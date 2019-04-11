@@ -1,14 +1,14 @@
 import React from 'react';
-import BarAndMenu from '../components/BarAndMenu';
+import MainFrame from '../components/MainFrame';
 import RegisterForm from '../components/RegisterForm';
 
 class SingUpPage extends React.Component {
 
   render() {
     return (
-      <BarAndMenu pageName="Login">
+      <MainFrame pageName="Login">
         <RegisterForm />
-      </BarAndMenu>
+      </MainFrame>
     );
   }
 }

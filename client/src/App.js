@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
+// import { connect } from 'react-redux';
 import { BrowserRouter as Router, Route, Switch as RouterSwitch } from "react-router-dom";
 import LandingPage from './pages/LandingPage';
 import LoginPage from './pages/LoginPage';
 import SignUpPage from './pages/SignUpPage';
 // import requireAuth from './utils/requireAuth';
-import HouseAudits from './pages/HouseAudits';
-import NewHouseAudit from './pages/NewHouseAudit';
-import PageNotFound from './pages/PageNotFound';
+import PageNotFound from './pages/PageNotFound/PageNotFound';
 
 
 class App extends Component {
