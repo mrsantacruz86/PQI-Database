@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { login } from '../../actions/appActions';
+import './LoginForm.css'
 
 class LoginForm extends Component {
   constructor(props) {
@@ -38,15 +39,15 @@ class LoginForm extends Component {
   render() {
     const { auth } = this.props.app;
     if (auth) { //checks if the user is authenticated and redirects to home
-      this.context.router.history.push("/");
+
     }
     return (
       <React.Fragment >
         <div className="login-form">
-          <div>
+          <div className="user-icon text-primary">
             <i className="fas fa-user-circle"></i>
           </div>
-          <h3>Sign in</h3>
+          <h2>Sign in</h2>
 
           <form className="form-signin" onSubmit={this.handleSubmit}>
             <div className="form-group">

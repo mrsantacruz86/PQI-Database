@@ -1,7 +1,7 @@
-import React from 'react';
-import RegisterForm from '../components/RegisterForm';
+import React, { Component } from 'react';
+import RegisterForm from '../components/RegisterForm/RegisterForm';
 
-class SingUpPage extends React.Component {
+class SingUpPage extends Component {
 
   render() {
     return (
