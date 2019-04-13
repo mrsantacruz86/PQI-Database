@@ -8,6 +8,7 @@ export const REGISTER = 'REGISTER';
 export const TOGGLE_DRAWER = 'TOGGLE_DRAWER';
 export const OPEN_MENU = 'OPEN_MENU';
 export const CLOSE_MENU = 'CLOSE_MENU';
+export const TOGGLE_USER_MENU = 'TOGGLE_USER_MENU';
 
 //House audit actions
 export const GET_HOUSE_LIST = 'GET_HOUSE_LIST';

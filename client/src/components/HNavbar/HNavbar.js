@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux'
+import Dropdown from '../Dropdown'
 import "./HNavbar.css";
 
 class HNavbar extends Component {
@@ -36,17 +37,7 @@ class HNavbar extends Component {
             <Link className="btn btn-outline-light btn-sm" to="/login">
               Login
             </Link>
-            <div className="nav-item dropdown">
-              <a class="nav-link text-light" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" id="userMenu">
-                <i className="fas fa-user-circle fa-lg"></i>
-              </a>
-              <div class="dropdown-menu" aria-labelledby="userMenu">
-                {/* <span class="dropdown-item-text">Dropdown item text</span> */}
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <a class="dropdown-item" href="#">Something else here</a>
-              </div>
-            </div>
+            <Dropdown />
 
 
           </div>

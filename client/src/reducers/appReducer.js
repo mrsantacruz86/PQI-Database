@@ -1,15 +1,16 @@
+import shortid from 'shortid';
 import {
-  LOADING,
-  STOP_LOADING,
   ADD_FLASH_MESSAGE,
+  CLOSE_MENU,
+  LOADING,
   LOGIN,
   LOGOUT,
-  TOGGLE_DRAWER,
   OPEN_MENU,
-  CLOSE_MENU,
-  REGISTER
+  REGISTER,
+  STOP_LOADING,
+  TOGGLE_DRAWER,
+  TOGGLE_USER_MENU
 } from '../actions/types';
-import shortid from 'shortid';
 
 const initialState = {
   auth: false,
@@ -18,7 +19,8 @@ const initialState = {
   error: false,
   flashMessages: {},
   drawerOpen: false,
-  anchorEl: null
+  anchorEl: null,
+  userMenuOpen: false
 };
 
 export default (state = initialState, action) => {
@@ -91,6 +93,12 @@ export default (state = initialState, action) => {
       return {
         ...state,
         anchorEl: null
+      };
+
+    case TOGGLE_USER_MENU:
+      return {
+        ...state,
+        userMenuOpen: !state.userMenuOpen
       };
 
     default:

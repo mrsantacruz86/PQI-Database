@@ -1,16 +1,17 @@
-import {
-  LOADING,
-  STOP_LOADING,
-  ADD_FLASH_MESSAGE,
-  LOGIN,
-  LOGOUT,
-  REGISTER,
-  TOGGLE_DRAWER,
-  OPEN_MENU,
-  CLOSE_MENU
-} from './types';
 import axios from 'axios';
 import setAuthToken from "../utils/setAuthToken";
+import {
+  ADD_FLASH_MESSAGE,
+  CLOSE_MENU,
+  LOADING,
+  LOGIN,
+  LOGOUT,
+  OPEN_MENU,
+  REGISTER,
+  STOP_LOADING,
+  TOGGLE_DRAWER,
+  TOGGLE_USER_MENU
+} from './types';
 
 
 //Loading
@@ -97,7 +98,7 @@ export const toggleDrawer = () => {
   };
 };
 
-// Open Menu
+// Open context menu
 export const openMenu = target => {
   // console.log(target);
   return {
@@ -106,9 +107,16 @@ export const openMenu = target => {
   };
 };
 
-// Toggle drawer
+// Close context menu
 export const closeMenu = () => {
   return {
     type: CLOSE_MENU
+  };
+};
+
+// Toggle user menu
+export const toggleUserMenu = () => {
+  return {
+    type: TOGGLE_USER_MENU
   };
 };
