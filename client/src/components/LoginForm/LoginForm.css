@@ -1,7 +1,7 @@
 .login-form{
   text-align:center;
-  max-width: 500px;
+  max-width: 22rem;
 }
-.user-icon{
-  font-size: 5rem;
+label{
+  text-align:left;
 }

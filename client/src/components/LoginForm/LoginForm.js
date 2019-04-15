@@ -46,38 +46,37 @@ class LoginForm extends Component {
     };
     return (
       <React.Fragment >
-        <div className="col">
-          <div className="login-form">
-            <div className="user-icon text-primary">
-              <i className="fas fa-user-circle"></i>
+        <div className="login-form">
+          <div className="card text-center">
+            <div className="card-body">
+              <form className="form-signin" onSubmit={this.handleSubmit}>
+                <div className="form-group">
+                  <label for="username">Username or email</label>
+                  <input type="text"
+                    className="form-control"
+                    id="username"
+                    placeholder="Username or email"
+                    name="username"
+                    onChange={this.handleInputChange}
+                    value={this.state.user.username} />
+                </div>
+
+                <div className="form-group">
+                  <label for="password">Password</label>
+                  <input type="password"
+                    className="form-control"
+                    id="password"
+                    placeholder="Password"
+                    name="password"
+                    onChange={this.handleInputChange}
+                    value={this.state.user.password}
+                  />
+                </div>
+                <div className="d-flex">
+                  <button type="submit" className="btn btn-primary flex-fill">Sign in</button>
+                </div>
+              </form>
             </div>
-            <h2>Sign in</h2>
-
-            <form className="form-signin" onSubmit={this.handleSubmit}>
-              <div className="form-group">
-                <label for="username">Username or email</label>
-                <input type="text"
-                  className="form-control"
-                  id="username"
-                  placeholder="Enter username or email"
-                  name="username"
-                  onChange={this.handleInputChange}
-                  value={this.state.user.username} />
-              </div>
-
-              <div className="form-group">
-                <label for="password">Password</label>
-                <input type="password"
-                  className="form-control"
-                  id="password"
-                  placeholder="Password"
-                  name="password"
-                  onChange={this.handleInputChange}
-                  value={this.state.user.password}
-                />
-              </div>
-              <button type="submit" className="btn btn-primary">Sign in</button>
-            </form>
           </div>
         </div>
       </React.Fragment>

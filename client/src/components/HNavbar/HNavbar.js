@@ -6,14 +6,15 @@ import "./HNavbar.css";
 
 class HNavbar extends Component {
 
-  render() {
-    const selected = (path) => {
-      if (path !== window.location.pathname) {
-        return "";
-      } else {
-        return " active";
-      }
+  selected = (path) => {
+    if (path !== window.location.pathname) {
+      return "";
+    } else {
+      return " active";
     }
+  }
+  render() {
+    const { auth } = this.props.app;
 
     return (
       <div>
@@ -24,20 +25,21 @@ class HNavbar extends Component {
           </button>
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav mr-auto">
-              <li className={`nav-item${selected("/")}`}>
+              <li className={`nav-item${this.selected("/")}`}>
                 <Link className="nav-link" to="/">Home <span className="sr-only">(current)</span></Link>
               </li>
-              <li className={`nav-item${selected("/dashboard")}`}>
+              <li className={`nav-item${this.selected("/dashboard")}`}>
                 <Link className="nav-link" to="/dashboard">Dashboard</Link>
               </li>
-              <li className={`nav-item${selected("/house-audits")}`}>
+              <li className={`nav-item${this.selected("/house-audits")}`}>
                 <Link className="nav-link" to="/house-audits">House Audits</Link>
               </li>
             </ul>
-            <Link className="btn btn-outline-light btn-sm" to="/login">
-              Login
-            </Link>
-            <Dropdown />
+            {!auth ?
+              <Link className="btn btn-outline-light btn-sm" to="/login">Login</Link>
+              :
+              <Dropdown />
+            }
 
 
           </div>

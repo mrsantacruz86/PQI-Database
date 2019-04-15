@@ -3,13 +3,18 @@ import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux'
 import "./Dropdown.css";
-import { toggleUserMenu } from '../../actions/appActions';
+import { toggleUserMenu, logout } from '../../actions/appActions';
 
 class Dropdown extends Component {
 
   toggleDropdown = (e) => {
     e.preventDefault();
     this.props.toggleUserMenu();
+  }
+
+  logout = (e) => {
+    e.preventDefault();
+    this.props.logout();
   }
 
   render() {
@@ -24,7 +29,7 @@ class Dropdown extends Component {
           aria-haspopup="true"
           aria-expanded="false"
           id="userMenu"
-          onClick={(e) => this.toggleDropdown(e)}
+          onClick={e => this.toggleDropdown(e)}
         >
           <i className="fas fa-user-circle fa-lg"></i>
         </a>
@@ -32,7 +37,10 @@ class Dropdown extends Component {
           aria-labelledby="userMenu"
         >
           <Link to="/account" className="dropdown-item">Account</Link>
-          <a href="#nogo" className="dropdown-item">Sing out</a>
+          <a href="#nogo"
+            className="dropdown-item"
+            onClick={e => this.logout(e)}
+          >Sing out</a>
         </div>
       </div>
     );
@@ -42,5 +50,6 @@ class Dropdown extends Component {
 const mapStateToProps = (state) => ({ ...state });
 
 export default connect(mapStateToProps, {
-  toggleUserMenu
+  toggleUserMenu,
+  logout
 })(Dropdown);
