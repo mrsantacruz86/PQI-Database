@@ -10,6 +10,7 @@
     "client": "cd client && yarn start",
     "seed": "cd seeds && node seeds.js",
     "install": "cd client && yarn install",
+    "upgrade": "cd client && yarn upgrade --latest",
     "build": "cd client && yarn build",
     "heroku-postbuild": "yarn build"
   },
@@ -26,7 +27,7 @@
     "express": "^4.16.4",
     "if-env": "^1.0.4",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.5.0",
+    "mongoose": "^5.5.1",
     "morgan": "^1.9.1"
   }
 }

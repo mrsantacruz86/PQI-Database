@@ -1,7 +1,22 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink as RRNavLink, Link } from 'react-router-dom';
 import { connect } from 'react-redux'
-import Dropdown from '../Dropdown'
+import {
+  Button,
+  Collapse,
+  Navbar,
+  NavbarToggler,
+  NavbarBrand,
+  Nav,
+  NavItem,
+  NavLink,
+  UncontrolledDropdown,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem
+} from 'reactstrap';
+import { toggleUserMenu, logout } from '../../actions/appActions';
+
 import "./HNavbar.css";
 
 class HNavbar extends Component {
@@ -13,37 +28,64 @@ class HNavbar extends Component {
       return " active";
     }
   }
+  toggle = () => {
+    this.props.toggleUserMenu();
+  }
+  logout = (e) => {
+    e.preventDefault();
+    this.props.logout();
+  }
+
   render() {
-    const { auth } = this.props.app;
+    const { auth, userMenuOpen: navBarOpen } = this.props.app;
 
     return (
       <div>
-        <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
-          <Link className="navbar-brand" to="/">PQI TOOLS</Link>
-          <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span className="navbar-toggler-icon"></span>
-          </button>
-          <div className="collapse navbar-collapse" id="navbarNav">
-            <ul className="navbar-nav mr-auto">
-              <li className={`nav-item${this.selected("/")}`}>
-                <Link className="nav-link" to="/">Home <span className="sr-only">(current)</span></Link>
-              </li>
-              <li className={`nav-item${this.selected("/dashboard")}`}>
-                <Link className="nav-link" to="/dashboard">Dashboard</Link>
-              </li>
-              <li className={`nav-item${this.selected("/house-audits")}`}>
-                <Link className="nav-link" to="/house-audits">House Audits</Link>
-              </li>
-            </ul>
-            {!auth ?
-              <Link className="btn btn-outline-light btn-sm" to="/login">Login</Link>
-              :
-              <Dropdown />
-            }
-
-
-          </div>
-        </nav>
+        <Navbar color="dark" primary expand="md">
+          <NavbarBrand tag={RRNavLink} to="/">PQI TOOLS</NavbarBrand>
+          <NavbarToggler onClick={this.toggle} />
+          <Collapse isOpen={navBarOpen} navbar>
+            <Nav className="mr-auto" navbar>
+              <NavItem>
+                <NavLink tag={RRNavLink} exact to="/" activeClassName="active">
+                  Home
+                </NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink tag={RRNavLink} exact to="/dashboard" activeClassName="active">
+                  Dashboard
+                </NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink tag={RRNavLink} exact to="/house-audits" activeClassName="active">
+                  House Audits
+                </NavLink>
+              </NavItem>
+              {!auth ?
+                <NavItem className="ml-auto">
+                  <NavLink tag={RRNavLink} exact to="/login">
+                        Login
+                  </NavLink>
+                </NavItem>
+                :
+                <UncontrolledDropdown nav inNavbar className="ml-auto">
+                  <DropdownToggle nav>
+                    <i className="fas fa-user-circle fa-lg"></i>
+                  </DropdownToggle>
+                  <DropdownMenu right>
+                    <DropdownItem>
+                      Account
+                    </DropdownItem>
+                    <DropdownItem divider />
+                    <DropdownItem onClick={e => this.logout(e)}>
+                      Sign Out
+                  </DropdownItem>
+                  </DropdownMenu>
+                </UncontrolledDropdown>
+              }
+            </Nav>
+          </Collapse>
+        </Navbar>
       </div>
     );
   }
@@ -51,4 +93,7 @@ class HNavbar extends Component {
 
 const mapStateToProps = (state) => ({ ...state });
 
-export default connect(mapStateToProps)(HNavbar);
+export default connect(mapStateToProps, {
+  toggleUserMenu,
+  logout
+})(HNavbar);

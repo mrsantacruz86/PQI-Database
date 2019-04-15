@@ -7,7 +7,7 @@ import * as serviceWorker from './serviceWorker';
 import setAuthToken from "./utils/setAuthToken";
 import { LOGIN } from './actions/types';
 import decodeJWT from './utils/decodeJWT';
-import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import 'jquery';
 // Put any other imports below so that CSS from your
 // components takes precedence over default styles.
