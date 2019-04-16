@@ -61,10 +61,15 @@ class HNavbar extends Component {
                   House Audits
                 </NavLink>
               </NavItem>
+              <NavItem>
+                <NavLink tag={RRNavLink} exact to="/car-audits" activeClassName="active">
+                  Vehicle Audits
+                </NavLink>
+              </NavItem>
               {!auth ?
                 <NavItem className="ml-auto">
                   <NavLink tag={RRNavLink} exact to="/login">
-                        Login
+                    Login
                   </NavLink>
                 </NavItem>
                 :
