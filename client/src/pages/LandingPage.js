@@ -21,7 +21,7 @@ class LandingPage extends Component {
     return (
       <div pageName="Landing Page">
         <MainFrame />
-        <h3>Landing page content goes here</h3>
+        {/* <h3>Landing page content goes here</h3> */}
       </div>
     );
   }

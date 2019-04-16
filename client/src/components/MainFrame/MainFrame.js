@@ -7,7 +7,7 @@ class MainFrame extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <HNavbar/>
+        <HNavbar />
         <h1>This is a sample landing page made with bootstrap</h1>
       </React.Fragment>
     );

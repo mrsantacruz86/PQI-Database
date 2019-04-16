@@ -1,5 +1,18 @@
 .login-page{
 	background-color: #eee;
+	text-align: center;
+}
+Card{
+	background-color: #eee;
+	width:20rem;
+}
+CardBody{
+	
+}
+Form{
+	width:20rem;
+	/* background-color: #eee; */
+	text-align: left;
 }
 .user-icon{
 	margin-bottom: 2rem;
