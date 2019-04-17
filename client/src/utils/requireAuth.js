@@ -10,8 +10,8 @@ const requireAuth = ComposedComponent => {
 		componentWillMount() {
 			if (!this.props.auth) {
 				// console.log(this.props);
-				// console.log(this.context);
-				this.props.history.push("/login");
+				console.log(this.props.history);
+				this.props.history.replace("/login");
 			}
 		}
 		render() {

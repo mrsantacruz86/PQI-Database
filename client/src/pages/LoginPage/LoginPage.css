@@ -1,15 +1,14 @@
 .login-page{
 	text-align: center;
-}
-.login-form{
-	max-width: 30rem;
+	background-color: #eee;
 }
 CardBody{
 	background-color: none;
 }
+.w-small{
+	width:18rem;
+}
 Form{
-	/* width:20rem; */
-	/* background-color: #eee; */
 	text-align: left;
 }
 .user-icon{

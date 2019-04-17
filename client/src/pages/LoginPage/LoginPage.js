@@ -1,5 +1,5 @@
 import React from 'react';
-import { Redirect } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
 import { connect } from 'react-redux';
 import { login } from "../../actions/appActions";
 import { Button, Form, FormGroup, Input, Label, FormText, Card, CardBody } from 'reactstrap';
@@ -45,16 +45,16 @@ class LoginPage extends React.Component {
       )
     };
     return (
-      <React.Fragment>
-        <div className="login-page">
+      // <React.Fragment>
+        <div className="container-fluid login-page">
           <div className="user-icon mx-auto">
             <img src={`${process.env.PUBLIC_URL}/hhch-logo.svg`} alt="His House Children's Home Logo" />
           </div>
-          <h3>Sign in to PQI Tools</h3>
+          <h4>Sign in to PQI Tools</h4>
           <div className="row">
-            <Card className="mx-auto">
-              <CardBody outline>
-                <Form onSubmit={this.handleSubmit}>
+            <Card className="mt-3 mx-auto">
+              <CardBody className="w-small">
+                <Form onSubmit={this.handleSubmit} >
                   <FormGroup>
                     <Label for="username">Username or email</Label>
                     <Input type="text"
@@ -77,13 +77,21 @@ class LoginPage extends React.Component {
                       value={this.state.credentials.password}
                     />
                   </FormGroup>
-                  <Button type="submit" className="btn btn-primary flex-fill mx-auto">Sign in</Button>
+                  <Button type="submit" className="btn btn-primary mt-4 btn-block">Sign in</Button>
                 </Form>
               </CardBody>
             </Card>
           </div>
+          <div className="row">
+            <Card className="mt-3 mx-auto">
+              <CardBody className="w-small">
+                New here?<Link to="/register"> Create an account</Link>
+              </CardBody>
+            </Card>
+
+          </div>
         </div>
-      </React.Fragment>
+      // </React.Fragment>
     );
   }
 }
