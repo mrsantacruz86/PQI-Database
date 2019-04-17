@@ -41,11 +41,11 @@ class HNavbar extends Component {
 
     return (
       <div>
-        <Navbar color="dark" primary expand="md">
+        <Navbar color="dark" dark expand="md">
           <NavbarBrand tag={RRNavLink} to="/">PQI TOOLS</NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={navBarOpen} navbar>
-            <Nav className="mr-auto" navbar>
+            <Nav className="mr-auto d-inline-flex" navbar>
               <NavItem>
                 <NavLink tag={RRNavLink} exact to="/" activeClassName="active">
                   Home
@@ -67,28 +67,27 @@ class HNavbar extends Component {
                 </NavLink>
               </NavItem>
               {!auth ?
-                <NavItem>
-                  <NavLink tag={RRNavLink} exact to="/login">
-                    Login
+                // <NavItem>
+                <NavLink tag={RRNavLink} exact to="/login" className="login-link bg-primary text-white py-1 my-auto" >
+                  Login
                   </NavLink>
-                </NavItem>
+                // </NavItem>
                 :
                 <UncontrolledDropdown nav inNavbar>
                   <DropdownToggle nav>
-                    <i className="fas fa-user-circle fa-lg"></i>
+                    <i className="fas fa-user-circle fa-lg text-white"></i>
                   </DropdownToggle>
                   <DropdownMenu right>
                     <DropdownItem>
                       Account
                     </DropdownItem>
-                    <DropdownItem divider />
+                    {/* <DropdownItem divider /> */}
                     <DropdownItem onClick={e => this.logout(e)}>
                       Sign Out
                   </DropdownItem>
                   </DropdownMenu>
                 </UncontrolledDropdown>
               }
-                <button className="btn btn-sm btn-outline-success my-sm-0" type="submit">Search</button>
             </Nav>
           </Collapse>
         </Navbar>
