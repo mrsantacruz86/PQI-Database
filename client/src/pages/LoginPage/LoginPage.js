@@ -18,7 +18,7 @@ class LoginPage extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    this.props.login(this.state.user);
+    this.props.login(this.state.credentials);
     this.setState({
       credentials: {
         username: "",
@@ -51,36 +51,37 @@ class LoginPage extends React.Component {
             <img src={`${process.env.PUBLIC_URL}/hhch-logo.svg`} alt="His House Children's Home Logo" />
           </div>
           <h3>Sign in to PQI Tools</h3>
-          <Card className="md-auto">
-            <CardBody outline>
-              <Form className="form-signin" onSubmit={this.handleSubmit}>
-                <FormGroup>
-                  <Label for="username">Username or email</Label>
-                  <Input type="text"
-                    className="form-control"
-                    id="username"
-                    placeholder="Username or email"
-                    name="username"
-                    onChange={this.handleInputChange}
-                    value={this.state.credentials.username} />
-                </FormGroup>
+          <div className="row">
+            <Card className="mx-auto">
+              <CardBody outline>
+                <Form onSubmit={this.handleSubmit}>
+                  <FormGroup>
+                    <Label for="username">Username or email</Label>
+                    <Input type="text"
+                      className="form-control"
+                      id="username"
+                      placeholder="Username or email"
+                      name="username"
+                      onChange={this.handleInputChange}
+                      value={this.state.credentials.username} />
+                  </FormGroup>
 
-                <FormGroup>
-                  <Label for="password">Password</Label>
-                  <Input type="password"
-                    className="form-control"
-                    id="password"
-                    placeholder="Password"
-                    name="password"
-                    onChange={this.handleInputChange}
-                    value={this.state.credentials.password}
-                  />
-                </FormGroup>
-                <Button type="submit" className="btn btn-primary flex-fill">Sign in</Button>
-              </Form>
-            </CardBody>
-
-          </Card>
+                  <FormGroup>
+                    <Label for="password">Password</Label>
+                    <Input type="password"
+                      className="form-control"
+                      id="password"
+                      placeholder="Password"
+                      name="password"
+                      onChange={this.handleInputChange}
+                      value={this.state.credentials.password}
+                    />
+                  </FormGroup>
+                  <Button type="submit" className="btn btn-primary flex-fill mx-auto">Sign in</Button>
+                </Form>
+              </CardBody>
+            </Card>
+          </div>
         </div>
       </React.Fragment>
     );

@@ -1,16 +1,14 @@
 .login-page{
-	background-color: #eee;
 	text-align: center;
 }
-Card{
-	background-color: #eee;
-	width:20rem;
+.login-form{
+	max-width: 30rem;
 }
 CardBody{
-	
+	background-color: none;
 }
 Form{
-	width:20rem;
+	/* width:20rem; */
 	/* background-color: #eee; */
 	text-align: left;
 }

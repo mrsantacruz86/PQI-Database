@@ -67,13 +67,13 @@ class HNavbar extends Component {
                 </NavLink>
               </NavItem>
               {!auth ?
-                <NavItem className="ml-auto">
+                <NavItem className="mx-auto">
                   <NavLink tag={RRNavLink} exact to="/login">
                     Login
                   </NavLink>
                 </NavItem>
                 :
-                <UncontrolledDropdown nav inNavbar className="ml-auto">
+                <UncontrolledDropdown nav inNavbar className="mx-auto">
                   <DropdownToggle nav>
                     <i className="fas fa-user-circle fa-lg"></i>
                   </DropdownToggle>
