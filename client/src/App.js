@@ -4,7 +4,8 @@ import LandingPage from './pages/LandingPage';
 import LoginPage from './pages/LoginPage/LoginPage';
 import SignUpPage from './pages/SignUpPage';
 import requireAuth from './utils/requireAuth';
-import PageNotFound from './pages/PageNotFound/PageNotFound';
+import PageNotFound from './pages/PageNotFound';
+import HouseAuditPage from './pages/HouseAuditPage';
 import './App.css';
 
 
@@ -18,7 +19,7 @@ class App extends Component {
           <Route exact path="/" component={LandingPage} />
           <Route path="/login" component={LoginPage} />
           <Route path="/register" component={SignUpPage} />
-          <Route exact path="/house-audits" component={requireAuth(HouseAudits)} />
+          <Route exact path="/house-audits" component={requireAuth(HouseAuditPage)} />
           <Route exact path="/dashboard" component={Dashboard} />
           <Route exact path="/public" component={Public} />
           <Route exact path="/car-audits" component={CarAudits} />
@@ -36,9 +37,9 @@ const Public = () => {
 const Dashboard = () => {
   return <h3>Dashboard</h3>
 }
-const HouseAudits = () => {
-  return <h3>House Audits</h3>
-}
+// const HouseAudits = () => {
+//   return <h3>House Audits</h3>
+// }
 const CarAudits = () => {
   return <h3>Car Audits</h3>
 }
