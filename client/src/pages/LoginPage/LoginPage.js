@@ -46,51 +46,51 @@ class LoginPage extends React.Component {
     };
     return (
       // <React.Fragment>
-        <div className="container-fluid login-page">
-          <div className="user-icon mx-auto">
-            <img src={`${process.env.PUBLIC_URL}/hhch-logo.svg`} alt="His House Children's Home Logo" />
-          </div>
-          <h4>Sign in to PQI Tools</h4>
-          <div className="row">
-            <Card className="mt-3 mx-auto">
-              <CardBody className="w-small">
-                <Form onSubmit={this.handleSubmit} >
-                  <FormGroup>
-                    <Label for="username">Username or email</Label>
-                    <Input type="text"
-                      className="form-control"
-                      id="username"
-                      placeholder="Username or email"
-                      name="username"
-                      onChange={this.handleInputChange}
-                      value={this.state.credentials.username} />
-                  </FormGroup>
-
-                  <FormGroup>
-                    <Label for="password">Password</Label>
-                    <Input type="password"
-                      className="form-control"
-                      id="password"
-                      placeholder="Password"
-                      name="password"
-                      onChange={this.handleInputChange}
-                      value={this.state.credentials.password}
-                    />
-                  </FormGroup>
-                  <Button type="submit" className="btn btn-primary mt-4 btn-block">Sign in</Button>
-                </Form>
-              </CardBody>
-            </Card>
-          </div>
-          <div className="row">
-            <Card className="mt-3 mx-auto">
-              <CardBody className="w-small">
-                New here?<Link to="/register"> Create an account</Link>
-              </CardBody>
-            </Card>
-
-          </div>
+      <div className="container-fluid login-page">
+        <div className="user-icon mx-auto">
+          <img src={`${process.env.PUBLIC_URL}/hhch-logo.svg`} alt="His House Children's Home Logo" />
         </div>
+        <h4>Sign in to PQI Tools</h4>
+        <div className="row">
+          <Card className="mt-3 mx-auto">
+            <CardBody className="w-small">
+              <Form onSubmit={this.handleSubmit} >
+                <FormGroup>
+                  <Label for="username">Username or email</Label>
+                  <Input type="text"
+                    className="form-control"
+                    id="username"
+                    placeholder="Username or email"
+                    name="username"
+                    onChange={this.handleInputChange}
+                    value={this.state.credentials.username} />
+                </FormGroup>
+
+                <FormGroup>
+                  <Label for="password">Password</Label>
+                  <Input type="password"
+                    className="form-control"
+                    id="password"
+                    placeholder="Password"
+                    name="password"
+                    onChange={this.handleInputChange}
+                    value={this.state.credentials.password}
+                  />
+                </FormGroup>
+                <Button type="submit" color="primary" block className="mt-4">Sign in</Button>
+              </Form>
+            </CardBody>
+          </Card>
+        </div>
+        <div className="row">
+          <Card className="mt-3 mx-auto">
+            <CardBody className="w-small">
+              New here?<Link to="/register"> Create an account</Link>
+            </CardBody>
+          </Card>
+
+        </div>
+      </div>
       // </React.Fragment>
     );
   }
