@@ -8,18 +8,10 @@ import MainFrame from '../components/MainFrame';
 
 class LandingPage extends Component {
 
-  handleChange = () => {
-    if (this.props.app.auth) {
-      this.props.logout();
-    } else {
-      this.props.login();
-    }
-  };
-
   render() {
     // const { auth } = this.props.app;
     return (
-      <div pageName="Landing Page">
+      <div>
         <MainFrame />
         {/* <h3>Landing page content goes here</h3> */}
       </div>

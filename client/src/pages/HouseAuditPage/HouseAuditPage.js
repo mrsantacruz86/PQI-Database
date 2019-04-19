@@ -2,6 +2,7 @@ import React from 'react';
 import { Redirect, Link } from "react-router-dom";
 import { connect } from 'react-redux';
 import DataTable from "../../components/DataTable";
+import MainFrame from "../../components/MainFrame";
 import { Button, Form, FormGroup, Input, Label, FormText, Card, CardBody } from 'reactstrap';
 import './HouseAuditPage.css';
 
@@ -21,6 +22,7 @@ class HouseAuditPage extends React.Component {
     const { auth } = this.props.app;
     return (
       <div>
+        <MainFrame />
         <DataTable></DataTable>
       </div>
     );

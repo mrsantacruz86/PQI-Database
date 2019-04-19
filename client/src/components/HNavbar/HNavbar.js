@@ -45,7 +45,7 @@ class HNavbar extends Component {
           <NavbarBrand tag={RRNavLink} to="/">PQI TOOLS</NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={navBarOpen} navbar>
-            <Nav className="mr-auto d-inline-flex" navbar>
+            <Nav className="ml-auto d-inline-flex" navbar>
               <NavItem>
                 <NavLink tag={RRNavLink} exact to="/" activeClassName="active">
                   Home

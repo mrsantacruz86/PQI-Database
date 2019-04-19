@@ -2,7 +2,7 @@ import React from 'react';
 import { Redirect, Link } from "react-router-dom";
 import { connect } from 'react-redux';
 import { login } from "../../actions/appActions";
-import { Button, Form, FormGroup, Input, Label, FormText, Card, CardBody } from 'reactstrap';
+import { Button, Form, FormGroup, Input, Label, Card, CardBody } from 'reactstrap';
 import './LoginPage.css';
 
 class LoginPage extends React.Component {
