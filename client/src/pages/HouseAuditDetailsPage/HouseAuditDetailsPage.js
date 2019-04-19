@@ -3,10 +3,10 @@ import { Redirect, Link } from "react-router-dom";
 import { connect } from 'react-redux';
 import DataTable from "../../components/DataTable";
 import MainFrame from "../../components/MainFrame";
-import { Button, Form, FormGroup, Input, Label, FormText, Card, CardBody, CardTitle } from 'reactstrap';
-import './HouseAuditPage.css';
+import { Button, Form, FormGroup, Input, Label, FormText, Card, CardBody } from 'reactstrap';
+import './HouseAuditDetailsPage.css';
 
-class HouseAuditPage extends React.Component {
+class HouseAuditDetailsPage extends React.Component {
 
   handleInputChange = (e) => {
     e.preventDefault();
@@ -23,15 +23,7 @@ class HouseAuditPage extends React.Component {
     return (
       <div>
         <MainFrame />
-        <Card>
-          <CardBody>
-            <CardTitle><h5>House Audit</h5></CardTitle>
-            <Button color="primary" className="mb-3 mr-1">New Audit</Button>
-            <Button color="primary" className="mb-3 mr-1">Generate Report</Button>
-            <DataTable></DataTable>
-          </CardBody>
-
-        </Card>
+        <h3 >House Audit Details Form</h3>
       </div>
     );
   }
@@ -40,4 +32,4 @@ const mapStateToProps = state => ({ ...state });
 
 export default connect(mapStateToProps, {
 
-})(HouseAuditPage);
+})(HouseAuditDetailsPage);
