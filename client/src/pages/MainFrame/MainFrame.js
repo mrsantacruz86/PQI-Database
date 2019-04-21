@@ -1,6 +1,6 @@
 import React from 'react';
 import "./MainFrame.css";
-import HNavbar from '../HNavbar';
+import HNavbar from '../../components/HNavbar';
 
 class MainFrame extends React.Component {
 
@@ -8,7 +8,8 @@ class MainFrame extends React.Component {
     return (
       <React.Fragment>
         <HNavbar />
-        <h1>This is a sample landing page made with bootstrap</h1>
+        {this.props.children}
+        {/* <h1>Main Frame</h1> */}
       </React.Fragment>
     );
   }

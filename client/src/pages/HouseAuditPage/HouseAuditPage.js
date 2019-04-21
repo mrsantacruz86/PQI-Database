@@ -2,9 +2,10 @@ import React from 'react';
 import { Redirect, Link } from "react-router-dom";
 import { connect } from 'react-redux';
 import DataTable from "../../components/DataTable";
-import MainFrame from "../../components/MainFrame";
+import MainFrame from "../MainFrame";
 import { Button, Form, FormGroup, Input, Label, FormText, Card, CardBody, CardTitle } from 'reactstrap';
 import './HouseAuditPage.css';
+import data from '../../components/DataTable/house-audits.json';
 
 class HouseAuditPage extends React.Component {
 
@@ -22,7 +23,6 @@ class HouseAuditPage extends React.Component {
     const { auth } = this.props.app;
     return (
       <div>
-        <MainFrame />
         <Card>
           <CardBody>
             <CardTitle><h5>House Audit</h5></CardTitle>
@@ -41,3 +41,8 @@ const mapStateToProps = state => ({ ...state });
 export default connect(mapStateToProps, {
 
 })(HouseAuditPage);
+
+//function to filter the data for one house
+function filterByHouse(arr) {
+  return arr.filter
+}
