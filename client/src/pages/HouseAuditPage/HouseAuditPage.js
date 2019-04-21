@@ -1,11 +1,13 @@
 import React from 'react';
-import { Redirect, Link } from "react-router-dom";
 import { connect } from 'react-redux';
 import DataTable from "../../components/DataTable";
-import MainFrame from "../MainFrame";
+import moment from "moment";
+import BarChart from '../../components/BarChart';
 import { Button, Form, FormGroup, Input, Label, FormText, Card, CardBody, CardTitle } from 'reactstrap';
 import './HouseAuditPage.css';
 import data from '../../components/DataTable/house-audits.json';
+
+
 
 class HouseAuditPage extends React.Component {
 
@@ -21,6 +23,7 @@ class HouseAuditPage extends React.Component {
 
   render() {
     const { auth } = this.props.app;
+    console.log(filterByHouse(data));
     return (
       <div>
         <Card>
@@ -28,9 +31,9 @@ class HouseAuditPage extends React.Component {
             <CardTitle><h5>House Audit</h5></CardTitle>
             <Button color="primary" className="mb-3 mr-1">New Audit</Button>
             <Button color="primary" className="mb-3 mr-1">Generate Report</Button>
+            <BarChart data={filterByHouse(data)} />
             <DataTable></DataTable>
           </CardBody>
-
         </Card>
       </div>
     );
@@ -38,11 +41,9 @@ class HouseAuditPage extends React.Component {
 }
 const mapStateToProps = state => ({ ...state });
 
-export default connect(mapStateToProps, {
-
-})(HouseAuditPage);
+export default connect(mapStateToProps, {})(HouseAuditPage);
 
 //function to filter the data for one house
 function filterByHouse(arr) {
-  return arr.filter
+  return arr.filter(item => moment(item.date).isSameOrAfter("01/01/2019") && item.dept === "UAC")
 }
