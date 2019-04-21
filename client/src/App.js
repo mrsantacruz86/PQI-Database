@@ -6,6 +6,7 @@ import SignUpPage from './pages/SignUpPage';
 import requireAuth from './utils/requireAuth';
 import PageNotFound from './pages/PageNotFound';
 import HouseAuditPage from './pages/HouseAuditPage';
+import MainFrame from './pages/MainFrame';
 import './App.css';
 
 
@@ -15,17 +16,19 @@ class App extends Component {
 
     return (
       <Router>
-        <RouterSwitch>
-          <Route exact path="/" component={LandingPage} />
-          <Route path="/login" component={LoginPage} />
-          <Route path="/register" component={SignUpPage} />
-          <Route exact path="/house-audits" component={requireAuth(HouseAuditPage)} />
-          <Route exact path="/dashboard" component={Dashboard} />
-          <Route exact path="/public" component={Public} />
-          <Route exact path="/car-audits" component={CarAudits} />
-          {/* <Route path="/house-audits/new" component={NewHouseAudit} /> */}
-          <Route component={PageNotFound} />
-        </RouterSwitch>
+        <MainFrame>
+          <RouterSwitch>
+            <Route exact path="/" component={LandingPage} />
+            <Route path="/login" component={LoginPage} />
+            <Route path="/register" component={SignUpPage} />
+            <Route exact path="/house-audits" component={requireAuth(HouseAuditPage)} />
+            <Route exact path="/dashboard" component={Dashboard} />
+            <Route exact path="/public" component={Public} />
+            <Route exact path="/car-audits" component={CarAudits} />
+            {/* <Route path="/house-audits/new" component={NewHouseAudit} /> */}
+            <Route component={PageNotFound} />
+          </RouterSwitch>
+        </MainFrame>
       </Router>
     );
   }

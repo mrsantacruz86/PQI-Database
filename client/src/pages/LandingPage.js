@@ -3,17 +3,15 @@ import React, { Component } from 'react';
 // import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { login, logout } from '../actions/appActions';
-import MainFrame from '../components/MainFrame';
+import MainFrame from './MainFrame';
 
 
 class LandingPage extends Component {
 
   render() {
-    // const { auth } = this.props.app;
     return (
       <div>
-        <MainFrame />
-        {/* <h3>Landing page content goes here</h3> */}
+        <h3>Landing page</h3>
       </div>
     );
   }

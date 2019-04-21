@@ -1,9 +1,7 @@
 import React from 'react';
 import { Redirect, Link } from "react-router-dom";
 import { connect } from 'react-redux';
-import DataTable from "../../components/DataTable";
-import MainFrame from "../../components/MainFrame";
-import { Button, Form, FormGroup, Input, Label, FormText, Card, CardBody } from 'reactstrap';
+// import { Button, Form, FormGroup, Input, Label, FormText, Card, CardBody } from 'reactstrap';
 import './HouseAuditDetailsPage.css';
 
 class HouseAuditDetailsPage extends React.Component {
@@ -22,7 +20,6 @@ class HouseAuditDetailsPage extends React.Component {
     const { auth } = this.props.app;
     return (
       <div>
-        <MainFrame />
         <h3 >House Audit Details Form</h3>
       </div>
     );
