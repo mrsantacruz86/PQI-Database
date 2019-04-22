@@ -12,7 +12,8 @@
     "install": "cd client && yarn install",
     "upgrade": "cd client && yarn upgrade --latest",
     "build": "cd client && yarn build",
-    "heroku-postbuild": "yarn build"
+    "heroku-postbuild": "yarn build",
+    "deploy": "git push heroku master"
   },
   "author": "Nelson Diaz",
   "license": "ISC",
