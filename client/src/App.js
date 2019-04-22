@@ -7,7 +7,6 @@ import requireAuth from './utils/requireAuth';
 import PageNotFound from './pages/PageNotFound';
 import HouseAuditPage from './pages/HouseAuditPage';
 import MainFrame from './pages/MainFrame';
-import './App.css';
 
 
 class App extends Component {

@@ -41,7 +41,7 @@ class HNavbar extends Component {
 
     return (
       <div>
-        <Navbar color="dark" dark expand="md">
+        <Navbar color="primary" dark expand="md">
           <NavbarBrand tag={RRNavLink} to="/">PQI TOOLS</NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={navBarOpen} navbar>
@@ -68,14 +68,14 @@ class HNavbar extends Component {
               </NavItem>
               {!auth ?
                 // <NavItem>
-                <NavLink tag={RRNavLink} exact to="/login" className="login-link bg-primary text-white py-1 my-auto" >
+                <NavLink tag={RRNavLink} exact to="/login" className="login-link bg-success text-white py-1 my-auto" >
                   Login
                   </NavLink>
                 // </NavItem>
                 :
                 <UncontrolledDropdown nav inNavbar>
                   <DropdownToggle nav>
-                    <i className="fas fa-user-circle fa-lg text-white"></i>
+                    <i className="fas fa-user-circle fa-lg text-success"></i>
                   </DropdownToggle>
                   <DropdownMenu right>
                     <DropdownItem>

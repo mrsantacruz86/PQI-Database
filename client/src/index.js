@@ -1,5 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import './index.scss';
+import 'jquery';
+// Put any other imports below so that CSS from your
+// components takes precedence over default styles.
 import App from './App';
 import { Provider } from 'react-redux';
 import Store from './store';
@@ -7,10 +11,6 @@ import * as serviceWorker from './serviceWorker';
 import setAuthToken from "./utils/setAuthToken";
 import { LOGIN } from './actions/types';
 import decodeJWT from './utils/decodeJWT';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'jquery';
-// Put any other imports below so that CSS from your
-// components takes precedence over default styles.
 
 if (sessionStorage.jwToken) {
   setAuthToken(sessionStorage.jwToken)
