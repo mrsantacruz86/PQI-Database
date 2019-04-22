@@ -31,7 +31,10 @@ class HouseScoresChart extends Component {
 				<YAxis />
 				<Tooltip />
 				<Legend />
-				<Bar dataKey="Score" fill="#8884d8" >
+				<Bar dataKey="Household" fill="#007bff" >
+					<LabelList dataKey="label" position="top" />
+				</Bar>
+				<Bar dataKey="Maintenance" fill="#dc3545">
 					<LabelList dataKey="label" position="top" />
 				</Bar>
 			</BarChart>

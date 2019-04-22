@@ -52,6 +52,12 @@ export default connect(mapStateToProps, {})(HouseAuditPage);
 
 function chartData(arr) {
   let filtered = arr.filter(item => moment(item.date).isSameOrAfter("01/01/2019") && item.dept === "UAC");
-  let newArray = filtered.map(item => ({ House: item.house, label: percentage(item.avg, 0) + "%", Score: Number(percentage(item.avg, 0)) }));
+  let newArray = filtered.map(item => ({
+    House: item.house,
+    labelHousehold: percentage(item.avg, 0) + "%",
+    Household: Number(percentage(item.avg, 0)),
+    labelMaintenance: percentage(item.avgM, 0) + "%",
+    Maintenance: Number(percentage(item.avgM, 0))
+  }));
   return newArray
 } 
