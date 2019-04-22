@@ -6,6 +6,7 @@ import BarChart from '../../components/BarChart';
 import { Button, Form, FormGroup, Input, Label, FormText, Card, CardBody, CardTitle } from 'reactstrap';
 import './HouseAuditPage.css';
 import data from '../../components/DataTable/house-audits.json';
+import { percentage } from '../../utils/numbers';
 
 
 
@@ -23,7 +24,8 @@ class HouseAuditPage extends React.Component {
 
   render() {
     const { auth } = this.props.app;
-    console.log(filterByHouse(data));
+    const dataset = chartData(data);
+    console.log(dataset);
     return (
       <div>
         <Card>
@@ -31,7 +33,7 @@ class HouseAuditPage extends React.Component {
             <CardTitle><h5>House Audit</h5></CardTitle>
             <Button color="primary" className="mb-3 mr-1">New Audit</Button>
             <Button color="primary" className="mb-3 mr-1">Generate Report</Button>
-            <BarChart data={filterByHouse(data)} />
+            <BarChart data={dataset} />
             <DataTable></DataTable>
           </CardBody>
         </Card>
@@ -44,6 +46,12 @@ const mapStateToProps = state => ({ ...state });
 export default connect(mapStateToProps, {})(HouseAuditPage);
 
 //function to filter the data for one house
-function filterByHouse(arr) {
-  return arr.filter(item => moment(item.date).isSameOrAfter("01/01/2019") && item.dept === "UAC")
-}
+// function filterByHouse(arr) {
+//   return arr.filter(item => moment(item.date).isSameOrAfter("01/01/2019") && item.dept === "UAC")
+// }
+
+function chartData(arr) {
+  let filtered = arr.filter(item => moment(item.date).isSameOrAfter("01/01/2019") && item.dept === "UAC");
+  let newArray = filtered.map(item => ({ House: item.house, label: percentage(item.avg, 0) + "%", Score: Number(percentage(item.avg, 0)) }));
+  return newArray
+} 

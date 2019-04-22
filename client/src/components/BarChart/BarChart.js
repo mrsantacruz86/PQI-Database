@@ -1,8 +1,11 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import Chart from "chart.js";
+import {
+	BarChart, Bar, LabelList, XAxis, YAxis, CartesianGrid, Tooltip, Legend,
+} from 'recharts';
+import { percentage } from '../../utils/numbers';
 
-class BarChart extends Component {
+class HouseScoresChart extends Component {
 	chartRef = React.createRef();
 
 	labels = this.props.data.map(item => {
@@ -12,42 +15,32 @@ class BarChart extends Component {
 		return item.avg;
 	});
 
-	componentDidMount() {
-		const myChartRef = this.chartRef.current.getContext("2d");
-
-		new Chart(myChartRef, {
-			type: "bar",
-			data: {
-				//Bring in data
-				labels: this.labels,
-				datasets: [
-					{
-						label: "Scores",
-						data: this.values,
-						backgroundColor: 'rgba(255, 99, 132, 0.2)',
-						borderColor: 'rgba(255, 99, 132, 1)',
-						borderWidth: 1
-					}
-				]
-			},
-			options: {
-				//Customize chart options
-			}
-		});
-	}
 	render() {
+		const { data } = this.props;
 		return (
-			<div>
-				<canvas
-					id="myChart"
-					ref={this.chartRef}
-				/>
-			</div>
-		)
+			<BarChart
+				width={500}
+				height={300}
+				data={data}
+				margin={{
+					top: 20, right: 10, left: 10, bottom: 20,
+				}}
+			>
+				{/* <CartesianGrid strokeDasharray="3 3" /> */}
+				<XAxis dataKey="House" />
+				<YAxis />
+				<Tooltip />
+				<Legend />
+				<Bar dataKey="Score" fill="#8884d8" >
+					<LabelList dataKey="label" position="top" />
+				</Bar>
+			</BarChart>
+		);
 	}
 }
-BarChart.propTypes = {
+
+HouseScoresChart.propTypes = {
 	data: PropTypes.array
 }
 
-export default BarChart;
+export default HouseScoresChart;

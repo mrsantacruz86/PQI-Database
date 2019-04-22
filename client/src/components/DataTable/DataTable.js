@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Table } from 'reactstrap';
 import moment from 'moment';
+import { percentage } from '../../utils/numbers';
 import './DataTable.css';
 // @ts-ignore
 import data from './house-audits.json';
@@ -50,8 +51,8 @@ class DataTable extends Component {
               <td>House-{record.house}</td>
               <td>{record.dept}</td>
               <td>{record.auditor}</td>
-              <td>{Math.round(record.avg * 100)}%</td>
-              <td>{Math.round(record.avgM * 100)}%</td>
+              <td>{percentage(record.avg, 1)}%</td>
+              <td>{percentage(record.avgM, 1)}%</td>
             </tr>
           ))}
         </tbody>
