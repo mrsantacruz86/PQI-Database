@@ -5,12 +5,20 @@ import moment from "moment";
 import BarChart from '../../components/BarChart';
 import { Button, Form, FormGroup, Input, Label, FormText, Card, CardBody, CardTitle } from 'reactstrap';
 import './HouseAuditPage.css';
+// @ts-ignore
 import data from '../../components/DataTable/house-audits.json';
 import { percentage } from '../../utils/numbers';
 
 
 
 class HouseAuditPage extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      view: "table",
+      record: null
+    }
+  }
 
   handleInputChange = (e) => {
     e.preventDefault();
@@ -22,21 +30,28 @@ class HouseAuditPage extends React.Component {
     });
   };
 
+  handleNewAudit = (e) => {
+    e.preventDefault();
+    this.setState({
+      ...this.state,
+      view: "add"
+    });
+  }
+
   render() {
     const { auth } = this.props.app;
     const dataset = chartData(data);
     console.log(dataset);
     return (
       <div>
-        <Card>
-          <CardBody>
-            <CardTitle><h5>House Audit</h5></CardTitle>
-            <Button color="primary" className="mb-3 mr-1">New Audit</Button>
-            <Button color="primary" className="mb-3 mr-1">Generate Report</Button>
-            <BarChart data={dataset} />
-            <DataTable></DataTable>
-          </CardBody>
-        </Card>
+        <h1>House Audits</h1>
+        <div className="container-fluid">
+          {
+            this.state.view === "table" ?
+              (<AuditRecords dataset={dataset} handleNewAudit/>) :
+              <AuditDetails />
+          }
+        </div>
       </div>
     );
   }
@@ -60,4 +75,25 @@ function chartData(arr) {
     Maintenance: Number(percentage(item.avgM, 0))
   }));
   return newArray
-} 
+}
+
+const AuditRecords = (props) => (
+  <Card>
+    <CardBody>
+      <CardTitle><h3>House Audits</h3></CardTitle>
+      <Button color="primary" className="mb-3 mr-1" onClick={e => props.newAudit} >New Audit</Button>
+      <Button color="primary" className="mb-3 mr-1">Generate Report</Button>
+      <BarChart data={props.dataset} />
+      <DataTable></DataTable>
+    </CardBody>
+  </Card>
+);
+
+const AuditDetails = (props) => (
+  <Card>
+    <CardBody>
+      <CardTitle><h3>Audit Details</h3></CardTitle>
+
+    </CardBody>
+  </Card>
+);
