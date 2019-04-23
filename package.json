@@ -1,6 +1,6 @@
 {
   "name": "audit-tools-api",
-  "version": "1.0.0",
+  "version": "2.0.1",
   "description": "",
   "main": "server.js",
   "scripts": {
@@ -10,7 +10,7 @@
     "client": "cd client && yarn start",
     "seed": "cd seeds && node seeds.js",
     "install": "cd client && yarn install",
-    "upgrade": "cd client && yarn upgrade --latest",
+    "upgrade": "yarn upgrade --latest && cd client && yarn upgrade --latest",
     "build": "cd client && yarn build",
     "heroku-postbuild": "yarn build",
     "deploy": "git push heroku master"
