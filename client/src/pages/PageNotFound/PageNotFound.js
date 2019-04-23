@@ -12,8 +12,7 @@ class PageNotFound extends Component {
   render() {
     return (
       <React.Fragment>
-
-        <main className="container-fluid">
+        <main className="container">
           <div className="jumbotron">
             <h1>404: Page not Found :(</h1>
             <p>The page that you are looking for appeard to have been moved, deleted or does not exist. You can enter a valid URL or return Home.</p>

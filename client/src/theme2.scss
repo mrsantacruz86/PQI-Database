@@ -72,21 +72,23 @@ $nav-link-disabled-color:           $gray-600 !default !default;
 $nav-tabs-border-color:             $gray-200 !default;
 $nav-tabs-link-active-border-color: $success;
 
-  .nav-link.active,
-  .nav-item.show .nav-link {
-    border-bottom-color: $success;
-    border-bottom-width: .25rem;
-    border-bottom-style: solid;
-  }
+.nav-link.active,
+.nav-item.show .nav-link {
+  border-bottom-color: $success;
+  border-bottom-width: .25rem;
+  border-bottom-style: solid;
+}
 
 
 // Navbar
 
-// $navbar-padding-y:                  1rem !default;
-
 $navbar-dark-color:                 $white !default;
 $navbar-dark-hover-color:           $success !default;
 $navbar-padding-y:                  0;
+
+.fixed-nav-top{
+  margin-top: $nav-link-padding-y * 3.625;
+}
 
 // Pagination
 
@@ -124,3 +126,6 @@ $close-text-shadow:                 none !default;
 
 // Box Shaddow for components
 $enable-shadows: true;
+
+//Enables predefined gradients via background-image styles on various components.
+$enable-gradients: true;

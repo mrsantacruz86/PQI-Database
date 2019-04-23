@@ -41,7 +41,7 @@ class HNavbar extends Component {
 
     return (
       <div>
-        <Navbar color="primary" dark expand="md">
+        <Navbar color="primary" dark expand="md" className="fixed-top">
           <NavbarBrand tag={RRNavLink} to="/">PQI TOOLS</NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={navBarOpen} navbar>

@@ -45,8 +45,7 @@ class LoginPage extends React.Component {
       )
     };
     return (
-      // <React.Fragment>
-      <div className="container-fluid login-page">
+      <div className="login-page">
         <div className="user-icon mx-auto">
           <img src={`${process.env.PUBLIC_URL}/hhch-logo.svg`} alt="His House Children's Home Logo" />
         </div>
@@ -91,7 +90,6 @@ class LoginPage extends React.Component {
 
         </div>
       </div>
-      // </React.Fragment>
     );
   }
 }

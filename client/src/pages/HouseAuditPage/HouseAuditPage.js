@@ -44,14 +44,12 @@ class HouseAuditPage extends React.Component {
     console.log(dataset);
     return (
       <div>
-        <h1>House Audits</h1>
-        <div className="container-fluid">
-          {
-            this.state.view === "table" ?
-              (<AuditRecords dataset={dataset} handleNewAudit/>) :
-              <AuditDetails />
-          }
-        </div>
+        <h3 className="pt-3">House Audits</h3>
+        {
+          this.state.view === "table" ?
+            (<AuditRecords dataset={dataset} handleNewAudit />) :
+            <AuditDetails />
+        }
       </div>
     );
   }
@@ -80,7 +78,7 @@ function chartData(arr) {
 const AuditRecords = (props) => (
   <Card>
     <CardBody>
-      <CardTitle><h3>House Audits</h3></CardTitle>
+      <CardTitle><h5>House Audits</h5></CardTitle>
       <Button color="primary" className="mb-3 mr-1" onClick={e => props.newAudit} >New Audit</Button>
       <Button color="primary" className="mb-3 mr-1">Generate Report</Button>
       <BarChart data={props.dataset} />
@@ -92,7 +90,7 @@ const AuditRecords = (props) => (
 const AuditDetails = (props) => (
   <Card>
     <CardBody>
-      <CardTitle><h3>Audit Details</h3></CardTitle>
+      <CardTitle><h5>Audit Details</h5></CardTitle>
 
     </CardBody>
   </Card>

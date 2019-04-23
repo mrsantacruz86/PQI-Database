@@ -8,8 +8,9 @@ class MainFrame extends React.Component {
     return (
       <React.Fragment>
         <HNavbar />
-        {this.props.children}
-        {/* <h1>Main Frame</h1> */}
+        <div className="container-fluid fixed-nav-top">
+          {this.props.children}
+        </div>
       </React.Fragment>
     );
   }
