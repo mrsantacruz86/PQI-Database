@@ -1,10 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import './HouseAuditPage.css';
+import AuditDetails from "../../components/AuditDetails";
 import DataTable from "../../components/DataTable";
 import moment from "moment";
 import BarChart from '../../components/BarChart';
 import { Button, Form, FormGroup, Input, Label, FormText, Card, CardBody, CardTitle } from 'reactstrap';
-import './HouseAuditPage.css';
 // @ts-ignore
 import data from '../../components/DataTable/house-audits.json';
 import { percentage } from '../../utils/numbers';
@@ -20,21 +21,11 @@ class HouseAuditPage extends React.Component {
     }
   }
 
-  handleInputChange = (e) => {
-    e.preventDefault();
-    this.setState({
-      credentials: {
-        ...this.state.credentials,
-        [e.target.name]: e.target.value
-      }
-    });
-  };
-
   handleNewAudit = (e) => {
     e.preventDefault();
     this.setState({
       ...this.state,
-      view: "add"
+      view: "new"
     });
   }
 
@@ -47,7 +38,7 @@ class HouseAuditPage extends React.Component {
         <h3 className="pt-3">House Audits</h3>
         {
           this.state.view === "table" ?
-            (<AuditRecords dataset={dataset} handleNewAudit={e => this.handleNewAudit} />) :
+            (<AuditRecords dataset={dataset} handleNewAudit={this.handleNewAudit} />) :
             <AuditDetails />
         }
       </div>
@@ -79,19 +70,10 @@ const AuditRecords = (props) => (
   <Card>
     <CardBody>
       <CardTitle><h5>House Audits</h5></CardTitle>
-      <Button color="primary" className="mb-3 mr-1" onClick={e => props.newAudit} >New Audit</Button>
+      <Button color="primary" className="mb-3 mr-1" onClick={props.handleNewAudit} >New Audit</Button>
       <Button color="primary" className="mb-3 mr-1">Generate Report</Button>
       <BarChart data={props.dataset} />
       <DataTable></DataTable>
-    </CardBody>
-  </Card>
-);
-
-const AuditDetails = (props) => (
-  <Card>
-    <CardBody>
-      <CardTitle><h5>Audit Details</h5></CardTitle>
-
     </CardBody>
   </Card>
 );
