@@ -143,10 +143,6 @@ class RegisterForm extends Component {
   }
 }
 
-RegisterForm.propTypes = {
-  classes: PropTypes.object.isRequired,
-};
-
 const mapStateToProps = state => ({ ...state });
 
 export default connect(mapStateToProps, {

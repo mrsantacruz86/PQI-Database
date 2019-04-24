@@ -47,7 +47,7 @@ class HouseAuditPage extends React.Component {
         <h3 className="pt-3">House Audits</h3>
         {
           this.state.view === "table" ?
-            (<AuditRecords dataset={dataset} handleNewAudit />) :
+            (<AuditRecords dataset={dataset} handleNewAudit={e => this.handleNewAudit} />) :
             <AuditDetails />
         }
       </div>
