@@ -15,7 +15,7 @@ export default class AuditDetails extends Component {
         <Card>
           <CardBody>
             <CardTitle><h5>Audit Details</h5></CardTitle>
-            <AuditItem checkType="checkbox">Item</AuditItem>
+            <AuditItem checkType="checkbox" name="Item">Item</AuditItem>
           </CardBody>
         </Card>
       </div>
