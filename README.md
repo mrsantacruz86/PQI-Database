@@ -29,7 +29,7 @@ The back-end is listening for requests on [http://localhost:3001](http://localho
 
 In the project directory, you can run:
 
-### `yarn start`
+`yarn start`
 
 Runs the app in the development mode.<br>
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
@@ -37,12 +37,12 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.<br>
 You will also see any lint errors in the console.
 
-### `yarn test`
+`yarn test`
 
 Launches the test runner in the interactive watch mode.<br>
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `yarn build`
+`yarn build`
 
 Builds the app for production to the `build` folder.<br>
 It correctly bundles React in production mode and optimizes the build for the best performance.
@@ -50,11 +50,11 @@ It correctly bundles React in production mode and optimizes the build for the be
 The build is minified and the filenames include the hashes.<br>
 Your app is ready to be deployed!
 
-### `yarn install` or `yarn`
+`yarn install` or `yarn`
 
 Node checks both: `./client/package.json` and `./package.json` and install the dependencies specified in those config files.
 
-### `yarn upgrade`
+`yarn upgrade`
 
 Thi command will upgrade all the existent dependencies in client side and server side to their lates stable version. Use this feature with caution, some of the newest versions of the dependencies might have incompatibilities and make the app to crash. 
 
@@ -65,18 +65,35 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 This app has been configure to deploy to heroku.
 `heroku-cli` is required to perform this operation.
 
-### `heroku create "name-of-the-app"`
+`heroku create "name-of-the-app"`
 
 Type this line into your terminal to create a heroku app.
 
 Before deployment it is important that the database is created through `mlab`, to do this use the folowing command.
 
-### `heroku addons:create mongolab`
+`heroku addons:create mongolab`
 
 Finally you use the command:
-### `yarn deploy`
+
+`yarn deploy`
+
+
+## Settin up environment variables
+
+If you are deploying through heroku you must enable let heroku nows abouth your Jason Web Tokens secret key. Failing to prvide this key will cause the authentication of you app to stop working and cause a potential break of your app. You can set up your environment variables by creating a `.env`file in the root directory of the app, then setup the env vars this way
+```
+JWT_SECRET=your_jwt_secret_key
+PORT=3001
+```
+
+To check your environment variables in production you can type this command in the CLI:
+
+```heroku config```
+
+to setup the jwt key in production you can type this command in the CLI:
+
+```heroku config:set JWT_SECRET=your_jwt_secret_key```
 
 ## Learn More
 
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
