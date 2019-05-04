@@ -32,7 +32,6 @@ class HouseAuditPage extends React.Component {
   render() {
     const { auth } = this.props.app;
     const dataset = chartData(data);
-    console.log(dataset);
     return (
       <div>
         <h3 className="pt-3">House Audits</h3>
