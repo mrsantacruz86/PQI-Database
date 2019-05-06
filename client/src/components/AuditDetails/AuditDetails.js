@@ -3,7 +3,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { Card, CardBody, CardTitle, CardText, Label, Form, FormGroup, Input, Button, Col, Row } from 'reactstrap';
+import { Card, CardBody, CardTitle, CardText, Label, Form, FormGroup, Input, CustomInput, Button, Col, Row } from 'reactstrap';
 import AuditItem from "../AuditItem";
 import moment from 'moment';
 import "./AuditDetails.scss";
@@ -55,7 +55,7 @@ class AuditDetails extends Component {
                   <Col sm={2}>
                     <FormGroup>
                       <Label for="cottage">Cottage</Label>
-                      <Input
+                      <CustomInput
                         type="select"
                         id="cottage"
                         name="cottage"
@@ -65,13 +65,13 @@ class AuditDetails extends Component {
                         {houseList.map(h =>
                           <option>{h}</option>
                         )}
-                      </Input>
+                      </CustomInput>
                     </FormGroup>
                   </Col>
                   <Col sm={8}>
                     <FormGroup>
                       <Label for="auditor">Auditor</Label>
-                      <Input
+                      <CustomInput
                         type="select"
                         id="auditor"
                         name="auditor"
@@ -81,7 +81,7 @@ class AuditDetails extends Component {
                         {auditors.map(item =>
                           <option value={item.id}>{item.name}</option>
                         )}
-                      </Input>
+                      </CustomInput>
                     </FormGroup>
                   </Col>
                   <Col sm={2}>
@@ -94,11 +94,13 @@ class AuditDetails extends Component {
                 <FormGroup>
                   <Row>
                     {auditItems.map((item, index) =>
+                    <Col lg={3} md={6} sm={12}>
                       <AuditItem
                         key={index}
                         index={index}
                         item={item}
                       />
+                    </Col>
                     )}
                   </Row>
                 </FormGroup>

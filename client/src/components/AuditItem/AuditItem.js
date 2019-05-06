@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux';
-import { CustomInput, Button, Modal, ModalBody, Input, Label } from 'reactstrap';
+import { CustomInput, Button, Modal, ModalBody, Input, FormGroup } from 'reactstrap';
 import { handleItemChange, handleFindingChange } from '../../actions/houseAuditActions';
 import './AuditItem.scss';
 
@@ -32,7 +32,7 @@ class AuditItem extends Component {
 
   handleCancelEdit = e => {
     e.preventDefault();
-    this.setState( {
+    this.setState({
       modal: false
     });
   }
@@ -52,7 +52,7 @@ class AuditItem extends Component {
     const { index } = this.props.item;
     return (
       <div className="form-inline">
-        <Input
+        <CustomInput
           id={name}
           index={index}
           type="checkbox"
@@ -61,8 +61,6 @@ class AuditItem extends Component {
           checked={value}
           onChange={this.handleItemCheck}
         />
-        <Label for={name}>{label}</Label>
-        {/* eslint-disable-next-line*/}
         <a
           href="#"
           className={`mx-3 inline-icon text-secondary${findings === "" ? "" : " text-danger"}`}
@@ -77,19 +75,31 @@ class AuditItem extends Component {
           className="modal-dialog-centered"
         >
           <ModalBody className="bg-light">
-            <Input
-              type="textarea"
-              name="findings"
-              placeholder="Enter findings here..."
-              onChange={this.handleFindingChange}
-              value={findings} />
-            <Button color="primary"
-              size="sm"
+            <FormGroup>
+              <Input
+                type="textarea"
+                name="findings"
+                placeholder="Enter findings here..."
+                onChange={this.handleFindingChange}
+                value={findings}
+              />
+            </FormGroup>
+
+            <Button
+              color="primary"
+              className="mr-2"
+              // size="sm"
               onClick={this.toggleFindingModal}
             >
-              Do Something
+              <i class="far fa-save"></i> Save
             </Button>
-            <Button color="secondary" size="sm" onClick={this.toggleFindingModal}>Cancel</Button>
+            <Button
+              color="secondary"
+              // size="sm"
+              onClick={this.toggleFindingModal}
+            >
+              <i class="far fa-times-circle"></i> Cancel
+            </Button>
           </ModalBody>
         </Modal>
       </div>
