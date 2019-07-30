@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { NavLink as RRNavLink } from 'react-router-dom';
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
 import {
   Button,
   Collapse,
@@ -17,24 +17,23 @@ import {
 } from 'reactstrap';
 import { toggleUserMenu, logout } from '../../actions/appActions';
 
-import "./HNavbar.css";
+import './HNavbar.css';
 
 class HNavbar extends Component {
-
-  selected = (path) => {
+  selected = path => {
     if (path !== window.location.pathname) {
-      return "";
+      return '';
     } else {
-      return " active";
+      return ' active';
     }
-  }
+  };
   toggle = () => {
     this.props.toggleUserMenu();
-  }
-  logout = (e) => {
+  };
+  logout = e => {
     e.preventDefault();
     this.props.logout();
-  }
+  };
 
   render() {
     const { auth, userMenuOpen: navBarOpen } = this.props.app;
@@ -42,7 +41,9 @@ class HNavbar extends Component {
     return (
       <div>
         <Navbar color="primary" dark expand="md" className="fixed-top">
-          <NavbarBrand tag={RRNavLink} to="/">PQI TOOLS</NavbarBrand>
+          <NavbarBrand tag={RRNavLink} to="/">
+            PQI TOOLS
+          </NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={navBarOpen} navbar>
             <Nav className="ml-auto d-inline-flex" navbar>
@@ -57,7 +58,7 @@ class HNavbar extends Component {
                 </NavLink>
               </NavItem>
               <NavItem>
-                <NavLink tag={RRNavLink} exact to="/house-audits" activeClassName="active">
+                <NavLink tag={RRNavLink} exact to="/houseaudits" activeClassName="active">
                   House Audits
                 </NavLink>
               </NavItem>
@@ -66,28 +67,29 @@ class HNavbar extends Component {
                   Vehicle Audits
                 </NavLink>
               </NavItem>
-              {!auth ?
+              {!auth ? (
                 // <NavItem>
-                <NavLink tag={RRNavLink} exact to="/login" className="login-link bg-success text-white py-1 my-auto" >
+                <NavLink
+                  tag={RRNavLink}
+                  exact
+                  to="/login"
+                  className="login-link bg-success text-white py-1 my-auto"
+                >
                   Login
-                  </NavLink>
+                </NavLink>
+              ) : (
                 // </NavItem>
-                :
                 <UncontrolledDropdown nav inNavbar>
                   <DropdownToggle nav>
-                    <i className="fas fa-user-circle fa-lg text-success"></i>
+                    <i className="fas fa-user-circle fa-lg text-success" />
                   </DropdownToggle>
                   <DropdownMenu right>
-                    <DropdownItem>
-                      Account
-                    </DropdownItem>
+                    <DropdownItem>Account</DropdownItem>
                     {/* <DropdownItem divider /> */}
-                    <DropdownItem onClick={e => this.logout(e)}>
-                      Sign Out
-                  </DropdownItem>
+                    <DropdownItem onClick={e => this.logout(e)}>Sign Out</DropdownItem>
                   </DropdownMenu>
                 </UncontrolledDropdown>
-              }
+              )}
             </Nav>
           </Collapse>
         </Navbar>
@@ -96,9 +98,12 @@ class HNavbar extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({ ...state });
+const mapStateToProps = state => ({ ...state });
 
-export default connect(mapStateToProps, {
-  toggleUserMenu,
-  logout
-})(HNavbar);
+export default connect(
+  mapStateToProps,
+  {
+    toggleUserMenu,
+    logout
+  }
+)(HNavbar);

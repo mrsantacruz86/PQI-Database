@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.scss';
-import App from './App';
+import App from './components/App';
 import { Provider } from 'react-redux';
 import setAuthToken from './utils/setAuthToken';
 import { LOGIN } from './actions/types';

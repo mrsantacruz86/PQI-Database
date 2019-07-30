@@ -3,11 +3,8 @@ import React, { Component } from 'react';
 // import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { login, logout } from '../actions/appActions';
-import MainFrame from './MainFrame';
-
 
 class LandingPage extends Component {
-
   render() {
     return (
       <div>
@@ -23,7 +20,9 @@ class LandingPage extends Component {
 const mapStateToProps = state => ({ ...state });
 
 export default connect(
-  mapStateToProps, {
+  mapStateToProps,
+  {
     login,
-    logout,
-  })(LandingPage);
+    logout
+  }
+)(LandingPage);
