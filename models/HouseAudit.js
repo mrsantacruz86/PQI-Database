@@ -4,8 +4,8 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const ItemSchema = new Schema({
-  tag: {
-    type: Number,
+  name: {
+    type: String,
     required: true
   },
   label: {
@@ -45,15 +45,7 @@ const HouseAuditSchema = new Schema({
     default: Date.now()
   },
 
-  medication: ItemSchema,
-  documentation: ItemSchema,
-  ss: ItemSchema,
-  hc: ItemSchema,
-  organization: ItemSchema,
-  supplies: ItemSchema,
-  pr: ItemSchema,
-  equipment: ItemSchema,
-
+  items: [ItemSchema],
   score: {
     type: Number,
     required: true

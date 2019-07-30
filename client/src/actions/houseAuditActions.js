@@ -1,22 +1,22 @@
 import {
-  GET_HOUSE_AUDIT,
-  SAVE_HOUSE_AUDIT,
+  FETCH_HOUSE_AUDITS,
+  // FETCH_HOUSE_AUDIT,
+  // CREATE_HOUSE_AUDIT,
+  // DELETE_HOUSE_AUDIT,
+  // EDIT_HOUSE_AUDIT,
   HOUSE_AUDIT_FIELD_CHANGE,
   HOUSE_AUDIT_FINDING_CHANGE,
-  HOUSE_AUDIT_ITEM_CHANGE,
-  // GET_HOUSE_AUDIT_TEMPLATE,
-  // DELETE_HOUSE_AUDIT,
-  // UPDATE_HOUSE_AUDIT
+  HOUSE_AUDIT_ITEM_CHANGE
 } from './types';
 import axios from 'axios';
-import { loading, stopLoading } from "./appActions";
+import { loading, stopLoading } from './appActions';
 import moment from 'moment';
 
 // Create House Audit
-export const saveHouseAudit = (audit) => dispatch => {
+export const saveHouseAudit = audit => dispatch => {
   dispatch(loading());
   axios
-    .post("/api/house-audits", audit)
+    .post('/api/houseaudits', audit)
     .then(res => {
       dispatch({
         type: SAVE_HOUSE_AUDIT
@@ -26,58 +26,42 @@ export const saveHouseAudit = (audit) => dispatch => {
     .catch(err => console.log(err));
 };
 
-// Get House Audit Template
-export const getHouseAudit = (id) => dispatch => {
-  dispatch(loading());
-  if (!id) {
-    axios.get("/api/house-audits-items")
-      .then(res => {
-        const cottageAudit = {
-          cottage: "",
-          auditor: "",
-          date: moment().format('YYYY-MM-DD'),
-          auditItems: res.data
-        };
-
-        dispatch({
-          type: GET_HOUSE_AUDIT,
-          payload: cottageAudit
-        });
-        dispatch(stopLoading());
-      })
-      .catch(err => console.log(`Got issues loading audit items\n error: ${err}`));
-  }
+export const fetchHouseAudits = () => async dispatch => {
+  const response = await axios.get('/api/houseaudits');
+  dispatch({ type: FETCH_HOUSE_AUDITS, payload: response.data });
 };
 
-// OnChange event for audit input components
-export const handleInputChange = (name, value) => {
-  return {
-    type: HOUSE_AUDIT_FIELD_CHANGE,
-    payload: {
-      name: name,
-      value: value
-    }
-  }
-};
+// export const fetchStream = id => async dispatch => {
+//   const response = await streams.get(`/streams/${id}`);
+//   dispatch({ type: FETCH_STREAM, payload: response.data });
+// };
 
-// OnChange event for audit Items
-export const handleItemChange = (index, value) => {
-  return {
-    type: HOUSE_AUDIT_ITEM_CHANGE,
-    payload: {
-      index: index,
-      value: value
-    }
-  }
-};
+// ----------------------------------------------------------------------------
+// export const createStream = formValues => async (dispatch, getState) => {
+//   const { userId } = getState().auth;
+//   const response = await streams.post("/streams", { ...formValues, userId });
+//   dispatch({ type: CREATE_STREAM, payload: response.data });
+//   history.push("/");
+// };
 
-// OnChange event for findings
-export const handleFindingChange = (index, findings) => {
-  return {
-    type: HOUSE_AUDIT_FINDING_CHANGE,
-    payload: {
-      index: index,
-      findings: findings
-    }
-  }
-};
+// export const fetchStreams = () => async dispatch => {
+//   const response = await streams.get("/streams");
+//   dispatch({ type: FETCH_STREAMS, payload: response.data });
+// };
+
+// export const fetchStream = id => async dispatch => {
+//   const response = await streams.get(`/streams/${id}`);
+//   dispatch({ type: FETCH_STREAM, payload: response.data });
+// };
+
+// export const editStream = (id, formValues) => async dispatch => {
+//   const response = await streams.patch(`/streams/${id}`, formValues);
+//   dispatch({ type: EDIT_STREAM, payload: response.data });
+//   history.push("/");
+// };
+
+// export const deleteStream = id => async dispatch => {
+//   await streams.delete(`/streams/${id}`);
+//   dispatch({ type: DELETE_STREAM, payload: id });
+//   history.push("/");
+// };

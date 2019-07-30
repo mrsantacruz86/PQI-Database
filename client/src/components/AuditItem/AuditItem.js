@@ -1,8 +1,8 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { CustomInput, Button, Modal, ModalBody, Input, FormGroup } from 'reactstrap';
-import { handleItemChange, handleFindingChange } from '../../actions/houseAuditActions';
+// import { handleItemChange, handleFindingChange } from '../../actions/houseAuditActions';
 import './AuditItem.scss';
 
 class AuditItem extends Component {
@@ -10,43 +10,43 @@ class AuditItem extends Component {
     super(props);
     this.state = {
       [this.props.name]: this.props.value,
-      finding: "",
+      finding: '',
       modal: false
-    }
+    };
   }
   static propTypes = {
-    item: PropTypes.object.isRequired,
-  }
+    item: PropTypes.object.isRequired
+  };
 
   toggleFindingModal = e => {
     e.preventDefault();
     this.setState(prevState => ({
       modal: !prevState.modal
     }));
-  }
-  handleFindingChange = (e) => {
-    e.preventDefault();
-    const { index } = this.props;
-    this.props.handleFindingChange(index, e.target.value);
-  }
+  };
+  // handleFindingChange = (e) => {
+  //   e.preventDefault();
+  //   const { index } = this.props;
+  //   this.props.handleFindingChange(index, e.target.value);
+  // }
 
   handleCancelEdit = e => {
     e.preventDefault();
     this.setState({
       modal: false
     });
-  }
+  };
 
   handleSaveFinding = e => {
     e.preventDefault();
     this.setState({
       modal: false
     });
-  }
-  handleItemCheck = () => {
-    const { index, item } = this.props;
-    this.props.handleItemChange(index, item.value);
-  }
+  };
+  // handleItemCheck = () => {
+  //   const { index, item } = this.props;
+  //   this.props.handleItemChange(index, item.value);
+  // };
   render() {
     const { name, label, findings, value } = this.props.item;
     const { index } = this.props.item;
@@ -59,15 +59,14 @@ class AuditItem extends Component {
           name={name}
           label={label}
           checked={value}
-          onChange={this.handleItemCheck}
+          // onChange={this.handleItemCheck}
         />
         <a
           href="#"
-          className={`mx-3 inline-icon text-secondary${findings === "" ? "" : " text-danger"}`}
+          className={`mx-3 inline-icon text-secondary${findings === '' ? '' : ' text-danger'}`}
           onClick={this.toggleFindingModal}
-
         >
-          <i className="fas fa-comment-dots"></i>
+          <i className="fas fa-comment-dots" />
         </a>
         <Modal
           isOpen={this.state.modal}
@@ -91,14 +90,14 @@ class AuditItem extends Component {
               // size="sm"
               onClick={this.toggleFindingModal}
             >
-              <i class="far fa-save"></i> Save
+              <i class="far fa-save" /> Save
             </Button>
             <Button
               color="secondary"
               // size="sm"
               onClick={this.toggleFindingModal}
             >
-              <i class="far fa-times-circle"></i> Cancel
+              <i class="far fa-times-circle" /> Cancel
             </Button>
           </ModalBody>
         </Modal>
@@ -107,10 +106,12 @@ class AuditItem extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({ ...state });
+const mapStateToProps = state => ({ ...state });
 
-export default connect(mapStateToProps, {
-  handleItemChange,
-  handleFindingChange
-})(AuditItem);
-
+export default connect(
+  mapStateToProps,
+  {
+    handleItemChange,
+    handleFindingChange
+  }
+)(AuditItem);

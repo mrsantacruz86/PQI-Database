@@ -1,37 +1,31 @@
+import _ from 'lodash';
 import {
-  GET_HOUSE_LIST,
-  GET_HOUSE_AUDIT,
-  SAVE_HOUSE_AUDIT,
-  // GET_HOUSE_AUDIT_TEMPLATE
-  // UPDATE_HOUSE_AUDIT,
-  // DELETE_HOUSE_AUDIT
+  FETCH_HOUSE_AUDITS,
+  // FETCH_HOUSE_AUDIT,
+  // CREATE_HOUSE_AUDIT,
+  // DELETE_HOUSE_AUDIT,
+  // EDIT_HOUSE_AUDIT,
   HOUSE_AUDIT_FIELD_CHANGE,
   HOUSE_AUDIT_ITEM_CHANGE,
-  HOUSE_AUDIT_FINDING_CHANGE,
+  HOUSE_AUDIT_FINDING_CHANGE
 } from '../actions/types';
 // @ts-ignore
-import items from '../utils/HouseAuditItems.json';
+// import items from '../utils/HouseAuditItems.json';
 import update from 'immutability-helper';
 
-const initialState = {
-  cottage: "",
-  auditor: "",
-  date: "",
-  auditItems: [...items],
-};
+// const initialState = {
+//   cottage: '',
+//   auditor: '',
+//   date: '',
+//   auditItems: [...items]
+// };
 
-export default (state = initialState, action) => {
+export default (state = {}, action) => {
   switch (action.type) {
-
-    case GET_HOUSE_AUDIT:
+    case FETCH_HOUSE_AUDITS:
       return {
         ...state,
-        ...action.payload
-      };
-
-    case SAVE_HOUSE_AUDIT:
-      return {
-        ...state,
+        ..._.mapKeys(action.payload, '_id')
       };
 
     case HOUSE_AUDIT_FIELD_CHANGE:

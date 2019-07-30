@@ -2,125 +2,127 @@
   {
     "house": "35",
     "auditor": "Nelson Diaz",
-    "medication": {
-      "tag": 1,
-      "label": "Medication",
-      "value": 20,
-      "pass": true,
-      "finding": []
-    },
-    "documentation": {
-      "tag": 2,
-      "label": "Documentation",
-      "value": 10,
-      "pass": true,
-      "finding": []
-    },
-    "ss": {
-      "tag": 3,
-      "label": "Safety and Security",
-      "value": 20,
-      "pass": true,
-      "finding": []
-    },
-    "hc": {
-      "tag": 4,
-      "label": "Health and Cleanliness",
-      "value": 20,
-      "pass": true,
-      "finding": []
-    },
-    "organization": {
-      "tag": 5,
-      "label": "Organization",
-      "value": 10,
-      "pass": true,
-      "finding": []
-    },
-    "supplies": {
-      "tag": 1,
-      "label": "Supplies and Storage",
-      "value": 5,
-      "pass": true,
-      "finding": []
-    },
-    "pr": {
-      "tag": 1,
-      "label": "Program Requirements",
-      "value": 10,
-      "pass": true,
-      "finding": []
-    },
-    "equipment": {
-      "tag": 1,
-      "label": "Furniture and Equipment",
-      "value": 5,
-      "pass": true,
-      "finding": []
-    },
-
+    "items": [
+      {
+        "name": "medication",
+        "label": "Medication",
+        "value": 20,
+        "pass": true,
+        "finding": []
+      },
+      {
+        "name": "documentation",
+        "label": "Documentation",
+        "value": 10,
+        "pass": true,
+        "finding": []
+      },
+      {
+        "name": "ss",
+        "label": "Safety and Security",
+        "value": 20,
+        "pass": true,
+        "finding": []
+      },
+      {
+        "name": "hc",
+        "label": "Health and Cleanliness",
+        "value": 20,
+        "pass": true,
+        "finding": []
+      },
+      {
+        "name": "organization",
+        "label": "Organization",
+        "value": 10,
+        "pass": true,
+        "finding": []
+      },
+      {
+        "name": "supplies",
+        "label": "Supplies and Storage",
+        "value": 5,
+        "pass": true,
+        "finding": []
+      },
+      {
+        "name": "pr",
+        "label": "Program Requirements",
+        "value": 10,
+        "pass": true,
+        "finding": []
+      },
+      {
+        "name": "equipment",
+        "label": "Furniture and Equipment",
+        "value": 5,
+        "pass": true,
+        "finding": []
+      }
+    ],
     "score": 100
   },
   {
-    "house": "33",
-    "auditor": "Paul Miret",
-    "medication": {
-      "tag": 1,
-      "label": "Medication",
-      "value": 20,
-      "pass": true,
-      "finding": []
-    },
-    "documentation": {
-      "tag": 2,
-      "label": "Documentation",
-      "value": 10,
-      "pass": false,
-      "finding": ["Missing Logbook"]
-    },
-    "ss": {
-      "tag": 3,
-      "label": "Safety and Security",
-      "value": 20,
-      "pass": true,
-      "finding": []
-    },
-    "hc": {
-      "tag": 4,
-      "label": "Health and Cleanliness",
-      "value": 20,
-      "pass": false,
-      "finding": ["Kitchen needs to be cleaned"]
-    },
-    "organization": {
-      "tag": 5,
-      "label": "Organization",
-      "value": 10,
-      "pass": true,
-      "finding": []
-    },
-    "supplies": {
-      "tag": 1,
-      "label": "Supplies and Storage",
-      "value": 5,
-      "pass": true,
-      "finding": []
-    },
-    "pr": {
-      "tag": 1,
-      "label": "Program Requirements",
-      "value": 10,
-      "pass": true,
-      "finding": []
-    },
-    "equipment": {
-      "tag": 1,
-      "label": "Furniture and Equipment",
-      "value": 5,
-      "pass": true,
-      "finding": []
-    },
-
+    "house": "30",
+    "auditor": "Nelson Diaz",
+    "items": [
+      {
+        "name": "medication",
+        "label": "Medication",
+        "value": 20,
+        "pass": false,
+        "finding": ["Missing signature in medication log."]
+      },
+      {
+        "name": "documentation",
+        "label": "Documentation",
+        "value": 10,
+        "pass": true,
+        "finding": []
+      },
+      {
+        "name": "ss",
+        "label": "Safety and Security",
+        "value": 20,
+        "pass": true,
+        "finding": []
+      },
+      {
+        "name": "hc",
+        "label": "Health and Cleanliness",
+        "value": 20,
+        "pass": true,
+        "finding": []
+      },
+      {
+        "name": "organization",
+        "label": "Organization",
+        "value": 10,
+        "pass": true,
+        "finding": []
+      },
+      {
+        "name": "supplies",
+        "label": "Supplies and Storage",
+        "value": 5,
+        "pass": false,
+        "finding": ["Over ordering", "Not enough toilet paper."]
+      },
+      {
+        "name": "pr",
+        "label": "Program Requirements",
+        "value": 10,
+        "pass": false,
+        "finding": ["Missing Posters", "PREA Phone does not work"]
+      },
+      {
+        "name": "equipment",
+        "label": "Furniture and Equipment",
+        "value": 5,
+        "pass": true,
+        "finding": []
+      }
+    ],
     "score": 100
   }
 ]
