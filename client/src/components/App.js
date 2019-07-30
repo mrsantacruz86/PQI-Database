@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Router, Route, Switch } from 'react-router-dom';
-import LandingPage from '../pages/LandingPage';
+import Home from './Home';
 import LoginPage from '../pages/LoginPage/LoginPage';
 import SignUpPage from '../pages/SignUpPage';
 import requireAuth from '../utils/requireAuth';
@@ -22,7 +22,7 @@ class App extends Component {
         <HNavbar />
         <div className="container-fluid fixed-nav-top">
           <Switch>
-            <Route exact path="/" component={LandingPage} />
+            <Route exact path="/" component={Home} />
             <Route path="/login" component={LoginPage} />
             <Route path="/register" component={SignUpPage} />
             {/* House audit Routes */}

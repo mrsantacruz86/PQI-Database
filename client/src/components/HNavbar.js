@@ -15,9 +15,7 @@ import {
   DropdownMenu,
   DropdownItem
 } from 'reactstrap';
-import { toggleUserMenu, logout } from '../../actions/appActions';
-
-import './HNavbar.css';
+import { toggleUserMenu, logout } from '../actions/appActions';
 
 class HNavbar extends Component {
   selected = path => {

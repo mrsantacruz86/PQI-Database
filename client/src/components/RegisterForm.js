@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 // import { Field, reduxForm } from 'redux-form';
-import { register } from '../../actions/appActions';
+import { register } from '../actions/appActions';
 import './RegisterForm.css';
 
 //Validation
@@ -30,37 +30,36 @@ import './RegisterForm.css';
 //   return errors
 // };
 
-
 class RegisterForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
       user: {
-        firstName: "",
-        lastName: "",
-        email: "",
-        username: "",
-        password: ""
+        firstName: '',
+        lastName: '',
+        email: '',
+        username: '',
+        password: ''
       }
     };
-  };
+  }
 
-  handleSubmit = (e) => {
+  handleSubmit = e => {
     e.preventDefault();
     console.log(this.state.user);
     this.props.register(this.state.user);
     this.setState({
       user: {
-        firstName: "",
-        lastName: "",
-        email: "",
-        username: "",
-        password: ""
+        firstName: '',
+        lastName: '',
+        email: '',
+        username: '',
+        password: ''
       }
-    })
+    });
   };
 
-  handleInputChange = (e) => {
+  handleInputChange = e => {
     e.preventDefault();
     this.setState({
       user: {
@@ -72,60 +71,69 @@ class RegisterForm extends Component {
 
   render() {
     return (
-      <div >
+      <div>
         <div className="user-icon text-primary">
-          <i className="fas fa-user-circle"></i>
+          <i className="fas fa-user-circle" />
         </div>
         <h2>Sign in</h2>
 
         <form onSubmit={this.handleSubmit}>
           <div className="form-group">
             <label for="firstName">First Name</label>
-            <input type="text"
+            <input
+              type="text"
               className="form-control"
               id="firstName"
               placeholder="First Name"
               name="firstName"
               onChange={this.handleInputChange}
-              value={this.state.user.firstName} />
+              value={this.state.user.firstName}
+            />
           </div>
 
           <div className="form-group">
             <label for="lastName">Last Name</label>
-            <input type="text"
+            <input
+              type="text"
               className="form-control"
               id="lastName"
               placeholder="Last Name"
               name="lastName"
               onChange={this.handleInputChange}
-              value={this.state.user.lastName} />
+              value={this.state.user.lastName}
+            />
           </div>
 
           <div className="form-group">
             <label for="email">Email</label>
-            <input type="text"
+            <input
+              type="text"
               className="form-control"
               id="email"
               placeholder="Email"
               name="email"
               onChange={this.handleInputChange}
-              value={this.state.user.email} />
+              value={this.state.user.email}
+            />
           </div>
 
           <div className="form-group">
             <label for="username">Username or email</label>
-            <input type="text"
+            <input
+              type="text"
               className="form-control"
               id="username"
               placeholder="Username"
               name="username"
               onChange={this.handleInputChange}
-              value={this.state.user.username} />
+              value={this.state.user.username}
+            />
           </div>
 
           <div className="form-group">
             <label for="password">Password</label>
-            <input type="password"
+            <input
+              type="password"
               className="form-control"
               id="password"
               placeholder="Password"
@@ -135,16 +143,20 @@ class RegisterForm extends Component {
             />
           </div>
 
-          <button type="submit" className="btn btn-primary">Sign Up</button>
+          <button type="submit" className="btn btn-primary">
+            Sign Up
+          </button>
         </form>
       </div>
-
     );
   }
 }
 
 const mapStateToProps = state => ({ ...state });
 
-export default connect(mapStateToProps, {
-  register
-})(RegisterForm);
+export default connect(
+  mapStateToProps,
+  {
+    register
+  }
+)(RegisterForm);
