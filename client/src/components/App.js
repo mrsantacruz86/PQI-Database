@@ -1,18 +1,18 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import LandingPage from './pages/LandingPage';
-import LoginPage from './pages/LoginPage/LoginPage';
-import SignUpPage from './pages/SignUpPage';
-import requireAuth from './utils/requireAuth';
-import PageNotFound from './pages/PageNotFound';
+import LandingPage from '../pages/LandingPage';
+import LoginPage from '../pages/LoginPage/LoginPage';
+import SignUpPage from '../pages/SignUpPage';
+import requireAuth from '../utils/requireAuth';
+import PageNotFound from '../pages/PageNotFound';
 import {
   HouseAuditsList,
   HouseAuditShow,
   HouseAuditCreate,
   HouseAuditEdit,
   HouseAuditDelete
-} from './components/HouseAudits';
-import MainFrame from './pages/MainFrame';
+} from './HouseAudits';
+import MainFrame from '../pages/MainFrame';
 
 class App extends Component {
   render() {
