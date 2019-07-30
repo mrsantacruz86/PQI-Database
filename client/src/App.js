@@ -1,49 +1,58 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Switch as RouterSwitch } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import LandingPage from './pages/LandingPage';
 import LoginPage from './pages/LoginPage/LoginPage';
 import SignUpPage from './pages/SignUpPage';
 import requireAuth from './utils/requireAuth';
 import PageNotFound from './pages/PageNotFound';
-import HouseAuditPage from './pages/HouseAuditPage';
+import {
+  HouseAuditsList,
+  HouseAuditShow,
+  HouseAuditCreate,
+  HouseAuditEdit,
+  HouseAuditDelete
+} from './components/HouseAudits';
 import MainFrame from './pages/MainFrame';
 
-
 class App extends Component {
-
   render() {
-
     return (
-      <Router>
+      <BrowserRouter>
         <MainFrame>
-          <RouterSwitch>
+          <Switch>
             <Route exact path="/" component={LandingPage} />
             <Route path="/login" component={LoginPage} />
             <Route path="/register" component={SignUpPage} />
-            <Route exact path="/house-audits" component={requireAuth(HouseAuditPage)} />
+            {/* House audit Routes */}
+            <Route exact path="/houseaudits" component={requireAuth(HouseAuditsList)} />
+            <Route exact path="/houseaudits/new" component={requireAuth(HouseAuditCreate)} />
+            <Route exact path="/houseaudits/edit/:id" component={requireAuth(HouseAuditEdit)} />
+            <Route exact path="/houseaudits/delete/:id" component={requireAuth(HouseAuditDelete)} />
+            {/* this should be always the last route so it does not interfere with the /new */}
+            <Route exact path="/houseaudits/:id" component={requireAuth(HouseAuditShow)} />
+
             <Route exact path="/dashboard" component={Dashboard} />
-            <Route exact path="/public" component={Public} />
-            <Route exact path="/car-audits" component={CarAudits} />
-            {/* <Route path="/house-audits/new" component={NewHouseAudit} /> */}
+            {/* <Route exact path="/public" component={Public} /> */}
+            {/* <Route exact path="/car-audits" component={CarAudits} /> */}
             <Route component={PageNotFound} />
-          </RouterSwitch>
+          </Switch>
         </MainFrame>
-      </Router>
+      </BrowserRouter>
     );
   }
 }
 
 const Public = () => {
-  return <h3>Public</h3>
-}
+  return <h3>Public</h3>;
+};
 const Dashboard = () => {
-  return <h3>Dashboard</h3>
-}
+  return <h3>Dashboard</h3>;
+};
 // const HouseAudits = () => {
 //   return <h3>House Audits</h3>
 // }
 const CarAudits = () => {
-  return <h3>Car Audits</h3>
-}
+  return <h3>Car Audits</h3>;
+};
 
 export default App;
