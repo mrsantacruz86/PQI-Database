@@ -12,14 +12,10 @@ const ItemSchema = new Schema({
     type: String,
     required: true
   },
-  value: {
+  score: {
     type: Number,
-    max: 100,
+    max: 20,
     min: 1,
-    required: true
-  },
-  pass: {
-    type: Boolean,
     required: true
   },
   finding: {
@@ -45,7 +41,7 @@ const HouseAuditSchema = new Schema({
     default: Date.now()
   },
 
-  items: [ItemSchema],
+  items: { ItemSchema },
   score: {
     type: Number,
     required: true

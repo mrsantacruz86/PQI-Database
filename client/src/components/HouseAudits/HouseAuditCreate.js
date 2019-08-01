@@ -2,7 +2,6 @@ import React from 'react';
 import { Form, Field } from 'react-final-form';
 import moment from 'moment';
 import arrayMutators from 'final-form-arrays';
-import { FieldArray } from 'react-final-form-arrays';
 import HouseAuditItem from './HouseAuditItem';
 
 const houses = [
@@ -139,20 +138,15 @@ const HouseAuditCreate = () => {
             </div>
 
             <h4>Audit Items</h4>
-
-            <FieldArray name="items">
-              {({ fields }) =>
-                fields.map((name, index) => (
-                  <HouseAuditItem
-                    itemLabel="Medication"
-                    itemName={`${name}.medication`}
-                    itemScores={['20', '10', '0']}
-                    itemMaxScore="20"
-                    push={push}
-                  />
-                ))
-              }
-            </FieldArray>
+            {auditItems.map((item, index) => (
+              <HouseAuditItem
+                itemLabel={item.label}
+                itemName={`items.${item.name}`}
+                itemScores={item.scores.map(score => score.toString())}
+                itemMaxScore={item.max}
+                push={push}
+              />
+            ))}
 
             <div className="buttons">
               <button type="submit" disabled={submitting || pristine}>
