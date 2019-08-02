@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form, Field } from 'react-final-form';
+import { Field } from 'react-final-form';
 import { FieldArray } from 'react-final-form-arrays';
 
 const HouseAuditItem = props => {
@@ -7,8 +7,8 @@ const HouseAuditItem = props => {
   return (
     <div className="form-group">
       <label>{`${itemLabel} (max ${itemMaxScore}%)`}</label>
-      {itemScores.map(score => (
-        <label>
+      {itemScores.map((score, index) => (
+        <label key={index}>
           <Field
             name={`${itemName}.score`}
             component="input"
@@ -22,7 +22,7 @@ const HouseAuditItem = props => {
       ))}
 
       <button
-        classname="btn btn-secondary"
+        className="btn btn-secondary"
         type="button"
         onClick={() => push(`${itemName}.findings`, undefined)}
       >
@@ -47,7 +47,7 @@ const HouseAuditItem = props => {
                   className="btn btn-outline-danger"
                   type="button"
                 >
-                  <i class="fas fa-trash-alt" />
+                  <i className="fas fa-trash-alt" />
                 </button>
               </div>
             </div>

@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { NavLink as RRNavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import {
-  Button,
   Collapse,
   Navbar,
   NavbarToggler,
@@ -65,29 +64,23 @@ class HNavbar extends Component {
                   Vehicle Audits
                 </NavLink>
               </NavItem>
-              {!auth ? (
-                // <NavItem>
-                <NavLink
-                  tag={RRNavLink}
-                  exact
-                  to="/login"
-                  className="login-link bg-success text-white py-1 my-auto"
-                >
-                  Login
-                </NavLink>
-              ) : (
-                // </NavItem>
-                <UncontrolledDropdown nav inNavbar>
-                  <DropdownToggle nav>
-                    <i className="fas fa-user-circle fa-lg text-success" />
-                  </DropdownToggle>
-                  <DropdownMenu right>
-                    <DropdownItem>Account</DropdownItem>
-                    {/* <DropdownItem divider /> */}
-                    <DropdownItem onClick={e => this.logout(e)}>Sign Out</DropdownItem>
-                  </DropdownMenu>
-                </UncontrolledDropdown>
-              )}
+              <NavItem>
+                {!auth ? (
+                  <NavLink tag={RRNavLink} exact to="/login">
+                    <div className="btn btn-outline-light btn-sm">Login</div>
+                  </NavLink>
+                ) : (
+                  <UncontrolledDropdown nav inNavbar>
+                    <DropdownToggle nav>
+                      <i className="fas fa-user-circle fa-lg" />
+                    </DropdownToggle>
+                    <DropdownMenu right>
+                      <DropdownItem>Account</DropdownItem>
+                      <DropdownItem onClick={e => this.logout(e)}>Sign Out</DropdownItem>
+                    </DropdownMenu>
+                  </UncontrolledDropdown>
+                )}
+              </NavItem>
             </Nav>
           </Collapse>
         </Navbar>

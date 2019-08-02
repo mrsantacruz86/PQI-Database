@@ -1,53 +1,38 @@
 import {
   FETCH_HOUSE_AUDITS,
   // FETCH_HOUSE_AUDIT,
-  CREATE_HOUSE_AUDIT,
+  CREATE_HOUSE_AUDIT
   // DELETE_HOUSE_AUDIT,
   // EDIT_HOUSE_AUDIT,
-  HOUSE_AUDIT_FIELD_CHANGE,
-  HOUSE_AUDIT_FINDING_CHANGE,
-  HOUSE_AUDIT_ITEM_CHANGE
 } from './types';
-import axios from 'axios';
-import { loading, stopLoading } from './appActions';
 // import moment from 'moment';
+import axios from 'axios';
 import history from '../history';
 
-
 const api = axios.create({
-  baseURL: '/api', 
+  baseURL: '/api',
   headers: { Authorization: 'bearer ' + window.sessionStorage.jwToken }
-})
+});
 
 // Create House Audit
-export const saveHouseAudit = audit => dispatch => {
+export const createHouseAudit = audit => async dispatch => {
   const response = await api.post('/houseaudits', audit);
-  console.log(JSON.stringify(response, 0, 2));
+  dispatch({ type: CREATE_HOUSE_AUDIT, payload: response.data });
   alert('Audit successfully created!');
   history.push('/houseaudits');
 };
 
+// Fetch All House audits
 export const fetchHouseAudits = () => async dispatch => {
-  const response = await axios.get('/api/houseaudits');
+  const response = await api.get('/houseaudits');
   dispatch({ type: FETCH_HOUSE_AUDITS, payload: response.data });
 };
+
+// ----------------------------------------------------------------------------
 
 // export const fetchStream = id => async dispatch => {
 //   const response = await streams.get(`/streams/${id}`);
 //   dispatch({ type: FETCH_STREAM, payload: response.data });
-// };
-
-// ----------------------------------------------------------------------------
-// export const createStream = formValues => async (dispatch, getState) => {
-//   const { userId } = getState().auth;
-//   const response = await streams.post("/streams", { ...formValues, userId });
-//   dispatch({ type: CREATE_STREAM, payload: response.data });
-//   history.push("/");
-// };
-
-// export const fetchStreams = () => async dispatch => {
-//   const response = await streams.get("/streams");
-//   dispatch({ type: FETCH_STREAMS, payload: response.data });
 // };
 
 // export const fetchStream = id => async dispatch => {
