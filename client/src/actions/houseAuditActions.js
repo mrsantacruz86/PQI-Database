@@ -1,7 +1,7 @@
 import {
   FETCH_HOUSE_AUDITS,
   // FETCH_HOUSE_AUDIT,
-  // CREATE_HOUSE_AUDIT,
+  CREATE_HOUSE_AUDIT,
   // DELETE_HOUSE_AUDIT,
   // EDIT_HOUSE_AUDIT,
   HOUSE_AUDIT_FIELD_CHANGE,
@@ -10,20 +10,21 @@ import {
 } from './types';
 import axios from 'axios';
 import { loading, stopLoading } from './appActions';
-import moment from 'moment';
+// import moment from 'moment';
+import history from '../history';
+
+
+const api = axios.create({
+  baseURL: '/api', 
+  headers: { Authorization: 'bearer ' + window.sessionStorage.jwToken }
+})
 
 // Create House Audit
 export const saveHouseAudit = audit => dispatch => {
-  dispatch(loading());
-  axios
-    .post('/api/houseaudits', audit)
-    .then(res => {
-      dispatch({
-        type: SAVE_HOUSE_AUDIT
-      });
-      dispatch(stopLoading());
-    })
-    .catch(err => console.log(err));
+  const response = await api.post('/houseaudits', audit);
+  console.log(JSON.stringify(response, 0, 2));
+  alert('Audit successfully created!');
+  history.push('/houseaudits');
 };
 
 export const fetchHouseAudits = () => async dispatch => {

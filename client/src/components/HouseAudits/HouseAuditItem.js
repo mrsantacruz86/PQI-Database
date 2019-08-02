@@ -9,7 +9,15 @@ const HouseAuditItem = props => {
       <label>{`${itemLabel} (max ${itemMaxScore}%)`}</label>
       {itemScores.map(score => (
         <label>
-          <Field name={`${itemName}.score`} component="input" type="radio" value={score} /> {score}%
+          <Field
+            name={`${itemName}.score`}
+            component="input"
+            type="radio"
+            value={score}
+            parse={value => Number(value)}
+            // format={value => value.toString()}
+          />{' '}
+          {score}%
         </label>
       ))}
 

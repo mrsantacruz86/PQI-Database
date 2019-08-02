@@ -4,23 +4,14 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const ItemSchema = new Schema({
-  name: {
-    type: String,
-    required: true
-  },
-  label: {
-    type: String,
-    required: true
-  },
   score: {
     type: Number,
     max: 20,
-    min: 1,
+    min: 0,
     required: true
   },
-  finding: {
-    type: [String],
-    default: []
+  findings: {
+    type: [String]
   }
 });
 
@@ -41,10 +32,12 @@ const HouseAuditSchema = new Schema({
     default: Date.now()
   },
 
-  items: { ItemSchema },
+  items: {
+    type: Map,
+    of: ItemSchema
+  },
   score: {
-    type: Number,
-    required: true
+    type: Number
   }
 });
 

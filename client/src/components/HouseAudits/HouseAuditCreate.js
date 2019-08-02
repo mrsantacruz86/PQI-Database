@@ -3,6 +3,8 @@ import { Form, Field } from 'react-final-form';
 import moment from 'moment';
 import arrayMutators from 'final-form-arrays';
 import HouseAuditItem from './HouseAuditItem';
+import axios from 'axios';
+import history from '../../history';
 
 const houses = [
   '22',
@@ -75,9 +77,16 @@ const auditItems = [
 ];
 
 const HouseAuditCreate = () => {
-  const onSubmit = values => {
-    window.alert(JSON.stringify(values, 0, 2));
+  const onSubmit = async values => {
+    const config = {
+      headers: { Authorization: 'bearer ' + window.sessionStorage.jwToken }
+    };
+    const response = await axios.post('/api/houseaudits', values, config);
+    console.log(JSON.stringify(response, 0, 2));
+    alert('Audit successfully created!');
+    history.push('/houseaudits');
   };
+
   return (
     <div className="container">
       <h3 className="my-5">Create House Audit</h3>
@@ -142,7 +151,7 @@ const HouseAuditCreate = () => {
               <HouseAuditItem
                 itemLabel={item.label}
                 itemName={`items.${item.name}`}
-                itemScores={item.scores.map(score => score.toString())}
+                itemScores={item.scores}
                 itemMaxScore={item.max}
                 push={push}
               />
