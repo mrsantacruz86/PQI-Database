@@ -2,8 +2,12 @@ import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { fetchHouseAudits } from '../../actions/houseAuditActions';
+import moment from 'moment';
+
+import { houseAuditItems } from './houseAudits.json';
 
 const HouseAuditsList = props => {
+  const { houseAudits } = props;
   useEffect(() => {
     props.fetchHouseAudits();
   }, []);
@@ -20,30 +24,31 @@ const HouseAuditsList = props => {
         <table className="table">
           <thead className="thead-light">
             <tr>
-              {props.houseAudits.map(audit => (
-                <th scope="col">id</th>
+              <th scope="col">Id</th>
+              <th scope="col">Date</th>
+              <th scope="col">House</th>
+              {houseAuditItems.map((item, index) => (
+                <th key={index} scope="col">
+                  {item.label}
+                </th>
               ))}
+              <th scope="col">Total</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th scope="row">1</th>
-              <td>Mark</td>
-              <td>Otto</td>
-              <td>@mdo</td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Jacob</td>
-              <td>Thornton</td>
-              <td>@fat</td>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td>Larry</td>
-              <td>the Bird</td>
-              <td>@twitter</td>
-            </tr>
+            {props.houseAudits.map(audit => (
+              <tr key={audit._id}>
+                <td>{audit._id}</td>
+                <td>{moment(audit.date).format('MM/DD/YYYY')}</td>
+                <td>{audit.house}</td>
+                {houseAuditItems.map((item, index) => (
+                  <td key={index}>
+                    {!audit.items[item.name] ? '' : audit.items[item.name].score}%
+                  </td>
+                ))}
+                <td>{audit.score}</td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>
