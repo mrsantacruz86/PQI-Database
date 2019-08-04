@@ -2,12 +2,24 @@ import React from 'react';
 import { Form, Field } from 'react-final-form';
 import moment from 'moment';
 import arrayMutators from 'final-form-arrays';
+import createDecorator from 'final-form-calculate';
 import HouseAuditItem from './HouseAuditItem';
 import { connect } from 'react-redux';
 
 // Data json files
 import { createHouseAudit } from '../../actions/houseAuditActions';
 import { houses, houseAuditItems } from './houseAudits.json';
+
+const calculator = createDecorator({
+  field: /items.\w/,
+  updates: {
+    score: (ignoredValue, allValues) =>
+      (Object.values(allValues.items) || []).reduce(
+        (total, { score }) => total + Number(score || 0),
+        0
+      )
+  }
+});
 
 const HouseAuditCreate = props => {
   const onSubmit = async values => {
@@ -23,6 +35,7 @@ const HouseAuditCreate = props => {
         mutators={{
           ...arrayMutators
         }}
+        decorators={[calculator]}
       >
         {({
           handleSubmit,
@@ -72,8 +85,22 @@ const HouseAuditCreate = props => {
                 format={value => (value ? moment(value).format('YYYY-MM-DD') : '')}
               />
             </div>
-
-            <h4>Audit Items</h4>
+            {/* Audit Items */}
+            <div className="row my-5">
+              <h4 className="col-md-4">Audit Items</h4>
+              <label className="col-md-2 offset-md-4 mt-2 text-right">Score</label>
+              <div className="col-md-2">
+                <Field
+                  className="form-control"
+                  id="score"
+                  name="score"
+                  component="input"
+                  readOnly
+                  type="text"
+                  placeholder="0"
+                />
+              </div>
+            </div>
             {houseAuditItems.map((item, index) => (
               <HouseAuditItem
                 key={index}

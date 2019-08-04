@@ -46,7 +46,7 @@ const HouseAuditsList = props => {
                     {!audit.items[item.name] ? '' : audit.items[item.name].score}%
                   </td>
                 ))}
-                <td>{audit.score}</td>
+                <td>{audit.score}%</td>
               </tr>
             ))}
           </tbody>
