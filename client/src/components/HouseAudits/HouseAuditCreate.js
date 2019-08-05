@@ -1,14 +1,16 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { Form, Field } from 'react-final-form';
 import moment from 'moment';
 import arrayMutators from 'final-form-arrays';
 import createDecorator from 'final-form-calculate';
 import HouseAuditItem from './HouseAuditItem';
 import { connect } from 'react-redux';
+import history from '../../history';
 
 // Data json files
 import { createHouseAudit } from '../../actions/houseAuditActions';
 import { houses, houseAuditItems } from './houseAudits.json';
+import Modal from '../Modal';
 
 const calculator = createDecorator({
   field: /items.\w/,
@@ -21,9 +23,32 @@ const calculator = createDecorator({
   }
 });
 
+// Render Modal
+const renderModalActions = () => {
+  return (
+    <Fragment>
+      <button type="button" className="btn btn-secondary" data-dismiss="modal">
+        Close
+      </button>
+    </Fragment>
+  );
+};
+const renderModal = () => {
+  return (
+    <Modal
+      title="Audit succesfully saved."
+      onDismiss={() => history.push('/houseaudits')}
+      actions={renderModalActions}
+    >
+      The Cottage audtid has been successfully saved!
+    </Modal>
+  );
+};
+
 const HouseAuditCreate = props => {
   const onSubmit = async values => {
     props.createHouseAudit(values);
+    renderModal();
   };
 
   return (
