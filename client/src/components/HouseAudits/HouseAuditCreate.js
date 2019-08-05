@@ -48,42 +48,49 @@ const HouseAuditCreate = props => {
           values
         }) => (
           <form onSubmit={handleSubmit}>
-            <div className="form-group">
-              <label>Auditor</label>
-              <Field
-                className="form-control"
-                id="auditor"
-                name="auditor"
-                component="input"
-                type="text"
-                placeholder="Auditor"
-              />
-            </div>
-            <div className="form-group">
-              <label>House</label>
-              <Field
-                className="custom-select"
-                id="house"
-                name="house"
-                component="select"
-                placeholder="House"
-              >
-                {houses.map(house => (
-                  <option key={house}>{house}</option>
-                ))}
-              </Field>
-            </div>
-            <div className="form-group">
-              <label>Date</label>
-              <Field
-                className="form-control"
-                id="date"
-                name="date"
-                component="input"
-                type="date"
-                parse={value => moment(value)}
-                format={value => (value ? moment(value).format('YYYY-MM-DD') : '')}
-              />
+            <div className="form-row">
+              <div className="form-group col-md-4">
+                <label>Auditor</label>
+                <Field
+                  className="form-control"
+                  name="auditor"
+                  component="input"
+                  type="text"
+                  placeholder="Auditor"
+                />
+              </div>
+
+              <div className="form-group col-md-2">
+                <label>House</label>
+                <Field className="custom-select" name="house" component="select">
+                  <option selected>Select a house</option>
+                  {houses.map(house => (
+                    <option key={house} value={house}>
+                      {house}
+                    </option>
+                  ))}
+                </Field>
+              </div>
+              <div className="form-group col-md-2">
+                <label>Department</label>
+                <Field className="custom-select" name="department" component="select">
+                  <option selected>Select a Dept</option>
+                  <option value="Domestic">Domestic</option>
+                  <option value="UAC">UAC</option>
+                </Field>
+              </div>
+              <div className="form-group col-md-4">
+                <label>Date</label>
+                <Field
+                  className="form-control"
+                  id="date"
+                  name="date"
+                  component="input"
+                  type="date"
+                  parse={value => moment(value)}
+                  format={value => (value ? moment(value).format('YYYY-MM-DD') : '')}
+                />
+              </div>
             </div>
             {/* Audit Items */}
             <div className="row my-5">
@@ -112,15 +119,24 @@ const HouseAuditCreate = props => {
               />
             ))}
 
-            <div className="buttons">
-              <button type="submit" disabled={submitting || pristine}>
+            <div className="buttons my-3">
+              <button
+                className="btn btn-primary mr-3"
+                type="submit"
+                disabled={submitting || pristine}
+              >
                 Submit
               </button>
-              <button type="button" onClick={form.reset} disabled={submitting || pristine}>
+              <button
+                className="btn btn-secondary mr-3"
+                type="button"
+                onClick={form.reset}
+                disabled={submitting || pristine}
+              >
                 Reset
               </button>
             </div>
-            <pre>{JSON.stringify(values, 0, 2)}</pre>
+            {/* <pre>{JSON.stringify(values, 0, 2)}</pre> */}
           </form>
         )}
       </Form>

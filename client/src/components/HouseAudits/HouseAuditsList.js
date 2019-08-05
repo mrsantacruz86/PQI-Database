@@ -7,7 +7,6 @@ import moment from 'moment';
 import { houseAuditItems } from './houseAudits.json';
 
 const HouseAuditsList = props => {
-  const { houseAudits } = props;
   useEffect(() => {
     props.fetchHouseAudits();
   }, []);
@@ -27,6 +26,7 @@ const HouseAuditsList = props => {
               <th scope="col">Id</th>
               <th scope="col">Date</th>
               <th scope="col">House</th>
+              <th scope="col">Dept.</th>
               {houseAuditItems.map((item, index) => (
                 <th key={index} scope="col">
                   {item.label}
@@ -41,6 +41,7 @@ const HouseAuditsList = props => {
                 <td>{audit._id}</td>
                 <td>{moment(audit.date).format('MM/DD/YYYY')}</td>
                 <td>{audit.house}</td>
+                <td>{audit.department}</td>
                 {houseAuditItems.map((item, index) => (
                   <td key={index}>
                     {!audit.items[item.name] ? '' : audit.items[item.name].score}%
