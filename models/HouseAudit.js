@@ -28,10 +28,12 @@ const HouseAuditSchema = new Schema({
   },
   date: {
     type: Date,
-    required: true,
     default: Date.now()
   },
-
+  department: {
+    type: String,
+    required: true
+  },
   items: {
     type: Map,
     of: ItemSchema
