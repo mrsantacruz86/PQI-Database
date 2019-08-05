@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { NavLink as RRNavLink } from 'react-router-dom';
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
 import {
-  Button,
   Collapse,
   Navbar,
   NavbarToggler,
@@ -15,26 +14,23 @@ import {
   DropdownMenu,
   DropdownItem
 } from 'reactstrap';
-import { toggleUserMenu, logout } from '../../actions/appActions';
-
-import "./HNavbar.css";
+import { toggleUserMenu, logout } from '../actions/appActions';
 
 class HNavbar extends Component {
-
-  selected = (path) => {
+  selected = path => {
     if (path !== window.location.pathname) {
-      return "";
+      return '';
     } else {
-      return " active";
+      return ' active';
     }
-  }
+  };
   toggle = () => {
     this.props.toggleUserMenu();
-  }
-  logout = (e) => {
+  };
+  logout = e => {
     e.preventDefault();
     this.props.logout();
-  }
+  };
 
   render() {
     const { auth, userMenuOpen: navBarOpen } = this.props.app;
@@ -42,7 +38,9 @@ class HNavbar extends Component {
     return (
       <div>
         <Navbar color="primary" dark expand="md" className="fixed-top">
-          <NavbarBrand tag={RRNavLink} to="/">PQI TOOLS</NavbarBrand>
+          <NavbarBrand tag={RRNavLink} to="/">
+            PQI TOOLS
+          </NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={navBarOpen} navbar>
             <Nav className="ml-auto d-inline-flex" navbar>
@@ -57,7 +55,7 @@ class HNavbar extends Component {
                 </NavLink>
               </NavItem>
               <NavItem>
-                <NavLink tag={RRNavLink} exact to="/house-audits" activeClassName="active">
+                <NavLink tag={RRNavLink} exact to="/houseaudits" activeClassName="active">
                   House Audits
                 </NavLink>
               </NavItem>
@@ -66,28 +64,23 @@ class HNavbar extends Component {
                   Vehicle Audits
                 </NavLink>
               </NavItem>
-              {!auth ?
-                // <NavItem>
-                <NavLink tag={RRNavLink} exact to="/login" className="login-link bg-success text-white py-1 my-auto" >
-                  Login
+              <NavItem>
+                {!auth ? (
+                  <NavLink tag={RRNavLink} exact to="/login">
+                    <div className="btn btn-outline-light btn-sm">Login</div>
                   </NavLink>
-                // </NavItem>
-                :
-                <UncontrolledDropdown nav inNavbar>
-                  <DropdownToggle nav>
-                    <i className="fas fa-user-circle fa-lg text-success"></i>
-                  </DropdownToggle>
-                  <DropdownMenu right>
-                    <DropdownItem>
-                      Account
-                    </DropdownItem>
-                    {/* <DropdownItem divider /> */}
-                    <DropdownItem onClick={e => this.logout(e)}>
-                      Sign Out
-                  </DropdownItem>
-                  </DropdownMenu>
-                </UncontrolledDropdown>
-              }
+                ) : (
+                  <UncontrolledDropdown nav inNavbar>
+                    <DropdownToggle nav>
+                      <i className="fas fa-user-circle fa-lg" />
+                    </DropdownToggle>
+                    <DropdownMenu right>
+                      <DropdownItem>Account</DropdownItem>
+                      <DropdownItem onClick={e => this.logout(e)}>Sign Out</DropdownItem>
+                    </DropdownMenu>
+                  </UncontrolledDropdown>
+                )}
+              </NavItem>
             </Nav>
           </Collapse>
         </Navbar>
@@ -96,9 +89,12 @@ class HNavbar extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({ ...state });
+const mapStateToProps = state => ({ ...state });
 
-export default connect(mapStateToProps, {
-  toggleUserMenu,
-  logout
-})(HNavbar);
+export default connect(
+  mapStateToProps,
+  {
+    toggleUserMenu,
+    logout
+  }
+)(HNavbar);

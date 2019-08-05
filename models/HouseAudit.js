@@ -1,32 +1,48 @@
+// AUDIT ITEM MODEL
+
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
+
+const ItemSchema = new Schema({
+  score: {
+    type: Number,
+    max: 20,
+    min: 0,
+    required: true
+  },
+  findings: {
+    type: [String]
+  }
+});
+
 // HOUSE AUDIT MODEL
 
-const mongoose = require("mongoose");
-const Schema = mongoose.Schema;
-const HouseAuditItem = require('./HouseAuditItem')
-
 const HouseAuditSchema = new Schema({
-  cottage: {
-    type: Number,
+  house: {
+    type: String,
     required: true
   },
   auditor: {
-    name: {
-      type: String,
-      required: true
-    },
-    id: {
-      type: Schema.Types.ObjectId,
-      ref: "User"
-    }
+    type: String,
+    required: true
   },
   date: {
     type: Date,
-    required: true,
     default: Date.now()
   },
-  auditItems: { HouseAuditItem }
+  department: {
+    type: String,
+    required: true
+  },
+  items: {
+    type: Map,
+    of: ItemSchema
+  },
+  score: {
+    type: Number
+  }
 });
 
-const HouseAudit = mongoose.model("HouseAudit", HouseAuditSchema);
+const HouseAudit = mongoose.model('HouseAudit', HouseAuditSchema);
 
 module.exports = HouseAudit;
