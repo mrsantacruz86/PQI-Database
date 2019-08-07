@@ -1,18 +1,19 @@
 // Auth Reducer
-import { SIGN_IN, SIGN_OUT } from "../actions/types";
+import { LOGIN, LOGOUT } from '../actions/types';
 
 const INITIAL_STATE = {
   isSignedIn: null,
-  userId: null
+  user: null,
+  token: null
 };
 
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case SIGN_IN:
-      return { ...state, isSignedIn: true, userId: action.payload };
+    case LOGIN:
+      return { ...state, isSignedIn: true, user: action.payload.user, token: action.payload.token };
 
-    case SIGN_OUT:
-      return { ...state, isSignedIn: false, userId: null };
+    case LOGOUT:
+      return { ...state, isSignedIn: false, user: null, token: null };
 
     default:
       return state;

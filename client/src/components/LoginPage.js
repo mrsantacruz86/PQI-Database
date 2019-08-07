@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { Redirect, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { login } from '../../actions/authActions';
+import { login } from '../actions/authActions';
 import { Button, Form, FormGroup, Input, Label, Card, CardBody } from 'reactstrap';
-import './LoginPage.css';
+import history from '../history';
 
 class LoginPage extends Component {
   constructor(props) {
@@ -38,8 +38,7 @@ class LoginPage extends Component {
   };
 
   render() {
-    const { auth } = this.props.app;
-    if (auth) {
+    if (this.props.isSignedIn) {
       //checks if the user is authenticated and redirects to home
       return <Redirect to="/" />;
     }
@@ -99,7 +98,9 @@ class LoginPage extends Component {
     );
   }
 }
-const mapStateToProps = state => ({ ...state });
+const mapStateToProps = state => ({
+  isSignedIn: state.auth.isSignedIn
+});
 
 export default connect(
   mapStateToProps,

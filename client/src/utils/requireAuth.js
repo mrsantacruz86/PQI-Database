@@ -2,16 +2,15 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-// import { withRouter } from 'react-router-dom';
-//This is a Higher Order Component that passes the pass the authentication info to the enclosed component
+import history from '../history';
 
+//This is a Higher Order Component that passes the authentication info to the enclosed component
 const requireAuth = ComposedComponent => {
   class Authorize extends Component {
     componentWillMount() {
-      if (!this.props.auth) {
-        // console.log(this.props);
-        console.log(this.props.history);
-        this.props.history.replace('/login');
+      if (!this.props.auth.isSignedIn) {
+        console.log(history);
+        history.push('/login');
       }
     }
     render() {
@@ -20,10 +19,12 @@ const requireAuth = ComposedComponent => {
   }
 
   Authorize.propTypes = {
-    auth: PropTypes.bool.isRequired
+    auth: PropTypes.object.isRequired
   };
 
-  const mapStateToProps = state => ({ auth: state.app.auth });
+  const mapStateToProps = state => ({
+    auth: state.auth
+  });
 
   return connect(mapStateToProps)(Authorize);
 };

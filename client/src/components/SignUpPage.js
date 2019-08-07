@@ -3,8 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Button, Form, FormGroup, Input, Label, FormText, Card, CardBody } from 'reactstrap';
 import { Link } from 'react-router-dom';
-import { register } from '../../actions/authActions';
-import './SignUpPage';
+import { register } from '../actions/authActions';
 
 class SingUpPage extends Component {
   constructor(props) {

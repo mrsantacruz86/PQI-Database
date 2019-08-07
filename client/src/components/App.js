@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { Router, Route, Switch } from 'react-router-dom';
 import Home from './Home';
-import LoginPage from '../pages/LoginPage/LoginPage';
-import SignUpPage from '../pages/SignUpPage';
+import LoginPage from './LoginPage';
+import SignUpPage from './SignUpPage';
 import requireAuth from '../utils/requireAuth';
-import PageNotFound from '../pages/PageNotFound';
+import PageNotFound from './PageNotFound';
 import HNavbar from './HNavbar';
 import history from '../history';
 import {

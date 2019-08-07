@@ -1,14 +1,10 @@
 //App actions
-export const LOADING = 'LOADING';
-export const STOP_LOADING = 'STOP_LOADING';
-export const ADD_FLASH_MESSAGE = 'ADD_FLASH_MESSAGE';
 export const LOGIN = 'LOGIN';
 export const LOGOUT = 'LOGOUT';
 export const REGISTER = 'REGISTER';
-export const TOGGLE_DRAWER = 'TOGGLE_DRAWER';
 export const OPEN_MENU = 'OPEN_MENU';
 export const CLOSE_MENU = 'CLOSE_MENU';
-export const TOGGLE_USER_MENU = 'TOGGLE_USER_MENU';
+export const TOGGLE_NAVBAR = 'TOGGLE_NAVBAR';
 
 //House audit actions
 export const FETCH_HOUSE_AUDITS = 'FETCH_HOUSE_AUDITS';

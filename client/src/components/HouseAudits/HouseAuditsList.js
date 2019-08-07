@@ -14,7 +14,7 @@ class HouseAuditsList extends Component {
   }
 
   renderList = () => {
-    console.log(JSON.stringify(this.props.houseAudits, '', 2));
+    // console.log(JSON.stringify(this.props.houseAudits, '', 2));
     return !this.props.houseAudits ? (
       <Spinner />
     ) : (
