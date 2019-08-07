@@ -13,6 +13,25 @@ class HouseAuditsList extends Component {
     this.props.fetchHouseAudits();
   }
 
+  renderList = () => {
+    console.log(JSON.stringify(this.props.houseAudits, '', 2));
+    return !this.props.houseAudits ? (
+      <Spinner />
+    ) : (
+      this.props.houseAudits.map(audit => (
+        <tr key={audit._id}>
+          <td>{audit._id}</td>
+          <td>{moment(audit.date).format('MM/DD/YYYY')}</td>
+          <td>{audit.house}</td>
+          <td>{audit.department}</td>
+          {houseAuditItems.map((item, index) => (
+            <td key={index}>{!audit.items[item.name] ? '' : audit.items[item.name].score}%</td>
+          ))}
+          <td>{audit.score}%</td>
+        </tr>
+      ))
+    );
+  };
   render() {
     return (
       <div>
@@ -38,26 +57,7 @@ class HouseAuditsList extends Component {
                 <th scope="col">Total</th>
               </tr>
             </thead>
-            <tbody>
-              {!this.props.houseAudits ? (
-                <Spinner />
-              ) : (
-                this.props.houseAudits.map(audit => (
-                  <tr key={audit._id}>
-                    <td>{audit._id}</td>
-                    <td>{moment(audit.date).format('MM/DD/YYYY')}</td>
-                    <td>{audit.house}</td>
-                    <td>{audit.department}</td>
-                    {houseAuditItems.map((item, index) => (
-                      <td key={index}>
-                        {!audit.items[item.name] ? '' : audit.items[item.name].score}%
-                      </td>
-                    ))}
-                    <td>{audit.score}%</td>
-                  </tr>
-                ))
-              )}
-            </tbody>
+            <tbody>{this.renderList()}</tbody>
           </table>
         </div>
       </div>
@@ -65,11 +65,10 @@ class HouseAuditsList extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    houseAudits: Object.values(state.houseAudits)
-  };
-};
+const mapStateToProps = state => ({
+  houseAudits: Object.values(state.houseAudits)
+});
+
 export default connect(
   mapStateToProps,
   {
