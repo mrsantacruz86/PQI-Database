@@ -9,7 +9,6 @@ const requireAuth = ComposedComponent => {
   class Authorize extends Component {
     componentWillMount() {
       if (!this.props.auth.isSignedIn) {
-        console.log(history);
         history.push('/login');
       }
     }

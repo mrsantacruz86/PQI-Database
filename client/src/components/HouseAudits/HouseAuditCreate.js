@@ -48,7 +48,7 @@ const renderModal = () => {
 const HouseAuditCreate = props => {
   const onSubmit = async values => {
     props.createHouseAudit(values);
-    renderModal();
+    await renderModal();
   };
 
   return (

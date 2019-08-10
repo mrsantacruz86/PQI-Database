@@ -9,7 +9,7 @@ import moment from 'moment';
 import { houseAuditItems } from './houseAudits.json';
 
 class HouseAuditsList extends Component {
-  componentDidMount() {
+  componentWillMount() {
     this.props.fetchHouseAudits();
   }
 
@@ -34,7 +34,7 @@ class HouseAuditsList extends Component {
   };
   render() {
     return (
-      <div>
+      <div className="container-fluid">
         <h1>HouseAuditsList</h1>
         <div>
           <Link className="btn btn-primary" to="/houseaudits/new">

@@ -14,7 +14,7 @@ export const login = user => async dispatch => {
       payload: response.data
     });
     setAuthToken(response.data.token);
-    console.log(history.goBack());
+    history.goBack();
   }
 };
 

@@ -20,22 +20,20 @@ class App extends Component {
     return (
       <Router history={history}>
         <HNavbar />
-        <div className="container-fluid fixed-nav-top">
-          <Switch>
-            <Route exact path="/" component={Home} />
-            <Route path="/login" component={LoginPage} />
-            <Route path="/register" component={SignUpPage} />
-            {/* House audit Routes */}
-            <Route exact path="/houseaudits" component={requireAuth(HouseAuditsList)} />
-            <Route exact path="/houseaudits/new" component={requireAuth(HouseAuditCreate)} />
-            <Route exact path="/houseaudits/edit/:id" component={requireAuth(HouseAuditEdit)} />
-            <Route exact path="/houseaudits/delete/:id" component={requireAuth(HouseAuditDelete)} />
-            {/* this should be always the last route so it does not interfere with the /new */}
-            <Route exact path="/houseaudits/:id" component={requireAuth(HouseAuditShow)} />
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route path="/login" component={LoginPage} />
+          <Route path="/register" component={SignUpPage} />
+          {/* House audit Routes */}
+          <Route exact path="/houseaudits" component={requireAuth(HouseAuditsList)} />
+          <Route exact path="/houseaudits/new" component={requireAuth(HouseAuditCreate)} />
+          <Route exact path="/houseaudits/edit/:id" component={requireAuth(HouseAuditEdit)} />
+          <Route exact path="/houseaudits/delete/:id" component={requireAuth(HouseAuditDelete)} />
+          {/* this should be always the last route so it does not interfere with the /new */}
+          <Route exact path="/houseaudits/:id" component={requireAuth(HouseAuditShow)} />
 
-            <Route component={PageNotFound} />
-          </Switch>
-        </div>
+          <Route component={PageNotFound} />
+        </Switch>
       </Router>
     );
   }
