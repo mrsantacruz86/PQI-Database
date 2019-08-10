@@ -48,7 +48,7 @@ const LoginPage = props => {
                           }`}
                           placeholder="Username or email"
                         />
-                        <div class="invalid-feedback">{meta.error}.</div>
+                        <div class="invalid-feedback">{meta.error}</div>
                       </div>
                     )}
                   </Field>

@@ -25,79 +25,109 @@ const SignUpPage = props => {
           <div className="card-body w-small">
             <Form
               onSubmit={onSubmit}
-              // validate={values => {
-              //   const errors = {};
-              //   const requiredFields = ['firstName', 'lastName', 'username', 'email', 'password'];
-              //   requiredFields.forEach(field => {
-              //     if (!values[field]) {
-              //       errors[field] = 'Required';
-              //     }
-              //   });
-              //   if (
-              //     values.email &&
-              //     !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)
-              //   ) {
-              //     errors.email = 'Invalid email address';
-              //   }
-              //   return errors;
-              // }}
+              validate={values => {
+                const errors = {};
+                const requiredFields = ['firstName', 'lastName', 'username', 'email', 'password'];
+                requiredFields.forEach(field => {
+                  if (!values[field]) {
+                    errors[field] = 'Required';
+                  }
+                });
+                if (
+                  values.email &&
+                  !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,6}$/i.test(values.email)
+                ) {
+                  errors.email = 'Invalid email address';
+                }
+                return errors;
+              }}
             >
               {({ handleSubmit, form, pristine, submitting, values }) => (
                 <form onSubmit={handleSubmit}>
-                  <div className="form-group">
-                    <label htmlFor="firstName">First Name</label>
-                    <Field
-                      className="form-control"
-                      component="input"
-                      name="firstName"
-                      placeholder="First Name"
-                      type="text"
-                    />
-                  </div>
+                  <Field name="firstName">
+                    {({ input, meta }) => (
+                      <div className="form-group">
+                        <label>First Name</label>
+                        <input
+                          {...input}
+                          className={`form-control${
+                            meta.error && meta.touched ? ' is-invalid' : ''
+                          }`}
+                          placeholder="First Name"
+                          type="text"
+                        />
+                        <div class="invalid-feedback">{meta.error}</div>
+                      </div>
+                    )}
+                  </Field>
 
-                  <div className="form-group">
-                    <label htmlFor="lastName">Last Name</label>
-                    <Field
-                      className="form-control"
-                      component="input"
-                      name="lastName"
-                      placeholder="Last Name"
-                      type="text"
-                    />
-                  </div>
+                  <Field name="lastName">
+                    {({ input, meta }) => (
+                      <div className="form-group">
+                        <label htmlFor="lastName">Last Name</label>
+                        <input
+                          {...input}
+                          className={`form-control${
+                            meta.error && meta.touched ? ' is-invalid' : ''
+                          }`}
+                          placeholder="Last Name"
+                          type="text"
+                        />
+                        <div class="invalid-feedback">{meta.error}</div>
+                      </div>
+                    )}
+                  </Field>
 
-                  <div className="form-group">
-                    <label htmlFor="email">Email</label>
-                    <Field
-                      className="form-control"
-                      component="input"
-                      name="email"
-                      placeholder="Email"
-                      type="text"
-                    />
-                  </div>
+                  <Field name="email">
+                    {({ input, meta }) => (
+                      <div className="form-group">
+                        <label>Email</label>
+                        <input
+                          {...input}
+                          className={`form-control${
+                            meta.error && meta.touched ? ' is-invalid' : ''
+                          }`}
+                          placeholder="Email"
+                          type="text"
+                        />
+                        <div class="invalid-feedback">{meta.error}</div>
+                      </div>
+                    )}
+                  </Field>
 
-                  <div className="form-group">
-                    <label htmlFor="username">Username or email</label>
-                    <Field
-                      className="form-control"
-                      component="input"
-                      name="username"
-                      placeholder="Username"
-                      type="text"
-                    />
-                  </div>
+                  <Field name="username">
+                    {({ input, meta }) => (
+                      <div className="form-group">
+                        <label>Username</label>
+                        <input
+                          {...input}
+                          className={`form-control${
+                            meta.error && meta.touched ? ' is-invalid' : ''
+                          }`}
+                          placeholder="Username"
+                          type="text"
+                        />
+                        <div class="invalid-feedback">{meta.error}</div>
+                      </div>
+                    )}
+                  </Field>
 
-                  <div className="form-group">
-                    <label htmlFor="password">Password</label>
-                    <Field
-                      type="password"
-                      className="form-control"
-                      component="input"
-                      placeholder="Password"
-                      name="password"
-                    />
-                  </div>
+                  <Field name="password">
+                    {({ input, meta }) => (
+                      <div className="form-group">
+                        <label htmlFor="password">Password</label>
+                        <input
+                          {...input}
+                          type="password"
+                          className={`form-control${
+                            meta.error && meta.touched ? ' is-invalid' : ''
+                          }`}
+                          placeholder="Password"
+                        />
+                        <div class="invalid-feedback">{meta.error}</div>
+                      </div>
+                    )}
+                  </Field>
 
                   <div className="buttons mt-3 d-flex justify-content-center">
                     <button
