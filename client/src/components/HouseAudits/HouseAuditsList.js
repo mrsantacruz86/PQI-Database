@@ -20,7 +20,7 @@ class HouseAuditsList extends Component {
     ) : (
       this.props.houseAudits.map(audit => (
         <tr key={audit._id}>
-          <td>{audit._id}</td>
+          {/* <td>{audit._id}</td> */}
           <td>{moment(audit.date).format('MM/DD/YYYY')}</td>
           <td>{audit.house}</td>
           <td>{audit.department}</td>
@@ -28,6 +28,14 @@ class HouseAuditsList extends Component {
             <td key={index}>{!audit.items[item.name] ? '' : audit.items[item.name].score}%</td>
           ))}
           <td>{audit.score}%</td>
+          <td className="d-flex justify-content-around">
+            <Link to={`/houseaudits/edit/${audit._id}`}>
+              <i className="fas fa-pencil-alt text-warning" />
+            </Link>
+            <Link to={`/houseaudits/delete/${audit._id}`}>
+              <i className="fas fa-trash-alt text-danger" />
+            </Link>
+          </td>
         </tr>
       ))
     );
@@ -45,7 +53,7 @@ class HouseAuditsList extends Component {
           <table className="table">
             <thead className="thead-light">
               <tr>
-                <th scope="col">Id</th>
+                {/* <th scope="col">Id</th> */}
                 <th scope="col">Date</th>
                 <th scope="col">House</th>
                 <th scope="col">Dept.</th>
@@ -55,6 +63,7 @@ class HouseAuditsList extends Component {
                   </th>
                 ))}
                 <th scope="col">Total</th>
+                <th scope="col">Actions</th>
               </tr>
             </thead>
             <tbody>{this.renderList()}</tbody>
