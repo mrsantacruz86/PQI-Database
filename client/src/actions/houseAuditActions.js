@@ -1,9 +1,9 @@
 import {
   FETCH_HOUSE_AUDITS,
-  // FETCH_HOUSE_AUDIT,
-  CREATE_HOUSE_AUDIT
-  // DELETE_HOUSE_AUDIT,
-  // EDIT_HOUSE_AUDIT,
+  FETCH_HOUSE_AUDIT,
+  CREATE_HOUSE_AUDIT,
+  DELETE_HOUSE_AUDIT,
+  EDIT_HOUSE_AUDIT
 } from './types';
 // import moment from 'moment';
 import axios from 'axios';
@@ -28,26 +28,22 @@ export const fetchHouseAudits = () => async dispatch => {
   dispatch({ type: FETCH_HOUSE_AUDITS, payload: response.data });
 };
 
-// ----------------------------------------------------------------------------
+// Fetch One House audits
+export const fetchHouseAudit = id => async dispatch => {
+  const response = await api.get(`/houseaudits/${id}`);
+  dispatch({ type: FETCH_HOUSE_AUDIT, payload: response.data });
+};
 
-// export const fetchStream = id => async dispatch => {
-//   const response = await streams.get(`/streams/${id}`);
-//   dispatch({ type: FETCH_STREAM, payload: response.data });
-// };
+// Edit House Audit
+export const editHouseAudit = (id, formValues) => async dispatch => {
+  const response = await api.patch(`/houseaudits/${id}`, formValues);
+  dispatch({ type: EDIT_HOUSE_AUDIT, payload: response.data });
+  history.push('/houseaudits');
+};
 
-// export const fetchStream = id => async dispatch => {
-//   const response = await streams.get(`/streams/${id}`);
-//   dispatch({ type: FETCH_STREAM, payload: response.data });
-// };
-
-// export const editStream = (id, formValues) => async dispatch => {
-//   const response = await streams.patch(`/streams/${id}`, formValues);
-//   dispatch({ type: EDIT_STREAM, payload: response.data });
-//   history.push("/");
-// };
-
-// export const deleteStream = id => async dispatch => {
-//   await streams.delete(`/streams/${id}`);
-//   dispatch({ type: DELETE_STREAM, payload: id });
-//   history.push("/");
-// };
+// Delete House Audit
+export const deleteHouseAudit = id => async dispatch => {
+  await api.delete(`/houseaudits/${id}`);
+  dispatch({ type: DELETE_HOUSE_AUDIT, payload: id });
+  history.push('/houseaudits');
+};

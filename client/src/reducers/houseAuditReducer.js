@@ -22,13 +22,13 @@ export default (state = {}, action) => {
       return { ...state, ..._.mapKeys(action.payload, '_id') };
 
     case FETCH_HOUSE_AUDIT:
-      return { ...state, [action.payload.id]: action.payload };
+      return { ...state, [action.payload._id]: action.payload };
 
     case CREATE_HOUSE_AUDIT:
       return { ...state, [action.payload._id]: action.payload };
 
     case EDIT_HOUSE_AUDIT:
-      return { ...state, [action.payload.id]: action.payload };
+      return { ...state, [action.payload._id]: action.payload };
 
     case DELETE_HOUSE_AUDIT:
       return _.omit(state, action.payload);

@@ -26,7 +26,7 @@ class HNavbar extends Component {
     }
   };
   toggle = () => {
-    this.props.toggleUserMenu();
+    this.props.toggleNavbar();
   };
   logout = e => {
     e.preventDefault();
