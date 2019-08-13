@@ -9,7 +9,7 @@ import moment from 'moment';
 import { houseAuditItems } from './houseAudits.json';
 
 class HouseAuditsList extends Component {
-  componentWillMount() {
+  componentDidMount() {
     this.props.fetchHouseAudits();
   }
 

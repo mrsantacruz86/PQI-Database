@@ -9,14 +9,9 @@ import {
 // @ts-ignore
 // import items from '../utils/HouseAuditItems.json';
 
-// const initialState = {
-//   cottage: '',
-//   auditor: '',
-//   date: '',
-//   auditItems: [...items]
-// };
+const initialState = {};
 
-export default (state = {}, action) => {
+export default (state = initialState, action) => {
   switch (action.type) {
     case FETCH_HOUSE_AUDITS:
       return { ...state, ..._.mapKeys(action.payload, '_id') };
