@@ -19,7 +19,7 @@ const HouseAuditDelete = props => {
         >
           Delete
         </button>
-        <Link to="/" className="btn btn-secondary">
+        <Link to="/houseaudits" className="btn btn-secondary">
           Cancel
         </Link>
       </Fragment>
