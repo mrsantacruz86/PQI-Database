@@ -35,7 +35,7 @@ const LoginPage = props => {
               }}
             >
               {({ handleSubmit, form, pristine, submitting, values }) => (
-                <form onSubmit={handleSubmit} classname="was-validated">
+                <form onSubmit={handleSubmit} className="was-validated">
                   <Field name="username">
                     {({ input, meta }) => (
                       <div className="form-group">
@@ -48,7 +48,7 @@ const LoginPage = props => {
                           }`}
                           placeholder="Username or email"
                         />
-                        <div class="invalid-feedback">{meta.error}</div>
+                        <div className="invalid-feedback">{meta.error}</div>
                       </div>
                     )}
                   </Field>
@@ -65,7 +65,7 @@ const LoginPage = props => {
                           }`}
                           placeholder="Password"
                         />
-                        <div class="invalid-feedback">{meta.error}.</div>
+                        <div className="invalid-feedback">{meta.error}.</div>
                       </div>
                     )}
                   </Field>
