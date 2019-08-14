@@ -9,26 +9,21 @@ import {
 // @ts-ignore
 // import items from '../utils/HouseAuditItems.json';
 
-// const initialState = {
-//   cottage: '',
-//   auditor: '',
-//   date: '',
-//   auditItems: [...items]
-// };
+const initialState = {};
 
-export default (state = {}, action) => {
+export default (state = initialState, action) => {
   switch (action.type) {
     case FETCH_HOUSE_AUDITS:
       return { ...state, ..._.mapKeys(action.payload, '_id') };
 
     case FETCH_HOUSE_AUDIT:
-      return { ...state, [action.payload.id]: action.payload };
+      return { ...state, [action.payload._id]: action.payload };
 
     case CREATE_HOUSE_AUDIT:
       return { ...state, [action.payload._id]: action.payload };
 
     case EDIT_HOUSE_AUDIT:
-      return { ...state, [action.payload.id]: action.payload };
+      return { ...state, [action.payload._id]: action.payload };
 
     case DELETE_HOUSE_AUDIT:
       return _.omit(state, action.payload);

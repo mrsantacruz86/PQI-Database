@@ -14,7 +14,8 @@ import {
   DropdownMenu,
   DropdownItem
 } from 'reactstrap';
-import { toggleUserMenu, logout } from '../actions/appActions';
+import { toggleNavbar } from '../actions/appActions';
+import { logout } from '../actions/authActions';
 
 class HNavbar extends Component {
   selected = path => {
@@ -25,7 +26,7 @@ class HNavbar extends Component {
     }
   };
   toggle = () => {
-    this.props.toggleUserMenu();
+    this.props.toggleNavbar();
   };
   logout = e => {
     e.preventDefault();
@@ -33,7 +34,7 @@ class HNavbar extends Component {
   };
 
   render() {
-    const { auth, userMenuOpen: navBarOpen } = this.props.app;
+    const { auth, navbarOpen } = this.props;
 
     return (
       <div>
@@ -42,7 +43,7 @@ class HNavbar extends Component {
             PQI TOOLS
           </NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
-          <Collapse isOpen={navBarOpen} navbar>
+          <Collapse isOpen={navbarOpen} navbar>
             <Nav className="ml-auto d-inline-flex" navbar>
               <NavItem>
                 <NavLink tag={RRNavLink} exact to="/" activeClassName="active">
@@ -65,7 +66,7 @@ class HNavbar extends Component {
                 </NavLink>
               </NavItem>
               <NavItem>
-                {!auth ? (
+                {!auth.isSignedIn ? (
                   <NavLink tag={RRNavLink} exact to="/login">
                     <div className="btn btn-outline-light btn-sm">Login</div>
                   </NavLink>
@@ -89,12 +90,15 @@ class HNavbar extends Component {
   }
 }
 
-const mapStateToProps = state => ({ ...state });
+const mapStateToProps = state => ({
+  auth: state.auth,
+  navbarOpen: state.app.navbarOpen
+});
 
 export default connect(
   mapStateToProps,
   {
-    toggleUserMenu,
+    toggleNavbar,
     logout
   }
 )(HNavbar);

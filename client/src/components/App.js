@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { Router, Route, Switch } from 'react-router-dom';
 import Home from './Home';
-import LoginPage from '../pages/LoginPage/LoginPage';
-import SignUpPage from '../pages/SignUpPage';
-import requireAuth from '../utils/requireAuth';
-import PageNotFound from '../pages/PageNotFound';
+import LoginPage from './LoginPage';
+import SignUpPage from './SignUpPage';
+import PageNotFound from './PageNotFound';
 import HNavbar from './HNavbar';
+import PrivateRoute from './PrivateRoute';
 import history from '../history';
 import {
   HouseAuditsList,
@@ -20,22 +20,20 @@ class App extends Component {
     return (
       <Router history={history}>
         <HNavbar />
-        <div className="container-fluid fixed-nav-top">
-          <Switch>
-            <Route exact path="/" component={Home} />
-            <Route path="/login" component={LoginPage} />
-            <Route path="/register" component={SignUpPage} />
-            {/* House audit Routes */}
-            <Route exact path="/houseaudits" component={requireAuth(HouseAuditsList)} />
-            <Route exact path="/houseaudits/new" component={requireAuth(HouseAuditCreate)} />
-            <Route exact path="/houseaudits/edit/:id" component={requireAuth(HouseAuditEdit)} />
-            <Route exact path="/houseaudits/delete/:id" component={requireAuth(HouseAuditDelete)} />
-            {/* this should be always the last route so it does not interfere with the /new */}
-            <Route exact path="/houseaudits/:id" component={requireAuth(HouseAuditShow)} />
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route path="/login" component={LoginPage} />
+          <Route path="/register" component={SignUpPage} />
+          {/* House audit Routes */}
+          <PrivateRoute exact path="/houseaudits" component={HouseAuditsList} />
+          <PrivateRoute exact path="/houseaudits/new" component={HouseAuditCreate} />
+          <PrivateRoute exact path="/houseaudits/edit/:id" component={HouseAuditEdit} />
+          <PrivateRoute exact path="/houseaudits/delete/:id" component={HouseAuditDelete} />
+          {/* this should be always the last route so it does not interfere with the /new */}
+          <Route exact path="/houseaudits/:id" component={HouseAuditShow} />
 
-            <Route component={PageNotFound} />
-          </Switch>
-        </div>
+          <Route component={PageNotFound} />
+        </Switch>
       </Router>
     );
   }
