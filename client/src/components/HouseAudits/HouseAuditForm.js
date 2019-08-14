@@ -59,7 +59,9 @@ const HouseAuditForm = props => {
             <div className="form-group col-md-2">
               <label>House</label>
               <Field className="custom-select" name="house" component="select">
-                <option selected>Select a house</option>
+                <option defaultValue value="">
+                  Select a house
+                </option>
                 {houses.map(house => (
                   <option key={house} value={house}>
                     {house}
@@ -70,7 +72,9 @@ const HouseAuditForm = props => {
             <div className="form-group col-md-2">
               <label>Department</label>
               <Field className="custom-select" name="department" component="select">
-                <option selected>Select a Dept</option>
+                <option defaultValue value="">
+                  Select a Dept
+                </option>
                 <option value="Domestic">Domestic</option>
                 <option value="UAC">UAC</option>
               </Field>

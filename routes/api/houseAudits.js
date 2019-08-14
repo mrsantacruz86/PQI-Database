@@ -1,17 +1,18 @@
 //HOUSE AUDITS ROUTES
-const router = require("express").Router();
-const { houseAuditsController } = require("../../controllers");
+const router = require('express').Router();
+const { houseAuditsController } = require('../../controllers');
 
 // Matches with "/api/houses"
-router.route("/")
+router
+  .route('/')
   .get(houseAuditsController.getAll)
   .post(houseAuditsController.create);
 
 // Matches with "/api/houses/:id"
 router
-  .route("/:id")
+  .route('/:id')
   .get(houseAuditsController.findById)
-  .put(houseAuditsController.update)
+  .patch(houseAuditsController.update)
   .delete(houseAuditsController.remove);
 
 module.exports = router;

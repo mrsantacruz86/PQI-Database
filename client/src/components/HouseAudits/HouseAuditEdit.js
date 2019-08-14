@@ -73,7 +73,6 @@ class HouseAuditCreate extends Component {
   };
 
   render() {
-    console.log(this.props.match);
     return (
       <div className="container mt-5">
         <h3 className="my-5">Edit House Audit ID: {this.props.match.params.id} </h3>

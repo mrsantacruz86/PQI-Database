@@ -21,7 +21,6 @@ export const createHouseAudit = audit => async dispatch => {
 export const fetchHouseAudits = () => async dispatch => {
   const response = await axios.get('/api/houseaudits');
   dispatch({ type: FETCH_HOUSE_AUDITS, payload: response.data });
-  console.log('Fetch Audits');
 };
 
 // Fetch One House audits
