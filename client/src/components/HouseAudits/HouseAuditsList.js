@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import { fetchHouseAudits } from '../../actions/houseAuditActions';
+import { toggleModal } from '../../actions/appActions';
+import HouseAuditDelete from '../HouseAudits/HouseAuditDelete';
 import Spinner from '../Spinner';
 import moment from 'moment';
 
@@ -12,6 +14,9 @@ class HouseAuditsList extends Component {
   componentDidMount() {
     this.props.fetchHouseAudits();
   }
+  toggleModal = () => {
+    this.props.toggleModal();
+  };
 
   renderList = () => {
     return !this.props.houseAudits ? (
@@ -31,7 +36,8 @@ class HouseAuditsList extends Component {
             <Link to={`/houseaudits/edit/${audit._id}`}>
               <i className="fas fa-pencil-alt text-warning" />
             </Link>
-            <Link to={`/houseaudits/delete/${audit._id}`}>
+            {/* <Link to={`/houseaudits/delete/${audit._id}`}> */}
+            <Link onClick={this.toggleModal}>
               <i className="fas fa-trash-alt text-danger" />
             </Link>
           </td>
@@ -67,6 +73,7 @@ class HouseAuditsList extends Component {
             </thead>
             <tbody>{this.renderList()}</tbody>
           </table>
+          {this.props.app.modalOpen ? <HouseAuditDelete {...this.props} /> : ''}
         </div>
       </div>
     );
@@ -74,12 +81,14 @@ class HouseAuditsList extends Component {
 }
 
 const mapStateToProps = state => ({
+  app: state.app,
   houseAudits: Object.values(state.houseAudits)
 });
 
 export default connect(
   mapStateToProps,
   {
-    fetchHouseAudits
+    fetchHouseAudits,
+    toggleModal
   }
 )(HouseAuditsList);

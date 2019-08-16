@@ -38,7 +38,7 @@ const HouseAuditDelete = props => {
       title="Delete House Audit"
       content={renderContent()}
       actions={renderActions()}
-      onDismiss={() => history.push('/')}
+      onDismiss={() => history.push('/houseaudits')}
     />
   );
 };

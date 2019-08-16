@@ -1,7 +1,8 @@
-import { TOGGLE_NAVBAR } from '../actions/types';
+import { TOGGLE_NAVBAR, TOGGLE_MODAL } from '../actions/types';
 
 const initialState = {
-  navbarOpen: false
+  navbarOpen: false,
+  modalOpen: false
 };
 
 export default (state = initialState, action) => {
@@ -10,6 +11,12 @@ export default (state = initialState, action) => {
       return {
         ...state,
         navbarOpen: !state.navBarOpen
+      };
+
+    case TOGGLE_MODAL:
+      return {
+        ...state,
+        modalOpen: !state.modalOpen
       };
 
     default:

@@ -5,6 +5,7 @@ export const REGISTER = 'REGISTER';
 export const OPEN_MENU = 'OPEN_MENU';
 export const CLOSE_MENU = 'CLOSE_MENU';
 export const TOGGLE_NAVBAR = 'TOGGLE_NAVBAR';
+export const TOGGLE_MODAL = 'TOGGLE_MODAL';
 
 //House audit actions
 export const FETCH_HOUSE_AUDITS = 'FETCH_HOUSE_AUDITS';
