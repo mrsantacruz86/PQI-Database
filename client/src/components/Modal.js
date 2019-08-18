@@ -1,42 +1,26 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
+import { Modal } from 'react-bootstrap';
 
-const Modal = props => {
+const PromtModal = props => {
   return ReactDOM.createPortal(
-    <div
-      className="modal fade show"
-      style={{ display: 'block' }}
-      tabindex="-1"
-      role="dialog"
-      onClick={props.onDismiss}
-    >
-      <div
-        onClick={e => e.stopPropagation()}
-        className="modal-dialog modal-dialog-centered"
-        role="document"
-      >
-        <div className="modal-content">
-          <div className="modal-header">
-            <div className="modal-title">{props.title}</div>
-            <button type="button" className="close" onClick={props.onDismiss} aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div className="modal-body">{props.content}</div>
-          <div className="modal-footer">{props.actions}</div>
-        </div>
-      </div>
-    </div>,
+    <Modal show {...props} aria-labelledby="contained-modal-title-vcenter" centered>
+      <Modal.Header closeButton>
+        <Modal.Title id="contained-modal-title-vcenter">{props.title}</Modal.Title>
+      </Modal.Header>
+      <Modal.Body className="modal-body">{props.content}</Modal.Body>
+      <Modal.Footer className="modal-footer">{props.actions}</Modal.Footer>
+    </Modal>,
     document.querySelector('#modal')
   );
 };
 
-Modal.propTypes = {
+PromtModal.propTypes = {
   title: PropTypes.string.isRequired,
-  onDismiss: PropTypes.func.isRequired,
-  children: PropTypes.element.isRequired,
+  onHide: PropTypes.func,
+  content: PropTypes.element,
   actions: PropTypes.element.isRequired
 };
 
-export default Modal;
+export default PromtModal;

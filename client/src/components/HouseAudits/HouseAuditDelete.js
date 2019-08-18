@@ -1,6 +1,7 @@
 import React, { Fragment, useEffect } from 'react';
 import Modal from '../Modal';
 import history from '../../history';
+import { Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { fetchHouseAudit, deleteHouseAudit } from '../../actions/houseAuditActions';
@@ -13,12 +14,9 @@ const HouseAuditDelete = props => {
   const renderActions = () => {
     return (
       <Fragment>
-        <button
-          onClick={() => props.deleteHouseAudit(props.match.params.id)}
-          className="btn btn-danger"
-        >
+        <Button onClick={() => props.deleteHouseAudit(props.match.params.id)} variant="danger">
           Delete
-        </button>
+        </Button>
         <Link to="/houseaudits" className="btn btn-secondary">
           Cancel
         </Link>
@@ -38,7 +36,7 @@ const HouseAuditDelete = props => {
       title="Delete House Audit"
       content={renderContent()}
       actions={renderActions()}
-      onDismiss={() => history.push('/houseaudits')}
+      onHide={() => history.push('/houseaudits')}
     />
   );
 };

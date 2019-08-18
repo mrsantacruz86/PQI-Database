@@ -37,7 +37,7 @@ class HouseAuditsList extends Component {
               <i className="fas fa-pencil-alt text-warning" />
             </Link>
             {/* <Link to={`/houseaudits/delete/${audit._id}`}> */}
-            <Link onClick={this.toggleModal}>
+            <Link to={`/houseaudits/delete/${audit._id}`}>
               <i className="fas fa-trash-alt text-danger" />
             </Link>
           </td>
