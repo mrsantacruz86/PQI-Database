@@ -48,14 +48,15 @@ class HouseAuditsList extends Component {
   render() {
     return (
       <div className="container-fluid">
-        <h1>HouseAuditsList</h1>
+        <div className="py-2" />
+        <h3 className="py-2">House Audits</h3>
         <div>
           <Link className="btn btn-primary" to="/houseaudits/new">
-            Create audit
+            <i className="fas fa-plus" /> New Audit
           </Link>
         </div>
         <div className="my-3">
-          <table className="table">
+          <table className="table table-striped table-responsive-md table-hover">
             <thead className="thead-light">
               <tr>
                 {/* <th scope="col">Id</th> */}
