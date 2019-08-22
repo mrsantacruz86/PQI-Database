@@ -40,6 +40,11 @@ const HouseAuditSchema = new Schema({
   },
   score: {
     type: Number
+  },
+  maintenance: {
+    findings: [String],
+    max: Number,
+    score: Number
   }
 });
 
