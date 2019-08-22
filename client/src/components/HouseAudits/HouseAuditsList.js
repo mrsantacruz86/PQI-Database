@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 
 import { fetchHouseAudits } from '../../actions/houseAuditActions';
 import { toggleModal } from '../../actions/appActions';
-import HouseAuditDelete from '../HouseAudits/HouseAuditDelete';
 import Spinner from '../Spinner';
 import moment from 'moment';
 
@@ -74,7 +73,7 @@ class HouseAuditsList extends Component {
             </thead>
             <tbody>{this.renderList()}</tbody>
           </table>
-          {this.props.app.modalOpen ? <HouseAuditDelete {...this.props} /> : ''}
+          {/* {this.props.app.modalOpen ? <HouseAuditDelete {...this.props} /> : ''} */}
         </div>
       </div>
     );
