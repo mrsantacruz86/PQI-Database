@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 class PageNotFound extends Component {
   render() {
@@ -13,9 +14,9 @@ class PageNotFound extends Component {
               exist. You can enter a valid URL or return Home.
             </p>
 
-            <a className="btn btn-primary" href="/" role="button">
-              Return to Home
-            </a>
+            <Link className="btn btn-primary" to="/">
+              <i className="fas fa-home" /> Return to Home
+            </Link>
           </div>
 
           {/* Footer */}
