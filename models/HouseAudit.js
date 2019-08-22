@@ -43,8 +43,8 @@ const HouseAuditSchema = new Schema({
   },
   maintenance: {
     findings: [String],
-    max: Number,
-    score: Number
+    max: { type: Number, default: 16 },
+    score: { type: Number, default: 100 }
   }
 });
 
