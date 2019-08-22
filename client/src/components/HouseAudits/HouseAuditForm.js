@@ -4,6 +4,7 @@ import moment from 'moment';
 import arrayMutators from 'final-form-arrays';
 import createDecorator from 'final-form-calculate';
 import HouseAuditItem from './HouseAuditItem';
+import HouseAuditMaintenanceItem from './HouseAuditMaintenanceItem';
 
 // Data json files
 import { houses, houseAuditItems } from './houseAudits.json';
@@ -118,7 +119,13 @@ const HouseAuditForm = props => {
               push={push}
             />
           ))}
-
+          <HouseAuditMaintenanceItem
+            label="Maintenance"
+            fieldName="items.maintenance"
+            maxScore={16}
+            push={push}
+            score={100}
+          />
           <div className="buttons my-3">
             <button
               className="btn btn-primary mr-3"
@@ -136,7 +143,7 @@ const HouseAuditForm = props => {
               Reset
             </button>
           </div>
-          {/* <pre>{JSON.stringify(values, 0, 2)}</pre> */}
+          <pre>{JSON.stringify(values, 0, 2)}</pre>
         </form>
       )}
     </Form>

@@ -3,34 +3,22 @@ import { Field } from 'react-final-form';
 import { FieldArray } from 'react-final-form-arrays';
 
 const HouseAuditItem = props => {
-  const { push, itemLabel, itemName, itemScores, itemMaxScore } = props;
+  const { push, label, fieldName, maxScore, score } = props;
   return (
     <div className="card my-2">
-      <h6 className="card-header">{`${itemLabel} (max ${itemMaxScore}%)`}</h6>
+      <div className="card-header">
+        {`${label} (max ${maxScore}%)`}
+        <button
+          className="btn btn-secondary btn-sm"
+          type="button"
+          onClick={() => push(`${fieldName}.findings`, undefined)}
+        >
+          Add Finding
+        </button>
+      </div>
       <div className="card-body">
-        <div className="form-row">
-          {itemScores.map((score, index) => (
-            <label key={index} className="col-1 mx-2">
-              <Field
-                name={`${itemName}.score`}
-                component="input"
-                type="radio"
-                value={score}
-                parse={value => Number(value)}
-              />{' '}
-              {score}%
-            </label>
-          ))}
-          <button
-            className="btn btn-secondary btn-sm"
-            type="button"
-            onClick={() => push(`${itemName}.findings`, undefined)}
-          >
-            Add Finding
-          </button>
-        </div>
         <div className="form-row mt-3">
-          <FieldArray name={`${itemName}.findings`}>
+          <FieldArray name={`${fieldName}.findings`}>
             {({ fields }) =>
               fields.map((name, index) => (
                 <div key={name} className="input-group input-group-sm mb-1">
