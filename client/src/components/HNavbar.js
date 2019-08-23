@@ -22,7 +22,7 @@ class HNavbar extends Component {
   };
 
   render() {
-    const { auth, navbarOpen } = this.props;
+    const { auth } = this.props;
 
     return (
       <Navbar bg="light" expand="md" variant="light" fixed="top">
@@ -56,6 +56,7 @@ class HNavbar extends Component {
               </Nav.Link>
             ) : (
               <NavDropdown
+                className="accountIcon"
                 alignRight
                 title={<i className="fas fa-user-circle fa-2x text-primary" />}
                 id="account-dropdown"
@@ -74,8 +75,7 @@ class HNavbar extends Component {
 }
 
 const mapStateToProps = state => ({
-  auth: state.auth,
-  navbarOpen: state.app.navbarOpen
+  auth: state.auth
 });
 
 export default connect(

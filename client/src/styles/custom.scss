@@ -33,3 +33,6 @@ form {
   margin-bottom: 2rem;
   width: 7rem;
 }
+.accountIcon > a.dropdown-toggle::after {
+  display: none;
+}
