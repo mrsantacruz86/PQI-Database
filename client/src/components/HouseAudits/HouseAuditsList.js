@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { Dropdown } from 'react-bootstrap';
 
 import { fetchHouseAudits } from '../../actions/houseAuditActions';
 import { toggleModal } from '../../actions/appActions';
@@ -31,14 +32,27 @@ class HouseAuditsList extends Component {
             <td key={index}>{!audit.items[item.name] ? '' : audit.items[item.name].score}%</td>
           ))}
           <td>{audit.score}%</td>
-          <td className="d-flex justify-content-around">
-            <Link to={`/houseaudits/edit/${audit._id}`}>
-              <i className="fas fa-pencil-alt text-warning" />
-            </Link>
-            {/* <Link to={`/houseaudits/delete/${audit._id}`}> */}
-            <Link to={`/houseaudits/delete/${audit._id}`}>
-              <i className="fas fa-trash-alt text-danger" />
-            </Link>
+          <td className="d-flex justify-content-around align-items-center">
+            <Dropdown alignRight className="recordActions">
+              <Dropdown.Toggle variant="outline-light" id="dropdown-basic">
+                <i className="fas fa-ellipsis-v text-secondary" />
+              </Dropdown.Toggle>
+
+              <Dropdown.Menu>
+                <Dropdown.Item as={Link} exact to={`/houseaudits/show/${audit._id}`}>
+                  <i className="fas fa-file-invoice mr-2 text-secondary" />
+                  {`\t Details`}
+                </Dropdown.Item>
+                <Dropdown.Item as={Link} exact to={`/houseaudits/edit/${audit._id}`}>
+                  <i className="fas fa-pencil-alt mr-2 text-secondary" />
+                  {`\t Edit`}
+                </Dropdown.Item>
+                <Dropdown.Item as={Link} exact to={`/houseaudits/delete/${audit._id}`}>
+                  <i className="fas fa-trash-alt mr-2 text-secondary" />
+                  {`\t Delete`}
+                </Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
           </td>
         </tr>
       ))

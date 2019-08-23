@@ -33,6 +33,12 @@ form {
   margin-bottom: 2rem;
   width: 7rem;
 }
-.accountIcon > a.dropdown-toggle::after {
+.accountIcon > a.dropdown-toggle::after,
+.recordActions > button.dropdown-toggle::after {
   display: none;
+}
+.recordActions > button.dropdown-toggle {
+  padding-top: 0;
+  padding-bottom: 0;
+  border: none;
 }
