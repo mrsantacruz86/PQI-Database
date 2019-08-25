@@ -1,5 +1,6 @@
 import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
+import MarketingCard from './MarketingCard';
 
 const Home = () => {
   return (
@@ -26,56 +27,34 @@ const Home = () => {
       </div>
 
       {/* Three columns of text below the carousel */}
-      <div className="container">
-        <div className="row text-center mt-5">
-          <div className="col-lg-4">
-            <i className="fas fa-home fa-10x" />
-            <h2>House Audits</h2>
-            <p>
-              Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id
-              nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac,
-              vestibulum at eros. Praesent commodo cursus magna.
-            </p>
-            <p>
-              <a className="btn btn-secondary" href="#" role="button">
-                View details &raquo;
-              </a>
-            </p>
-          </div>
-          {/* /.col-lg-4 */}
-          <div className="col-lg-4">
-            <i className="fas fa-car fa-10x" />
-            <h2>Vehicle Audits</h2>
-            <p>
-              Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem
-              nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac
-              cursus commodo, tortor mauris condimentum nibh.
-            </p>
-            <p>
-              <a className="btn btn-secondary" href="#" role="button">
-                View details &raquo;
-              </a>
-            </p>
-          </div>
-          {/* /.col-lg-4 */}
-          <div className="col-lg-4">
-            <i className="fas fa-book fa-10x" />
-            <h2>Files Audits</h2>
-            <p>
-              Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam.
-              Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus
-              commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.
-            </p>
-            <p>
-              <a className="btn btn-secondary" href="#" role="button">
-                View details &raquo;
-              </a>
-            </p>
-          </div>
-          {/* /.col-lg-4 */}
+      <Container>
+        <div className="card-deck marketing-card-deck">
+          <MarketingCard
+            title="House Audits"
+            img={<i className="fas fa-home fa-10x" />}
+            text="Houses are carefully inspected several tiems each quarter. This tool help us store
+                house audits with the findings and scores."
+            linkLabel="View Details &raquo;"
+            linkPath="/houseaudits"
+          />
+          <MarketingCard
+            title="Vehicle Audits"
+            img={<i className="fas fa-car fa-10x" />}
+            text="Every quarter all the vehicles used to trasnport children are audited. The Car Audit
+            tool help us keep track of this information."
+            linkLabel="View Details &raquo;"
+            linkPath="/caraudits"
+          />
+          <MarketingCard
+            title="Files Audits"
+            img={<i className="fas fa-book fa-10x" />}
+            text="The File Audits is a collection of tools designed to record data from these audits: CRR
+            (Blue Books), UAC Files, HR Files, Volunteer Files and Licensing Files."
+            linkLabel="View Details &raquo;"
+            linkPath="/fileaudits"
+          />
         </div>
-        {/* /.row */}
-      </div>
+      </Container>
     </div>
   );
 };

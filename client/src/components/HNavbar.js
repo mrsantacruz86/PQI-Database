@@ -58,7 +58,7 @@ class HNavbar extends Component {
               <NavDropdown
                 className="accountIcon"
                 alignRight
-                title={<i className="fas fa-user-circle fa-2x text-primary" />}
+                title={<i className="fas fa-user-circle fa-2x" />}
                 id="account-dropdown"
               >
                 <NavDropdown.Item as={RRNavLink} exact to="/users/account">
