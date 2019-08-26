@@ -4,6 +4,7 @@ import Home from './Home';
 import LoginPage from './LoginPage';
 import SignUpPage from './SignUpPage';
 import PageNotFound from './PageNotFound';
+import TestPage from './TestPage';
 import HNavbar from './HNavbar';
 import PrivateRoute from './PrivateRoute';
 import history from '../history';
@@ -32,6 +33,7 @@ class App extends Component {
           {/* this should be always the last route so it does not interfere with the /new */}
           <Route exact path="/houseaudits/:id" component={HouseAuditShow} />
 
+          <Route exact path="/testpage" component={TestPage} />
           <Route component={PageNotFound} />
         </Switch>
       </Router>
