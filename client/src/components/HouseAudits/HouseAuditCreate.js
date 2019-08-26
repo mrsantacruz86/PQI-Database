@@ -7,6 +7,7 @@ import HouseAuditForm from './HouseAuditForm';
 
 const HouseAuditCreate = props => {
   const onSubmit = values => {
+    console.log(values);
     props.createHouseAudit(values);
   };
 

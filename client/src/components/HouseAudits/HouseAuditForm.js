@@ -9,16 +9,26 @@ import HouseAuditMaintenanceItem from './HouseAuditMaintenanceItem';
 // Data json files
 import { houses, houseAuditItems } from './houseAudits.json';
 
-const calculator = createDecorator({
-  field: /items.\w/,
-  updates: {
-    score: (ignoredValue, allValues) =>
-      (Object.values(allValues.items) || []).reduce(
-        (total, { score }) => total + Number(score || 0),
-        0
-      )
+const calculator = createDecorator(
+  {
+    field: /items.\w/,
+    updates: {
+      score: (ignoredValue, allValues) =>
+        (Object.values(allValues.items) || []).reduce(
+          (total, { score }) => total + Number(score || 0),
+          0
+        )
+    }
   }
-});
+  // {
+  //   field: 'maintenance.findings',
+  //   updates: {
+  //     maintenance: {
+  //       score: (ignoredValue, allValues) => (allValues.length / 16) * 100
+  //     }
+  //   }
+  // }
+);
 
 const HouseAuditForm = props => {
   const onSubmit = values => {
@@ -121,7 +131,7 @@ const HouseAuditForm = props => {
           ))}
           <HouseAuditMaintenanceItem
             label="Maintenance"
-            fieldName="items.maintenance"
+            fieldName="maintenance"
             maxScore={16}
             push={push}
             score={100}
@@ -143,7 +153,7 @@ const HouseAuditForm = props => {
               Reset
             </button>
           </div>
-          <pre>{JSON.stringify(values, 0, 2)}</pre>
+          {/* <pre>{JSON.stringify(values, 0, 2)}</pre> */}
         </form>
       )}
     </Form>
