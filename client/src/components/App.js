@@ -31,7 +31,7 @@ class App extends Component {
           <PrivateRoute exact path="/houseaudits/edit/:id" component={HouseAuditEdit} />
           <PrivateRoute exact path="/houseaudits/delete/:id" component={HouseAuditDelete} />
           {/* this should be always the last route so it does not interfere with the /new */}
-          <Route exact path="/houseaudits/:id" component={HouseAuditShow} />
+          <Route exact path="/houseaudits/show/:id" component={HouseAuditShow} />
 
           <Route exact path="/testpage" component={TestPage} />
           <Route component={PageNotFound} />

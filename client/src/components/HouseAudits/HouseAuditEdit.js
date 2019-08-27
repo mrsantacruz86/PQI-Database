@@ -28,41 +28,6 @@ const renderModal = () => {
     </Modal>
   );
 };
-// const formValues = {
-//   auditor: 'Nelson Abner Diaz',
-//   house: '31',
-//   department: 'UAC',
-//   date: '2019-07-01T04:00:00.000Z',
-//   items: {
-//     medication: {
-//       score: 10,
-//       findings: ['Finding 1', 'Finding 2']
-//     },
-//     ss: {
-//       score: 20
-//     },
-//     hc: {
-//       score: 20
-//     },
-//     documentation: {
-//       score: 10
-//     },
-//     organization: {
-//       score: 10
-//     },
-//     pr: {
-//       score: 10
-//     },
-//     supplies: {
-//       score: 5
-//     },
-//     equipment: {
-//       score: 0,
-//       findings: ['1 Chair is broken']
-//     }
-//   },
-//   score: 85
-// };
 class HouseAuditCreate extends Component {
   componentDidMount() {
     this.props.fetchHouseAudit(this.props.match.params.id);
