@@ -5,19 +5,21 @@ import { FieldArray } from 'react-final-form-arrays';
 const HouseAuditItem = props => {
   const { push, label, fieldName, maxScore, score } = props;
   return (
-    <div className="card my-2">
-      <div className="card-header">
-        {`${label} (max ${maxScore}%)`}
-        <button
-          className="btn btn-secondary btn-sm"
-          type="button"
-          onClick={() => push(`${fieldName}.findings`, undefined)}
-        >
-          Add Finding
-        </button>
-      </div>
+    <div className="card mt-1">
       <div className="card-body">
-        <div className="form-row mt-3">
+        <div className="row justify-content-between">
+          <legend className="col-form-label col-auto pt-1">{`${label} (${score}%)`}</legend>
+          <div className="col-auto">
+            <button
+              className="btn btn-primary btn-sm"
+              type="button"
+              onClick={() => push(`${fieldName}.findings`, undefined)}
+            >
+              <i class="fas fa-plus" /> Finding
+            </button>
+          </div>
+        </div>
+        <div className="mt-2">
           <FieldArray name={`${fieldName}.findings`}>
             {({ fields }) =>
               fields.map((name, index) => (

@@ -5,31 +5,42 @@ import { FieldArray } from 'react-final-form-arrays';
 const HouseAuditItem = props => {
   const { push, itemLabel, itemName, itemScores, itemMaxScore } = props;
   return (
-    <div className="card my-2">
-      <h6 className="card-header">{`${itemLabel} (max ${itemMaxScore}%)`}</h6>
+    <div className="card mt-1">
       <div className="card-body">
-        <div className="form-row">
-          {itemScores.map((score, index) => (
-            <label key={index} className="col-1 mx-2">
-              <Field
-                name={`${itemName}.score`}
-                component="input"
-                type="radio"
-                value={score}
-                parse={value => Number(value)}
-              />{' '}
-              {score}%
-            </label>
-          ))}
-          <button
-            className="btn btn-secondary btn-sm"
-            type="button"
-            onClick={() => push(`${itemName}.findings`, undefined)}
-          >
-            Add Finding
-          </button>
+        <div className="row justify-content-between">
+          <legend className="col-form-label col-auto pt-1">
+            {`${itemLabel} (max ${itemMaxScore}%)`}
+          </legend>
+
+          <fieldset className="col-auto justify-content-between pt-1">
+            {itemScores.map((score, index) => (
+              <div class="form-check form-check-inline">
+                <label key={index} className="form-check-label">
+                  <Field
+                    name={`${itemName}.score`}
+                    component="input"
+                    type="radio"
+                    value={score}
+                    parse={value => Number(value)}
+                  />{' '}
+                  {score}%
+                </label>
+              </div>
+            ))}
+          </fieldset>
+
+          <div className="col-auto">
+            <button
+              className="btn btn-primary btn-sm"
+              type="button"
+              onClick={() => push(`${itemName}.findings`, undefined)}
+            >
+              <i class="fas fa-plus" /> Finding
+            </button>
+          </div>
         </div>
-        <div className="form-row mt-3">
+
+        <div className="mt-2">
           <FieldArray name={`${itemName}.findings`}>
             {({ fields }) =>
               fields.map((name, index) => (

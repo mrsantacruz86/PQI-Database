@@ -12,8 +12,9 @@ const HouseAuditCreate = props => {
   };
 
   return (
-    <div className="container mt-5">
-      <h3 className="my-5">Create House Audit</h3>
+    <div className="container">
+      <div className="py-3"></div>
+      <h3 className="my-3">Create House Audit</h3>
       <HouseAuditForm onSubmit={onSubmit} />
     </div>
   );

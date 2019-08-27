@@ -74,8 +74,13 @@ class HouseAuditCreate extends Component {
 
   render() {
     return (
-      <div className="container mt-5">
-        <h3 className="my-5">Edit House Audit ID: {this.props.match.params.id} </h3>
+      <div className="container">
+        <div className="py-3"></div>
+
+        <h3 className="my-3">Edit House Audit</h3>
+        <p>Id: {this.props.match.params.id} </p>
+        <div className="py-3"></div>
+
         <HouseAuditForm onSubmit={this.onSubmit} values={this.props.houseAudit} />
       </div>
     );

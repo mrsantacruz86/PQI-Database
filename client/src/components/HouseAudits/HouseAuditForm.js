@@ -103,11 +103,12 @@ const HouseAuditForm = props => {
               />
             </div>
           </div>
+
           {/* Audit Items */}
-          <div className="row my-5">
-            <h4 className="col-md-4">Audit Items</h4>
-            <label className="col-md-2 offset-md-4 mt-2 text-right">Score</label>
+          <div className="row my-3">
+            <h4 className="col-md-4">Household Audit</h4>
             <div className="col-md-2">
+              <label className="text-right">Score</label>
               <Field
                 className="form-control"
                 id="score"
@@ -129,6 +130,9 @@ const HouseAuditForm = props => {
               push={push}
             />
           ))}
+          <div className="row my-3">
+            <h4 className="col-md-4">Household Audit</h4>
+          </div>
           <HouseAuditMaintenanceItem
             label="Maintenance"
             fieldName="maintenance"
