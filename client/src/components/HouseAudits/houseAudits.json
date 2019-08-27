@@ -49,20 +49,20 @@
       "scores": [10, 5, 0]
     },
     {
-      "name": "pr",
-      "label": "Program Requirements",
+      "name": "equipment",
+      "label": "Furniture and Equipment",
       "max": 10,
       "scores": [10, 5, 0]
     },
     {
-      "name": "supplies",
-      "label": "Supplies and Storage",
+      "name": "pr",
+      "label": "Program Requirements",
       "max": 5,
       "scores": [5, 0]
     },
     {
-      "name": "equipment",
-      "label": "Furniture and Equipment",
+      "name": "supplies",
+      "label": "Supplies and Storage",
       "max": 5,
       "scores": [5, 0]
     }
