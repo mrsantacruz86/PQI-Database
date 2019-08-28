@@ -66,5 +66,42 @@
       "max": 5,
       "scores": [5, 0]
     }
-  ]
+  ],
+  "initialValues": {
+    "maintenance": {
+      "findings": [],
+      "max": 16,
+      "score": 100
+    },
+    "auditor": "Nelson Diaz",
+    "house": "",
+    "department": "",
+    "items": {
+      "medication": {
+        "score": 20
+      },
+      "ss": {
+        "score": 20
+      },
+      "hc": {
+        "score": 20
+      },
+      "documentation": {
+        "score": 10
+      },
+      "organization": {
+        "score": 10
+      },
+      "equipment": {
+        "score": 10
+      },
+      "pr": {
+        "score": 5
+      },
+      "supplies": {
+        "score": 5
+      }
+    },
+    "score": 100
+  }
 }

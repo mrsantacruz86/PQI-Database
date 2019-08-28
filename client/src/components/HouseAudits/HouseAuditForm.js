@@ -7,7 +7,7 @@ import HouseAuditItem from './HouseAuditItem';
 import HouseAuditMaintenanceItem from './HouseAuditMaintenanceItem';
 
 // Data json files
-import { houses, houseAuditItems } from './houseAudits.json';
+import { houses, houseAuditItems, initialValues } from './houseAudits.json';
 
 const calculator = createDecorator(
   {
@@ -42,7 +42,7 @@ const HouseAuditForm = props => {
         ...arrayMutators
       }}
       decorators={[calculator]}
-      initialValues={props.values || {}}
+      initialValues={props.values || initialValues}
     >
       {({
         handleSubmit,
@@ -66,7 +66,6 @@ const HouseAuditForm = props => {
                 placeholder="Auditor"
               />
             </div>
-
             <div className="form-group col-md-2">
               <label>House</label>
               <Field className="custom-select" name="house" component="select">
@@ -131,14 +130,14 @@ const HouseAuditForm = props => {
             />
           ))}
           <div className="row my-3">
-            <h4 className="col-md-4">Household Audit</h4>
+            <h4 className="col-md-4">Maintenance Audit</h4>
           </div>
           <HouseAuditMaintenanceItem
             label="Maintenance"
             fieldName="maintenance"
             maxScore={16}
             push={push}
-            score={100}
+            data={values.maintenance}
           />
           <div className="buttons my-3">
             <button
