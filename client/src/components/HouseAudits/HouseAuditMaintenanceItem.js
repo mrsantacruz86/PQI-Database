@@ -1,14 +1,28 @@
 import React from 'react';
 import { Field } from 'react-final-form';
 import { FieldArray } from 'react-final-form-arrays';
+import Spinner from '../Spinner';
 
 const HouseAuditItem = props => {
-  const { push, label, fieldName, maxScore, score } = props;
+  const { push, label, fieldName, maxScore, data } = props;
+  // console.log(data);
+  if (!data) {
+    return <Spinner />;
+  }
+
+  const getScore = (maintAudit, max) => {
+    data.max = maxScore;
+    data.score = (1 - maintAudit.findings.length / max) * 100;
+    return data.score;
+  };
+
   return (
     <div className="card mt-1">
       <div className="card-body">
         <div className="row justify-content-between">
-          <legend className="col-form-label col-auto pt-1">{`${label} (${score}%)`}</legend>
+          <legend className="col-form-label col-auto pt-1">
+            {`${label} (${maxScore} items) Score: ${getScore(data, maxScore)}%`}
+          </legend>
           <div className="col-auto">
             <button
               className="btn btn-primary btn-sm"
