@@ -23,6 +23,7 @@ class HNavbar extends Component {
 
   render() {
     const { auth } = this.props;
+    console.log(auth);
 
     return (
       <Navbar bg="light" expand="md" variant="light" fixed="top">
@@ -45,8 +46,6 @@ class HNavbar extends Component {
               <NavDropdown.Item as={RRNavLink} exact to="/houseaudits/new">
                 New House Audit
               </NavDropdown.Item>
-              {/* <NavDropdown.Divider />
-                <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item> */}
             </NavDropdown>
           </Nav>
           <Nav>
@@ -61,6 +60,14 @@ class HNavbar extends Component {
                 title={<i className="fas fa-user-circle fa-2x" />}
                 id="account-dropdown"
               >
+                {!auth.user ? (
+                  ''
+                ) : (
+                  <div>
+                    <NavDropdown.Item>{`${auth.user.firstName} ${auth.user.lastName}`}</NavDropdown.Item>
+                    <NavDropdown.Divider />
+                  </div>
+                )}
                 <NavDropdown.Item as={RRNavLink} exact to="/users/account">
                   Account
                 </NavDropdown.Item>
