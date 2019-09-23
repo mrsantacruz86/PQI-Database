@@ -34,39 +34,41 @@ const CollapseRow = props => {
                     !audit.items[item.name] ? (
                       ''
                     ) : (
-                      <Col xs={12} md={6} lg={4} key={index}>
+                      <Col xs={12} sm={6} lg={4} key={index}>
                         <strong>{item.label}: </strong>
-                        <div className="text-red">{audit.items[item.name].score}%</div>
+                        <span className="text-danger">{audit.items[item.name].score}%</span>
                       </Col>
                     )
                   )}
                 </Row>
               </Col>
-              <Col md={3}>
-                <Link
-                  className="btn btn-sm btn-secondary"
-                  exact
-                  to={`/houseaudits/show/${audit._id}`}
-                >
-                  <i className="fas fa-file-invoice mr-2" />
-                  {`\t Details`}
-                </Link>
-                <Link
-                  className="btn btn-sm btn-secondary"
-                  exact
-                  to={`/houseaudits/edit/${audit._id}`}
-                >
-                  <i className="fas fa-pencil-alt mr-2" />
-                  {`\t Edit`}
-                </Link>
-                <Link
-                  className="btn btn-sm btn-danger"
-                  exact
-                  to={`/houseaudits/delete/${audit._id}`}
-                >
-                  <i className="fas fa-trash-alt mr-2" />
-                  {`\t Delete`}
-                </Link>
+              <Col>
+                <div className="d-flex flex-column">
+                  <Link
+                    className="btn btn-sm btn-secondary mb-1"
+                    exact
+                    to={`/houseaudits/show/${audit._id}`}
+                  >
+                    {/* <i className="fas fa-file-invoice mr-2" /> */}
+                    Details
+                  </Link>
+                  <Link
+                    className="btn btn-sm btn-secondary mb-1"
+                    exact
+                    to={`/houseaudits/edit/${audit._id}`}
+                  >
+                    {/* <i className="fas fa-pencil-alt mr-2" /> */}
+                    Edit
+                  </Link>
+                  <Link
+                    className="btn btn-sm btn-danger mb-1"
+                    exact
+                    to={`/houseaudits/delete/${audit._id}`}
+                  >
+                    {/* <i className="fas fa-trash-alt mr-2" /> */}
+                    Delete
+                  </Link>
+                </div>
               </Col>
             </Row>
           </Card.Body>
