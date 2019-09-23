@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { Dropdown, Container, Row, Col } from 'react-bootstrap';
+import { Container, Row, Col } from 'react-bootstrap';
 
 import { fetchHouseAudits } from '../../actions/houseAuditActions';
 import Spinner from '../Spinner';
-import moment from 'moment';
+// import moment from 'moment';
 
-import { houseAuditItems } from './houseAudits.json';
 import CollapseRow from './CollapseRow';
 class HouseAuditsList extends Component {
   componentDidMount() {
