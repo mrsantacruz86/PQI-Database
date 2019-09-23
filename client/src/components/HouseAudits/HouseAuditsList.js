@@ -7,7 +7,7 @@ import { fetchHouseAudits } from '../../actions/houseAuditActions';
 import Spinner from '../Spinner';
 // import moment from 'moment';
 
-import CollapseRow from './CollapseRow';
+import CollapsibleList from './CollapsibleList';
 class HouseAuditsList extends Component {
   componentDidMount() {
     this.props.fetchHouseAudits();
@@ -17,7 +17,7 @@ class HouseAuditsList extends Component {
     return !this.props.houseAudits ? (
       <Spinner />
     ) : (
-      this.props.houseAudits.map(audit => <CollapseRow data={audit}></CollapseRow>)
+      <CollapsibleList data={this.props.houseAudits} />
     );
   };
   render() {
@@ -34,6 +34,7 @@ class HouseAuditsList extends Component {
         <div className="my-3">
           <section className="mt-3">
             <Row className="px-4 py-0">
+              <Col>+</Col>
               <Col>Date</Col>
               <Col>House</Col>
               <Col>Dept.</Col>
