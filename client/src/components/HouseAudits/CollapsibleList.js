@@ -7,15 +7,21 @@ import { houseAuditItems } from './houseAudits.json';
 import ChevronIconAnimated from '../ChevronIconAnimated';
 
 const CollapsibleList = ({ data }) => {
-  const [expanded, setExpanded] = useState(false);
+  const [expanded, setExpanded] = useState(null);
   const onAccordionToggle = id => {
-    setExpanded(!expanded);
+    if (!expanded) {
+      setExpanded(id);
+    } else if (expanded !== id) {
+      setExpanded(id);
+    } else {
+      setExpanded(null);
+    }
   };
 
   return (
     <Accordion>
       {data.map(audit => (
-        <Card>
+        <Card key={audit._id}>
           <Accordion.Toggle
             onClick={() => onAccordionToggle(audit._id)}
             as={Card.Header}
@@ -23,7 +29,7 @@ const CollapsibleList = ({ data }) => {
           >
             <Row>
               <Col>
-                <ChevronIconAnimated open={expanded} id={audit._id} />
+                <ChevronIconAnimated open={expanded === audit._id ? true : false} />
               </Col>
               <Col>{moment(audit.date).format('MM/DD/YYYY')}</Col>
               <Col>{audit.house}</Col>
@@ -58,7 +64,6 @@ const CollapsibleList = ({ data }) => {
                   <div className="btn-group-vertical">
                     <Link
                       className="btn btn-sm btn-outline-secondary mb-1"
-                      exact
                       to={`/houseaudits/show/${audit._id}`}
                     >
                       <i className="fas fa-file-invoice mr-2" />
@@ -66,7 +71,6 @@ const CollapsibleList = ({ data }) => {
                     </Link>
                     <Link
                       className="btn btn-sm btn-outline-secondary mb-1"
-                      exact
                       to={`/houseaudits/edit/${audit._id}`}
                     >
                       <i className="fas fa-pencil-alt mr-2" />
@@ -74,7 +78,6 @@ const CollapsibleList = ({ data }) => {
                     </Link>
                     <Link
                       className="btn btn-sm btn-outline-danger mb-1"
-                      exact
                       to={`/houseaudits/delete/${audit._id}`}
                     >
                       <i className="fas fa-trash-alt mr-2" />

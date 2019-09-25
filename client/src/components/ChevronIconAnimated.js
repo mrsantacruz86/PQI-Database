@@ -11,7 +11,7 @@ const ChevronIconAnimated = props => {
         y="0px"
         viewBox="0 0 100 80"
       >
-        <path d="M20 25 L50 55 L80 25" fill="none" stroke="currentColor" stroke-width="8" />
+        <path d="M20 25 L50 55 L80 25" fill="none" stroke="currentColor" strokeWidth="8" />
       </svg>
     </div>
   );
