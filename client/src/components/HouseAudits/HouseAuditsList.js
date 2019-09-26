@@ -8,6 +8,8 @@ import Spinner from '../Spinner';
 // import moment from 'moment';
 
 import CollapsibleList from './CollapsibleList';
+import { sortByParam } from '../../utils/numbers';
+
 class HouseAuditsList extends Component {
   componentDidMount() {
     this.props.fetchHouseAudits();
@@ -52,7 +54,7 @@ class HouseAuditsList extends Component {
 
 const mapStateToProps = state => ({
   app: state.app,
-  houseAudits: Object.values(state.houseAudits)
+  houseAudits: sortByParam(Object.values(state.houseAudits), 'house', false)
 });
 
 export default connect(
