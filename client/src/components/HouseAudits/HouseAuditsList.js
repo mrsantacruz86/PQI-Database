@@ -9,6 +9,7 @@ import Spinner from '../Spinner';
 import moment from 'moment';
 
 import { houseAuditItems } from './houseAudits.json';
+import { sortByParam } from '../../utils/numbers';
 
 class HouseAuditsList extends Component {
   componentDidMount() {
@@ -96,7 +97,7 @@ class HouseAuditsList extends Component {
 
 const mapStateToProps = state => ({
   app: state.app,
-  houseAudits: Object.values(state.houseAudits)
+  houseAudits: sortByParam(Object.values(state.houseAudits), 'house', false)
 });
 
 export default connect(
