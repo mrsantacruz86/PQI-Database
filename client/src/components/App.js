@@ -10,6 +10,7 @@ import PrivateRoute from './PrivateRoute';
 import history from '../history';
 import {
   HouseAuditsList,
+  HouseAuditGeneralReport,
   HouseAuditShow,
   HouseAuditCreate,
   HouseAuditEdit,
@@ -27,6 +28,11 @@ class App extends Component {
           <Route path="/register" component={SignUpPage} />
           {/* House audit Routes */}
           <PrivateRoute exact path="/houseaudits" component={HouseAuditsList} />
+          <PrivateRoute
+            exact
+            path="/houseaudits/generalreport"
+            component={HouseAuditGeneralReport}
+          />
           <PrivateRoute exact path="/houseaudits/new" component={HouseAuditCreate} />
           <PrivateRoute exact path="/houseaudits/edit/:id" component={HouseAuditEdit} />
           <PrivateRoute exact path="/houseaudits/delete/:id" component={HouseAuditDelete} />

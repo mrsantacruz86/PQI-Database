@@ -40,6 +40,9 @@ class HNavbar extends Component {
               Dashboard
             </Nav.Link>
             <NavDropdown title="House Audits" id="basic-nav-dropdown">
+              <NavDropdown.Item as={RRNavLink} exact to="/houseaudits/generalreport">
+                House Audits General Report
+              </NavDropdown.Item>
               <NavDropdown.Item as={RRNavLink} exact to="/houseaudits">
                 All House Audits
               </NavDropdown.Item>
