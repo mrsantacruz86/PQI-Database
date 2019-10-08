@@ -7,8 +7,30 @@ import { fetchHouseAudits } from '../../actions/houseAuditActions';
 import Spinner from '../Spinner';
 import moment from 'moment';
 import template from './houseAudits.json';
+import BarChart from '../BarChart';
 
 import { sortByParam } from '../../utils/numbers';
+
+const data = [
+  {
+    name: 'Page A',
+    uv: 4000,
+    pv: 2400,
+    amt: 2400
+  },
+  {
+    name: 'Page B',
+    uv: 3000,
+    pv: 1398,
+    amt: 2210
+  },
+  {
+    name: 'Page C',
+    uv: 2000,
+    pv: 9800,
+    amt: 2290
+  }
+];
 
 class HouseAuditsGeneralReport extends Component {
   componentDidMount() {
@@ -37,8 +59,15 @@ class HouseAuditsGeneralReport extends Component {
       <Container fluid>
         <div className="py-2" />
         <h3 className="py-2">House Audits General Report</h3>
+        <div className="my-3">
+          <Link className="btn btn-primary" to="/houseaudits">
+            <i className="fas fa-chevron-left" /> Go back to List
+          </Link>
+        </div>
 
-        <section className="chart my-3"></section>
+        <section className="chart my-3">
+          <BarChart data={data} />
+        </section>
 
         <section className="mt-3">
           <Table striped bordered hover size="sm">

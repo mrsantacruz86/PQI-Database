@@ -28,16 +28,16 @@ class HouseScoresChart extends Component {
         }}
       >
         {/* <CartesianGrid strokeDasharray="3 3" /> */}
-        <XAxis dataKey="House" />
+        <XAxis dataKey="name" />
         <YAxis />
         <Tooltip />
         <Legend />
-        <Bar dataKey="Household" fill="#007bff">
+        <Bar dataKey="name" fill="#007bff">
           <LabelList dataKey="label" position="top" />
         </Bar>
-        <Bar dataKey="Maintenance" fill="#dc3545">
+        {/* <Bar dataKey="Maintenance" fill="#dc3545">
           <LabelList dataKey="label" position="top" />
-        </Bar>
+        </Bar> */}
       </BarChart>
     );
   }
