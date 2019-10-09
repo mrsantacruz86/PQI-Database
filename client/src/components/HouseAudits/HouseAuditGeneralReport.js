@@ -70,7 +70,7 @@ const HouseAuditsGeneralReport = props => {
       </section>
 
       <section className="mt-3">
-        <Table striped bordered hover size="sm">
+        <Table striped bordered hover responsive size="sm">
           <thead>
             <tr>
               <th>Date</th>
