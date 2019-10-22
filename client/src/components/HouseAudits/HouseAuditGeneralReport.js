@@ -51,6 +51,7 @@ const HouseAuditsGeneralReport = props => {
           ))}
           <td>{audit.score}%</td>
           <td>{audit.maintenance.score}%</td>
+          <td>{JSON.stringify(audit.maintenance.findings)}%</td>
         </tr>
       ))
     );

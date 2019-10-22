@@ -8,6 +8,7 @@ import TestPage from './TestPage';
 import HNavbar from './HNavbar';
 import PrivateRoute from './PrivateRoute';
 import history from '../history';
+import FindingsReport from './FindingsReport';
 import {
   HouseAuditsList,
   HouseAuditGeneralReport,
@@ -33,6 +34,7 @@ class App extends Component {
             path="/houseaudits/generalreport"
             component={HouseAuditGeneralReport}
           />
+          <PrivateRoute exact path="/houseaudits/findingsreport" component={FindingsReport} />
           <PrivateRoute exact path="/houseaudits/new" component={HouseAuditCreate} />
           <PrivateRoute exact path="/houseaudits/edit/:id" component={HouseAuditEdit} />
           <PrivateRoute exact path="/houseaudits/delete/:id" component={HouseAuditDelete} />
