@@ -50,6 +50,8 @@ const HouseAuditsGeneralReport = props => {
             <td key={index}>{!audit.items[item.name] ? '' : audit.items[item.name].score}%</td>
           ))}
           <td>{audit.score}%</td>
+          <td>{audit.maintenance.score}%</td>
+          <td>{JSON.stringify(audit.maintenance.findings)}%</td>
         </tr>
       ))
     );
@@ -80,11 +82,13 @@ const HouseAuditsGeneralReport = props => {
                 <th key={`th-${index}`}>{item.label}</th>
               ))}
               <th>Score</th>
+              <th>Maintenance</th>
             </tr>
           </thead>
           <tbody>{renderRows()}</tbody>
         </Table>
       </section>
+
       {/* <pre>{JSON.stringify(sumarizeData(houseAudits), '', 2)}</pre> */}
     </Container>
   );
