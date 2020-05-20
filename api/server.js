@@ -1,14 +1,14 @@
-require('dotenv').config()
+require("dotenv").config();
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
-const logger = require('morgan');
+const logger = require("morgan");
 const routes = require("./routes");
 const app = express();
 const PORT = process.env.PORT;
 
 // Define middleware here
-app.use(logger('dev'));
+app.use(logger("dev"));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 // Serve up static assets (usually on heroku)
@@ -19,12 +19,13 @@ if (process.env.NODE_ENV === "production") {
 app.use(routes);
 
 // Connect to the Mongo DB
-const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/pqi-database";
+const MONGODB_URI =
+  process.env.MONGODB_URI || "mongodb://localhost/pqi-database";
 
 mongoose
   .connect(MONGODB_URI, { useNewUrlParser: true, autoIndex: false })
   .then(() => console.log("MongoDB connected successfuly"))
-  .catch(err => console.log(err));
+  .catch((err) => console.log(err));
 
 // Start the API server
 app.listen(PORT, function () {
