@@ -97,16 +97,31 @@ House Audit
   "house": "house number",
   "auditor": "name of the auditor",
   "score": 100,
-  "categories": [
-    "medications",
-    "safety",
-    "health",
-    "documentation",
-    "organization",
-    "furniture",
-    "program",
-    "supplies",
-    "optional"
-  ]
+  "categories": {
+    "medications": {
+      "totalItems": 5,
+      "itemValue": 3,
+      "items": {
+        Medication Documents:{
+            "select": false,
+            "comment": "string"
+        },
+        Medication Storage
+        Working Nebulizers
+        First Aid Kit
+        Expired Medication
+      }
+    },
+    "safety": { "totalItems": 5, "itemValue": 3, "items": {
+
+    } },
+    "health": { "totalItems": 5, "itemValue": 3, "items": {} },
+    "documentation": { "totalItems": 5, "itemValue": 3, "items": {} },
+    "organization": { "totalItems": 5, "itemValue": 3, "items": {} },
+    "furniture": { "totalItems": 5, "itemValue": 3, "items": {} },
+    "program": { "totalItems": 5, "itemValue": 3, "items": {} },
+    "supplies": { "totalItems": 5, "itemValue": 3, "items": {} },
+    "optional": { "totalItems": 5, "itemValue": 3, "items": {} }
+  }
 }
 ```
